@@ -18,3 +18,9 @@
 # Los .sh y .awk son ejecutables por bash: LF siempre, sin excepcion.
 *.sh     text eol=lf
 *.awk    text eol=lf
+
+# Los SVG de assets se guardan con los bytes tal cual. Dos de ellos vienen del
+# repo del sitio con CRLF, y el ZIP se arma con esos bytes: si git los
+# normalizara a LF, la carpeta versionada dejaria de coincidir con el ZIP que
+# esta al lado. Sigue siendo texto diffeable, solo que sin tocar el fin de linea.
+*.svg    -text
