@@ -28,7 +28,9 @@ grep -q '<h3><?php esc_html_e' "$OUT/footer.php"        || die "no pude bajar a 
 # --- 3. aria-current en el boton del CTA ------------------------------------
 # El repo marca el boton del nav con aria-current="page" en /reservar-consultoria/.
 # El tema lo resuelve comparando rutas (caissa_cta_actual), no cableando el slug.
-cat "$HERE/parche-cta-actual.php" >> "$OUT/inc/nav.php"
+if ! grep -q 'function caissa_cta_actual' "$OUT/inc/nav.php"; then
+  cat "$HERE/parche-cta-actual.php" >> "$OUT/inc/nav.php"
+fi
 grep -q 'function caissa_cta_actual' "$OUT/inc/nav.php" || die "no pude agregar caissa_cta_actual()"
 sed -i 's|<a href="<?php echo esc_url( caissa_cta_url() ); ?>" class="btn btn-primary">|<a href="<?php echo esc_url( caissa_cta_url() ); ?>"<?php echo caissa_cta_actual() ? '"'"' aria-current="page"'"'"' : '"''"'; ?> class="btn btn-primary">|g' "$OUT/header.php"
 [ "$(grep -c 'caissa_cta_actual()' "$OUT/header.php")" = "2" ] || die "esperaba dos botones de CTA marcados con aria-current en header.php"
@@ -156,5 +158,17 @@ if ! grep -q 'screen-reader-text' "$OUT/assets/css/blog.css"; then
   cat "$HERE/parche-sr.css" >> "$OUT/assets/css/blog.css"
 fi
 grep -q 'screen-reader-text' "$OUT/assets/css/blog.css" || die "no pude agregar .screen-reader-text"
+
+:
+
+# --- Guarda de idempotencia -------------------------------------------------
+# Varios parches AGREGAN codigo a archivos del esqueleto. Si el esqueleto ya es
+# una version parcheada (regenerar 1.09 sobre 1.09), un parche sin su "if !
+# grep -q" duplicaria una funcion y PHP moriria con "Cannot redeclare". Paso
+# de verdad con caissa_cta_actual(), asi que ahora se chequea siempre.
+dup=$(grep -rho 'function caissa_[a-z_]*' "$OUT" --include='*.php' | sort | uniq -d)
+if [ -n "$dup" ]; then
+  die "funcion declarada mas de una vez (un parche se aplico dos veces): $dup"
+fi
 
 :
