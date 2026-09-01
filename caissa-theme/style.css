@@ -1,0 +1,25 @@
+/*
+Theme Name:  Caissa 2026
+Theme URI:   https://caissa.digital/
+Author:      Caissa
+Description: Tema propio de Caissa. Veintiuna plantillas de pagina con el diseno 2026, header y footer compartidos, menus nativos de WordPress y el CSS servido como archivos cacheables. Sin frameworks, sin jQuery, sin dependencias externas.
+Version:     1.09
+Requires at least: 6.0
+Requires PHP: 7.4
+License:     Propietario
+Text Domain: caissa
+*/
+
+/*
+ * A PROPOSITO CASI VACIO.
+ *
+ * WordPress exige este archivo para reconocer el tema, pero el CSS real vive
+ * en assets/css/ y se encola desde inc/enqueue.php, porque asi se sirve como
+ * archivo cacheable en vez de repetirse dentro de cada HTML.
+ *
+ * base.css      design system compartido (9 plantillas)
+ * landing.css   chasis de las landings (8 plantillas)
+ * tpl-*.css     lo propio de cada plantilla + la pasada de densidad mobile
+ *
+ * No agregues reglas aca: no se encola.
+ */

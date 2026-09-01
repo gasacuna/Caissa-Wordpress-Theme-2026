@@ -1,0 +1,246 @@
+/* =====================================================================
+   BLOG — listado y nota abierta.
+
+   No se migro de ningun HTML: se diseno aca reusando los tokens y las clases
+   del design system (base.css), que se carga antes. Todo lo propio va con el
+   prefijo .bl- para no chocar con nada del resto del sitio.
+
+   Criterio: la jerarquia se logra con tamano, peso y tono, nunca con acentos
+   de color sueltos. Una sola tinta. Las animaciones son las que ya existen
+   (.reveal) y respetan prefers-reduced-motion.
+   ===================================================================== */
+
+:root{--bl-medida:54rem}   /* la medida del texto largo: ~68 caracteres por linea */
+
+/* ---------- Encabezado de la vista ---------- */
+.bl-head{padding:64px 0 44px}
+.bl-head h1{font-size:var(--h2);letter-spacing:-.028em;color:var(--ink);margin:0}
+.bl-head .bl-bajada{max-width:680px;margin-top:16px;color:var(--ink-soft);font-size:1.08rem;line-height:1.62}
+.bl-head .bl-bajada p{margin:0 0 10px}
+.bl-head .bl-bajada p:last-child{margin-bottom:0}
+
+/* Chips de categoria. Mismo lenguaje que los rotulos de rubro del resto del sitio. */
+.bl-cats{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.bl-cats a{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);
+  border-radius:100px;padding:8px 15px;font-size:.86rem;font-weight:600;color:var(--ink-soft);
+  transition:border-color .15s ease,color .15s ease}
+.bl-cats a:hover{border-color:var(--violet);color:var(--violet)}
+.bl-cats a[aria-current="page"]{background:var(--bg-lav);border-color:var(--bg-lav);color:var(--violet);font-weight:700}
+
+/* ---------- Grilla ---------- */
+.bl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding-bottom:20px}
+
+/* ---------- Tarjeta ---------- */
+.bl-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;
+  transition:transform .18s ease,box-shadow .18s ease}
+.bl-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.bl-card-tapa{display:block;position:relative;aspect-ratio:16/9;background:var(--bg-soft);overflow:hidden}
+.bl-card-tapa img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.bl-card:hover .bl-card-tapa img{transform:scale(1.03)}
+/* Sin imagen destacada: en vez de un hueco, la inicial del titulo sobre el lavanda. */
+.bl-card-tapa.sin-img{display:flex;align-items:center;justify-content:center;background:var(--bg-lav)}
+.bl-card-tapa.sin-img span{font-size:2.4rem;font-weight:800;color:var(--violet);opacity:.45;line-height:1}
+
+.bl-card-cuerpo{display:flex;flex-direction:column;flex:1;padding:22px 22px 0}
+.bl-tag{align-self:flex-start;background:var(--bg-lav);color:var(--violet);font-size:.72rem;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:14px}
+.bl-card h2{font-size:1.16rem;line-height:1.28;letter-spacing:-.015em;color:var(--ink);margin:0}
+.bl-card h2 a{color:inherit}
+.bl-card:hover h2 a{color:var(--violet)}
+.bl-card p{margin:11px 0 0;color:var(--muted);font-size:.95rem;line-height:1.6}
+.bl-card-pie{display:flex;align-items:center;gap:9px;margin-top:auto;padding:18px 22px;
+  border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;font-weight:500}
+.bl-card-pie .punto{width:3px;height:3px;border-radius:50%;background:var(--line);flex:0 0 auto}
+
+/* ---------- Destacada: solo la primera del listado, y solo en la pagina 1 ----------
+   Es el mismo recurso que usa la home, que alterna tarjetas "feature" con tarjetas
+   chicas. Aporta jerarquia sin agregar un componente nuevo. */
+/* Va en GRID y no en flex-row: la tarjeta tiene TRES hijos (tapa, cuerpo, pie) y en
+   flex-direction:row el pie se convertia en una tercera columna, le robaba el ancho al
+   cuerpo y el titulo quedaba a una palabra por linea. Con grid la tapa ocupa las dos
+   filas de la primera columna, y cuerpo y pie se apilan en la segunda. */
+.bl-card--destacada{grid-column:1/-1;display:grid;grid-template-columns:52% 1fr;grid-template-rows:1fr auto}
+.bl-card--destacada .bl-card-tapa{grid-column:1;grid-row:1/3;width:auto;flex:none;aspect-ratio:auto;min-height:340px}
+.bl-card--destacada .bl-card-cuerpo{grid-column:2;grid-row:1;justify-content:center;padding:38px 42px 0}
+.bl-card--destacada h2{font-size:var(--h2-sub);line-height:1.16;letter-spacing:-.025em}
+.bl-card--destacada p{font-size:1.04rem;margin-top:14px;max-width:52ch}
+.bl-card--destacada .bl-card-pie{grid-column:2;grid-row:2;padding:22px 42px 38px;border-top:0;margin-top:0}
+
+/* ---------- Paginacion ---------- */
+.bl-pag{display:flex;justify-content:center;gap:8px;padding:16px 0 8px}
+.bl-pag .page-numbers{display:inline-flex;align-items:center;justify-content:center;min-width:44px;
+  height:44px;padding:0 14px;background:#fff;border:1px solid var(--line);border-radius:100px;
+  color:var(--ink-soft);font-size:.95rem;font-weight:600;transition:border-color .15s ease,color .15s ease}
+.bl-pag a.page-numbers:hover{border-color:var(--violet);color:var(--violet)}
+.bl-pag .page-numbers.current{background:var(--coral);border-color:var(--coral);color:#fff}
+.bl-pag .page-numbers.dots{border-color:transparent;background:none}
+
+/* ---------- Vacio ---------- */
+.bl-vacio{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:52px 34px;text-align:center}
+.bl-vacio h2{font-size:1.3rem;color:var(--ink);margin:0}
+.bl-vacio p{margin:12px 0 0;color:var(--muted)}
+.bl-vacio form{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.bl-vacio input[type="search"]{background:#fff;border:1px solid var(--line);border-radius:100px;
+  padding:13px 20px;font-family:inherit;font-size:.95rem;color:var(--ink);min-width:260px}
+.bl-vacio input[type="search"]:focus{outline:2px solid var(--violet);outline-offset:2px}
+
+/* =====================================================================
+   NOTA ABIERTA
+   ===================================================================== */
+
+.bl-post-head{padding:60px 0 0;text-align:center}
+.bl-post-head h1{font-size:var(--h2-sub);line-height:1.14;letter-spacing:-.028em;color:var(--ink);
+  max-width:20ch;margin:0 auto}
+.bl-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;
+  margin-top:20px;color:var(--muted);font-size:.9rem;font-weight:500}
+.bl-meta .punto{width:3px;height:3px;border-radius:50%;background:var(--line);flex:0 0 auto}
+.bl-meta a{color:var(--ink-soft);font-weight:600}
+.bl-meta a:hover{color:var(--violet)}
+
+/* La imagen destacada, en el mismo marco redondeado que usan los mockups del sitio. */
+.bl-portada{margin:38px auto 0;max-width:calc(var(--maxw) - 48px);border-radius:22px;overflow:hidden;
+  box-shadow:var(--shadow);background:var(--bg-soft)}
+.bl-portada img{width:100%;height:auto;display:block}
+.bl-portada figcaption{padding:12px 20px;background:#fff;color:var(--muted);font-size:.82rem;text-align:center}
+
+/* ---------- Prosa ----------
+   El ancho es 68ch y no el --maxw del sitio: en un texto largo lo que manda es la
+   cantidad de caracteres por linea, no el ancho de la grilla. */
+/* La medida del texto va en rem y no en ch: ch depende del font-size del elemento, y
+   la caja del autor tiene otro tamano de letra, asi que 68ch le daba 64px menos y
+   quedaba desalineada con la prosa. */
+.bl-prose{max-width:var(--bl-medida);margin:0 auto;padding:44px 0 8px;color:var(--ink-soft);
+  font-size:1.08rem;line-height:1.75}
+.bl-prose > * + *{margin-top:1.15em}
+.bl-prose h2{font-size:1.72rem;line-height:1.2;letter-spacing:-.022em;color:var(--ink);margin-top:2.1em}
+.bl-prose h3{font-size:1.3rem;line-height:1.26;letter-spacing:-.015em;color:var(--ink);margin-top:1.8em}
+.bl-prose h4{font-size:1.08rem;line-height:1.3;color:var(--ink);margin-top:1.6em}
+.bl-prose h2 + *,.bl-prose h3 + *,.bl-prose h4 + *{margin-top:.7em}
+.bl-prose p{margin-bottom:0}
+.bl-prose strong,.bl-prose b{color:var(--ink);font-weight:700}
+.bl-prose a{color:var(--violet);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.bl-prose a:hover{color:var(--coral)}
+.bl-prose ul,.bl-prose ol{padding-left:1.35em}
+.bl-prose li + li{margin-top:.45em}
+.bl-prose ul li::marker{color:var(--violet)}
+.bl-prose ol li::marker{color:var(--violet);font-weight:700}
+.bl-prose blockquote{margin-left:0;margin-right:0;padding:4px 0 4px 24px;border-left:3px solid var(--coral);
+  color:var(--ink);font-size:1.16rem;line-height:1.6;font-style:italic}
+.bl-prose blockquote p{margin:0}
+.bl-prose blockquote cite{display:block;margin-top:12px;font-style:normal;font-size:.9rem;
+  font-weight:600;color:var(--muted)}
+.bl-prose figure{margin-left:0;margin-right:0}
+.bl-prose img{max-width:100%;height:auto;display:block;border-radius:var(--radius-sm)}
+.bl-prose figcaption{margin-top:10px;color:var(--muted);font-size:.86rem;line-height:1.5;text-align:center}
+.bl-prose hr{border:0;border-top:1px solid var(--line);margin-top:2.4em}
+.bl-prose code{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;
+  padding:2px 6px;font-size:.88em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.bl-prose pre{background:var(--navy);color:#E8EAFF;border-radius:var(--radius-sm);padding:20px 22px;
+  overflow-x:auto;font-size:.9rem;line-height:1.6}
+.bl-prose pre code{background:none;border:0;padding:0;color:inherit}
+/* Las tablas anchas scrollean adentro suyo: la pagina nunca scrollea de costado. */
+.bl-prose .tabla-scroll{overflow-x:auto}
+.bl-prose table{width:100%;border-collapse:collapse;font-size:.95rem}
+.bl-prose th,.bl-prose td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.bl-prose th{color:var(--ink);font-weight:700;background:var(--bg-soft)}
+
+/* ---------- Autor ---------- */
+.bl-autor{max-width:var(--bl-medida);margin:44px auto 0;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:24px 26px;
+  display:flex;align-items:flex-start;gap:18px}
+.bl-autor img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:var(--bg-lav)}
+.bl-autor .bl-autor-rot{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.bl-autor h2{font-size:1.05rem;color:var(--ink);margin:4px 0 0}
+.bl-autor p{margin:8px 0 0;color:var(--ink-soft);font-size:.95rem;line-height:1.6}
+
+
+/* --- La bio se pliega a dos renglones ---
+   Con JS se recorta y aparece el control; sin JS se ve entera y el control se esconde.
+   Es la misma logica que ya usa la barra sticky del sitio con html:not(.js). */
+.js .bl-autor-bio{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.js .bl-autor-bio.abierta{display:block;overflow:visible}
+html:not(.js) .bl-autor-mas{display:none}
+
+/* El control es TEXTO, no un boton: sin fondo, sin borde y sin padding. Lo unico que lo
+   delata como interactivo es el cursor, el subrayado al pasar por encima y el chevron. */
+.bl-autor-mas{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:0;border:0;
+  background:none;cursor:pointer;font-family:inherit;font-size:.88rem;font-weight:600;
+  color:var(--ink-soft);line-height:1.2;transition:color .15s ease}
+.bl-autor-mas:hover{color:var(--violet);text-decoration:underline;text-underline-offset:3px}
+.bl-autor-mas svg{width:14px;height:14px;flex:0 0 auto;transition:transform .2s ease}
+.bl-autor-mas[aria-expanded="true"] svg{transform:rotate(180deg)}
+.bl-autor-mas:focus{outline:none}
+.bl-autor-mas:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:4px}
+
+/* --- Sin biografia: la foto y el nombre, nada mas ---
+   Es el caso de las notas que firma otra persona del equipo. */
+.bl-autor--simple{align-items:center;padding:16px 22px}
+.bl-autor--simple img{width:44px;height:44px}
+.bl-autor--simple h2{margin:0;font-size:1rem}
+
+/* ---------- Relacionadas ---------- */
+.bl-rel{padding:70px 0 0}
+/* Ojo con la especificidad: .bl-rel h2 a secas tambien matchea los <h2> de las tarjetas
+   que van adentro de la seccion, y les cambiaba el tamano. Va como hijo directo. */
+.bl-rel > .wrap > h2{font-size:var(--h2-sub);letter-spacing:-.025em;color:var(--ink);text-align:center;margin:0 0 34px}
+
+/* ---------- Volver ---------- */
+.bl-medida-guia{max-width:var(--bl-medida);margin:0 auto}
+.bl-volver{display:inline-flex;align-items:center;gap:8px;margin-top:34px;color:var(--ink-soft);
+  font-size:.94rem;font-weight:600}
+.bl-volver:hover{color:var(--violet)}
+.bl-volver svg{width:17px;height:17px;flex:0 0 auto}
+
+/* =====================================================================
+   MOBILE
+   ===================================================================== */
+@media(max-width:1000px){
+  .bl-grid{grid-template-columns:repeat(2,1fr);gap:22px}
+  .bl-card--destacada{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .bl-card--destacada .bl-card-tapa{grid-column:1;grid-row:auto;width:100%;flex:none;aspect-ratio:16/9;min-height:0}
+  .bl-card--destacada .bl-card-cuerpo{grid-column:1;grid-row:auto}
+  .bl-card--destacada .bl-card-pie{grid-column:1;grid-row:auto}
+  .bl-card--destacada .bl-card-cuerpo{padding:24px 24px 0}
+  .bl-card--destacada .bl-card-pie{padding:18px 24px 26px;margin-top:18px}
+  .bl-card--destacada h2{font-size:1.5rem}
+  .bl-card--destacada p{font-size:1rem}
+}
+@media(max-width:640px){
+  .bl-head{padding:44px 0 30px}
+  .bl-grid{grid-template-columns:1fr;gap:20px}
+  .bl-post-head{padding:40px 0 0}
+  .bl-post-head h1{max-width:none}
+  .bl-portada{border-radius:16px;margin-top:26px}
+  .bl-prose{padding-top:32px;font-size:1.04rem}
+  .bl-prose h2{font-size:1.44rem}
+  .bl-prose h3{font-size:1.2rem}
+  .bl-autor{flex-direction:column;gap:14px}
+  .bl-autor--simple{flex-direction:row;align-items:center;gap:14px}
+  .bl-rel{padding-top:52px}
+}
+
+/* El CTA del blog va a una columna: no repite la foto de Manuel en cada nota. */
+.bl-cta .final-panel{grid-template-columns:1fr}
+.bl-cta .final-panel p.body{max-width:620px}
+/* El eyebrow del post es un enlace a la categoria: que no parezca texto muerto. */
+a.eyebrow{transition:background .15s ease}
+a.eyebrow:hover{background:#DFE4FE}
+
+/* ===== .screen-reader-text =====
+   get_search_form() de WordPress envuelve la etiqueta del campo en
+   <span class="screen-reader-text">Buscar:</span>. El tema no definia esa clase, asi
+   que "Buscar:" se veia como texto suelto arriba del input, en el 404 y en el estado
+   vacio del listado. Es la definicion estandar de WordPress: saca el texto de la
+   vista sin sacarlo del arbol de accesibilidad. */
+.screen-reader-text{
+  border:0;clip-path:inset(50%);height:1px;width:1px;margin:-1px;padding:0;
+  overflow:hidden;position:absolute;white-space:nowrap;word-wrap:normal
+}
+.screen-reader-text:focus{
+  background:#fff;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,.6);
+  clip-path:none;color:var(--ink);display:block;font-size:.875rem;font-weight:700;
+  height:auto;left:5px;line-height:normal;padding:15px 23px 14px;
+  text-decoration:none;top:5px;width:auto;z-index:100000
+}

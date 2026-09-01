@@ -1,0 +1,20 @@
+# Normaliza todo el texto a LF, en el repo Y en el checkout.
+#
+# Con core.autocrlf=true (lo habitual en Git para Windows) un clon en Windows
+# convierte a CRLF, y eso ROMPE los scripts de _generador/: bash falla con un
+# \r en el shebang y gawk se come el \r dentro de los literales. Ademas el
+# generador garantiza reproduccion byte a byte del CSS y el JS, y un cambio de
+# fin de linea la rompe.
+* text=auto eol=lf
+
+# Binarios: que git no los toque ni intente diffearlos.
+*.zip    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.webp   binary
+*.woff2  binary
+
+# Los .sh y .awk son ejecutables por bash: LF siempre, sin excepcion.
+*.sh     text eol=lf
+*.awk    text eol=lf

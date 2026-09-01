@@ -1,0 +1,17 @@
+
+/* ===== .screen-reader-text =====
+   get_search_form() de WordPress envuelve la etiqueta del campo en
+   <span class="screen-reader-text">Buscar:</span>. El tema no definia esa clase, asi
+   que "Buscar:" se veia como texto suelto arriba del input, en el 404 y en el estado
+   vacio del listado. Es la definicion estandar de WordPress: saca el texto de la
+   vista sin sacarlo del arbol de accesibilidad. */
+.screen-reader-text{
+  border:0;clip-path:inset(50%);height:1px;width:1px;margin:-1px;padding:0;
+  overflow:hidden;position:absolute;white-space:nowrap;word-wrap:normal
+}
+.screen-reader-text:focus{
+  background:#fff;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,.6);
+  clip-path:none;color:var(--ink);display:block;font-size:.875rem;font-weight:700;
+  height:auto;left:5px;line-height:normal;padding:15px 23px 14px;
+  text-decoration:none;top:5px;width:auto;z-index:100000
+}

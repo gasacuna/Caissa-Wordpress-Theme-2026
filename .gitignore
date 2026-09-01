@@ -1,0 +1,12 @@
+# Sistema operativo / Google Drive
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+~$*
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~

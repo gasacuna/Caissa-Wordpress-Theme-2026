@@ -1,0 +1,22 @@
+
+/* =====================================================================
+   BLINDAJE  (lo agrega el generador, no viene del HTML original)
+
+   Los badges del footer y estos logos se dimensionaban SOLO con el
+   atributo height del HTML. Cualquier hoja que declare img{height:auto}
+   lo anula y los manda al tamano natural: los badges pasan de 80px de
+   alto a 1727px. El tema ya saca el CSS de bloques de WordPress, que es
+   quien traia esa regla, pero declararlo aca cuesta 400 bytes y deja de
+   depender de eso. Tambien evita salto de layout (CLS) mientras cargan.
+   ===================================================================== */
+.foot-badges img{width:auto;height:38px;display:block}
+.foot-badges img[src*="badge-premier"],
+.foot-badges img[src*="badge-gptw"],
+.foot-badges img[src*="badge-ecommerce"]{height:50px}
+
+/* El panel del desplegable, un poco mas cerca del nav (venia con 9px de aire).
+   El ::before es un puente invisible que cubre ese hueco: sin el, al bajar el
+   mouse del boton al panel se dispara mouseleave y el menu se cierra en la cara
+   del usuario. Los dos numeros TIENEN que ser iguales. */
+.nav-menu{top:calc(100% + 4px)}
+.nav-menu::before{top:-4px;height:4px}

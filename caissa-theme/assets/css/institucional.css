@@ -1,0 +1,104 @@
+
+  /* ===== HERO INSTITUCIONAL =====
+     A diferencia de las landings, acá el H1 es el H1 grande de verdad: no hay un claim
+     comercial que tenga que pisarlo. Centrado y sobrio. */
+  .inst{position:relative;overflow:hidden;padding:64px 0 60px;
+    background:linear-gradient(180deg,rgba(233,236,254,.55),transparent 70%),
+      radial-gradient(820px 460px at 88% -4%, rgba(84,104,255,.15), transparent 60%),
+      radial-gradient(640px 440px at -4% 30%, rgba(255,120,150,.11), transparent 58%)}
+  .inst-head{max-width:760px;margin:0 auto;text-align:center;padding:0 22px}
+  .inst-head h1{font-size:clamp(2.3rem,5vw,3.5rem);letter-spacing:-.035em;line-height:1.05;margin:0}
+  .inst-head p{color:var(--ink-soft);font-size:clamp(1.05rem,2vw,1.24rem);line-height:1.6;margin:18px auto 0;max-width:600px}
+
+
+  /* ===== GRILLA DE PERSONAS =====
+     TRES columnas, no cuatro. Son nueve personas: en cuatro columnas la grilla cerraba
+     4+4+1 y la novena tarjeta quedaba sola en su fila. En tres cierra 3+3+3 exacto, y de
+     paso las tarjetas son mas grandes, que es donde los retratos ganan. */
+  .tm{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1040px;margin:0 auto}
+  .tm-c{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;box-shadow:var(--shadow-sm);text-align:center;
+    transition:transform .15s ease,box-shadow .15s ease}
+  .tm-c:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  /* Solo los dos fundadores tienen perfil propio. El resto del equipo no lleva landing,
+     asi que esas tarjetas siguen siendo texto y no simulan ser clickeables. */
+  .tm-c.has-pf .tm-n a{color:inherit}
+  .tm-c.has-pf .tm-n a::after{content:"";position:absolute;inset:0;border-radius:var(--radius)}
+  .tm-c.has-pf:hover .tm-n a{color:var(--violet)}
+  .tm-c.has-pf:focus-within{outline:2px solid var(--violet);outline-offset:3px}
+  .tm-c.has-pf .tm-n a:focus-visible{outline:none}
+  .tm-pf{display:inline-flex;align-items:center;gap:5px;margin-top:13px;font-size:.82rem;
+    font-weight:800;color:#DC3223}
+  .tm-pf svg{width:13px;height:13px;transition:transform .15s ease}
+  .tm-c.has-pf:hover .tm-pf svg{transform:translateX(3px)}
+  /* Retratos reales (los mismos de caissa.digital/equipo/): 300x400 con el fondo
+     recortado en alfa. Por eso la persona se apoya sobre un bloque de color en vez de
+     flotar sobre el blanco, y se mantiene el codigo coral=fundador / lavanda=equipo. */
+  .tm-ph{margin:-28px -24px 18px;border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
+    background:var(--bg-lav);overflow:hidden;aspect-ratio:4/5}
+  .tm-ph img{transition:transform .35s cubic-bezier(.4,0,.2,1)}
+  .tm-c:hover .tm-ph img{transform:scale(1.035)}
+  .tm-c.founder .tm-ph{background:#FFEDEA}
+  .tm-ph img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 6%}
+  .tm-n{font-size:1.14rem;font-weight:800;color:var(--ink);letter-spacing:-.018em;line-height:1.3}
+  .tm-r{display:block;font-size:.9rem;color:var(--muted);font-weight:600;margin-top:6px;line-height:1.4}
+  .tm-c.founder .tm-r{color:#DC3223}
+  @media(max-width:980px){.tm{grid-template-columns:repeat(2,1fr);gap:16px}}
+  @media(max-width:720px){.tm{grid-template-columns:1fr 1fr;gap:12px}.tm-c{padding:22px 16px}
+    .tm-ph{margin:-22px -16px 14px}.tm-n{font-size:1.02rem}}
+
+  /* ===== Barra de credenciales (las mismas insignias que tiene la página actual) ===== */
+  .creds-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:22px 40px;
+    max-width:960px;margin:0 auto;padding:30px 26px;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow-sm)}
+  .creds-bar img{height:42px;width:auto;object-fit:contain}
+  .creds-bar a{display:inline-flex}
+  @media(max-width:560px){.creds-bar{gap:18px 26px;padding:24px 18px}.creds-bar img{height:32px}}
+
+  /* ===== Cierre: trabajá con nosotros. Sin argumento de venta. ===== */
+  .join{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);
+    border-left:4px solid var(--violet);border-radius:var(--radius);padding:30px 34px;
+    box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
+  .join b{display:block;color:var(--ink);font-size:1.14rem;font-weight:800;letter-spacing:-.02em}
+  .join span{display:block;color:var(--ink-soft);font-size:.98rem;line-height:1.55;margin-top:6px;max-width:520px}
+  @media(max-width:640px){.join{padding:26px 22px}.join .btn{width:100%;justify-content:center}}
+
+  /* ===== VALORES =====
+     Vienen de la vieja /valores/, que se fusiono acá el 24/08/2026. El tratamiento es de
+     manifiesto (lista numerada con hairlines) y NO de tarjetas: seis tarjetas iguales
+     habrian quedado como cualquier otra seccion del sitio. Los nombres de los valores son
+     H3 (no H2 como en la pagina vieja) porque ahora cuelgan del H2 "Nuestros valores". */
+  .vhead{max-width:820px;margin:0 0 8px}
+  .vhead p{color:var(--ink-soft);font-size:1.06rem;line-height:1.7;margin-top:16px}
+
+  /* La cita va con comilla tipografica grande y el autor en Caveat, que es el unico lugar
+     de la pagina donde el manuscrito aporta algo. */
+  .quote{max-width:720px;margin:40px auto 44px;padding:26px 22px 0;text-align:center;position:relative}
+  /* Separador fino en vez del caracter de comilla: mas sobrio y no depende de la fuente. */
+  .quote::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:44px;height:3px;border-radius:3px;background:var(--coral)}
+  .quote blockquote{margin:0;font-size:clamp(1.14rem,2.3vw,1.5rem);line-height:1.5;color:var(--ink);
+    font-weight:600;letter-spacing:-.02em;font-style:italic;position:relative}
+  .quote cite{display:block;margin-top:18px;font-style:normal;font-family:'Caveat',cursive;
+    font-size:1.42rem;font-weight:700;color:var(--muted)}
+
+  /* Cada valor es una fila: numero + nombre a la izquierda, texto a la derecha. Apila en mobile. */
+  .vals{max-width:1000px;margin:0 auto;list-style:none;padding:0}
+  .vals li{display:grid;grid-template-columns:.62fr 1fr;gap:40px;padding:38px 0;border-top:1px solid var(--line)}
+  .vals li:last-child{border-bottom:1px solid var(--line)}
+  .val-k{display:flex;align-items:baseline;gap:16px}
+  .val-n{font-size:1rem;font-weight:800;color:var(--coral);letter-spacing:.02em;line-height:1;flex-shrink:0;
+    padding-top:4px;font-variant-numeric:tabular-nums}
+  .vals h3{font-size:clamp(1.5rem,2.8vw,2.1rem);letter-spacing:-.03em;line-height:1.15;margin:0}
+  .val-t{color:var(--ink-soft);font-size:1.05rem;line-height:1.72;margin:0}
+  .val-t b{color:var(--ink);font-weight:700}
+  @media(max-width:820px){
+    .vals li{grid-template-columns:1fr;gap:14px;padding:30px 0}
+    .val-t{font-size:1rem}
+  }
+
+  /* Remate del manifiesto. Sin botones: los dos que tenia la pagina vieja ("Conoce al
+     equipo" y "Trabaja con nosotros") ahora apuntarian a esta misma pagina y a la seccion
+     de abajo. */
+  .vclose{max-width:900px;margin:34px auto 0;color:var(--ink-soft);font-size:1.06rem;line-height:1.7;
+    text-align:center}
