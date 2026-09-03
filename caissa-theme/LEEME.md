@@ -15,7 +15,7 @@ El build falla si no puede escribir en alguno de los dos, así que no se pueden 
 
 | | |
 |---|---|
-| **1.09** | 21 plantillas: entraron `/aviso-legal/`, `/reservar-consultoria/` y `/llamada-confirmada/`. Contenido actualizado en 16. Ocho correcciones al chasis. El tema ahora viaja con su generador. |
+| **1.09** | 21 plantillas: entraron `/aviso-legal/`, `/reservar-consultoria/` y `/llamada-confirmada/`. Contenido actualizado en 16. Once correcciones al chasis. El tema ahora viaja con su generador. |
 | **1.08** | Caja de autor de las notas. |
 | **1.07** | Blog: listado, archivos, búsqueda, nota abierta y 404. |
 | **1.06** | Regenerado desde `3234daf`: 18 plantillas (eran 10). |
@@ -256,7 +256,9 @@ No es sólo un conversor: si algo no cierra, falla en vez de entregar un tema ro
 - FAQ visibles igual a entradas del `FAQPage`, en cada plantilla.
 - Una sola `<h1>` por plantilla.
 - **Ninguna nota interna del equipo en el contenido publicado.**
-- Las ocho correcciones del chasis entraron todas.
+- Las once correcciones del chasis entraron todas, y ninguna función `caissa_*()` quedó
+  declarada dos veces (un parche aplicado dos veces sobre un esqueleto ya parcheado mataría
+  el sitio con *Cannot redeclare*).
 
 ### Cómo se parte el CSS, y por qué la densidad mobile se duplica
 
