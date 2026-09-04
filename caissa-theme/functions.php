@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CAISSA_VER', '1.14' );
+define( 'CAISSA_VER', '1.15' );
 define( 'CAISSA_DIR', get_template_directory() );
 define( 'CAISSA_URI', get_template_directory_uri() );
 define( 'CAISSA_IMG', CAISSA_URI . '/assets/img' );
@@ -41,5 +41,6 @@ require_once CAISSA_DIR . '/inc/limpieza.php';
 require_once CAISSA_DIR . '/inc/nav.php';
 require_once CAISSA_DIR . '/inc/fuentes.php';     // GENERADO: las @font-face autohospedadas
 require_once CAISSA_DIR . '/inc/bloques.php';     // GENERADO: badges, redes, ubicaciones, legal
+require_once CAISSA_DIR . '/inc/gtm.php';       // GTM, global y con carga diferida
 require_once CAISSA_DIR . '/inc/parts.php';
 require_once CAISSA_DIR . '/inc/blog.php';      // el blog: home, archive, search, single y 404

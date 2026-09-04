@@ -681,3 +681,139 @@ caissa-theme/
 Los tres archivos marcados GENERADO salen del HTML del repo: **no los edites a mano**, se
 reescriben en la próxima regeneración. Lo mismo vale para `assets/css/*` y
 `assets/js/tpl-*.js`.
+
+---
+
+## 1.15 · Google Tag Manager, global y diferido
+
+`inc/gtm.php` lo escribe el generador en cada build desde
+`_generador/parche-gtm.php` (parche 16). **La fuente de verdad es el generador:**
+editar `inc/gtm.php` en el tema se pierde en el próximo build.
+
+Contenedor: **`GTM-5M89995`**, en la constante `CAISSA_GTM_ID`.
+
+### Qué se comprobó del contenedor antes de escribir nada
+
+Cargándolo de verdad en el navegador: **carga GA4 `G-YZYMJZ5G9S` y Google Ads
+`AW-10868839507`**. Ese segundo ID es exactamente el de la conversión de
+`/llamada-confirmada/`, o sea que **la conversión de toda la cuenta depende de que
+GTM esté cargado**. Por eso esa plantilla es la excepción y carga sin diferir.
+
+### Cómo carga
+
+Tres piezas, en tres hooks:
+
+| Hook | Qué imprime | Costo |
+|---|---|---|
+| `wp_head` (prio 2) | `window.dataLayer=window.dataLayer||[];` + `dns-prefetch` | ~40 bytes, cero red |
+| `wp_body_open` | el `<noscript>` con el iframe | cero con JS activado: el navegador no parsea el contenido de un `<noscript>` |
+| `wp_footer` (prio 99) | el cargador, ~950 bytes inline | cero red hasta que dispara |
+
+`dataLayer` va en el `<head>` **a propósito**: tiene que existir antes que
+cualquier código de página que empuje algo, y la conversión de
+`/llamada-confirmada/` lo hace.
+
+**Se usa `dns-prefetch` y NO `preconnect`.** El preconnect abre socket y negocia
+TLS, y eso compite con los recursos del LCP, que es justo lo que se quiere
+evitar. El dns-prefetch solo resuelve el dominio: no abre conexión ni gasta
+ancho de banda.
+
+### Tres modos
+
+| Modo | Cuándo carga `gtm.js` | Qué cuesta |
+|---|---|---|
+| **diferido** (por defecto) | tras el evento `load`, en el primer hueco de `requestIdleCallback` (timeout 3 s), o antes si el visitante toca / teclea / gira la rueda | del orden del 1 al 5 % de las sesiones: las de quien se va en los primeros segundos |
+| **solo interacción** | únicamente si el visitante toca algo | **el único que garantiza 100 en PageSpeed** y el único que pierde entre el 10 y el 30 % de las sesiones, porque quien entra y se va sin tocar nada no dispara ni el pageview |
+| **inmediato** | enseguida, sin esperar nada | dos puntos de puntaje en esa plantilla |
+
+El diferido **no exige interacción**, y esa es la diferencia que importa: el
+patrón que usan los plugins de caché para sacar 100 es el de "solo interacción",
+y es el que hace desaparecer las sesiones sin clic.
+
+`llamada-confirmada` va en **inmediato** y gana sobre "solo interacción" aunque
+ese modo esté encendido: la página va noindex, su puntaje no le importa a nadie,
+y perder una conversión cuesta más que cualquier métrica.
+
+### No duplica
+
+⚠️ **En `caissa.digital` hay hoy otro inyector de GTM.** Se ve el mismo
+contenedor en el HTML de producción y **no sale de este tema**: aparece después
+de `wp_site_icon` en `wp_head` y en `wp_body_open`, o sea que lo pone un plugin.
+El staging no lo tiene.
+
+Dos contenedores iguales en la misma página cuentan **cada pageview y cada
+conversión dos veces**, y eso arruina la optimización de Google Ads. Por eso el
+cargador se hace a un lado si detecta que GTM ya está: mira
+`window.google_tag_manager` y busca un `<script>` de `gtm.js`.
+
+**Igual hay que desactivar el otro inyector**, porque el que gana es el que carga
+primero y ése es el snippet sin diferir: con los dos activos se pierde todo el
+beneficio de rendimiento.
+
+### Filtros
+
+```php
+caissa_gtm_id                // string. '' apaga GTM del todo.
+caissa_gtm_activo            // bool. Si se imprime en esta petición.
+caissa_gtm_inmediato_en      // array de slugs que cargan sin diferir.
+caissa_gtm_inmediato         // bool. Última palabra sobre el diferido.
+caissa_gtm_solo_interaccion  // bool. Modo puntaje-máximo. Apagado por defecto.
+```
+
+Para que no cargue en el staging:
+
+```php
+add_filter( 'caissa_gtm_activo', function ( $si ) {
+    return ( 'demo.caissa.digital' === $_SERVER['HTTP_HOST'] ) ? false : $si;
+} );
+```
+
+⚠️ Apagarlo ahí solo evita el pageview. Si lo que se busca es que el staging no
+dispare **conversiones ni el píxel de Meta**, eso se resuelve en los
+**disparadores de GTM** (excluyendo el host), que es el único lugar que cubre
+todas las etiquetas del contenedor. La conversión de Google Ads ya tiene su
+propia guarda de host y no puede dispararse desde el staging.
+
+### Dónde NO se imprime
+
+Panel, AJAX, WP-Cron, REST API, feeds, `robots.txt`, trackbacks y
+previsualizaciones. Medir cualquiera de esas cosas ensucia los informes.
+
+### Verificación
+
+Ocho escenarios, con el JS extraído del `inc/gtm.php` **generado** e inyectado
+sobre la home real (192 KB), midiendo con un `MutationObserver` y reescribiendo
+el `src` a un `data:` inocuo para no disparar hits reales:
+
+| Escenario | Esperado | Resultado |
+|---|---|---|
+| diferido, sin tocar nada | carga sola tras el `load` | `load@94ms`, `gtm.js@100ms` ✓ |
+| solo interacción, sin tocar nada | nunca carga | solo `load@97ms` ✓ |
+| solo interacción + un click | carga al click | `gtm.js@707ms` ✓ |
+| inmediato | antes del `load` | `gtm.js@81ms`, `load@102ms` ✓ |
+| ya hay un `gtm.js` de otro inyector | 0 inyecciones | 0 ✓ |
+| `google_tag_manager` ya definido | 0 inyecciones | 0 ✓ |
+| el módulo dos veces en la página | 1 inyección | 1 ✓ |
+| control: nada previo | 1 inyección | 1 ✓ |
+
+⚠️ **El control importa.** La primera vuelta de estas pruebas daba "todo OK"
+porque olvidé resetear `window.__caissaGtm` entre corridas: las cuatro salían por
+esa guarda y no por la que se quería medir, **incluido el control**, que debía
+inyectar y daba 0. Sin un caso de control que falle cuando tiene que fallar, una
+batería de pruebas de guardas no prueba nada.
+
+### Expectativa honesta de puntaje
+
+El modo diferido saca a GTM del camino crítico del render: no hay nada de GTM
+antes del `load` y por lo tanto nada antes del LCP. Eso es la mayor parte de la
+ganancia.
+
+**Pero no garantiza un 100.** Lighthouse mide el TBT sobre una ventana que se
+extiende bastante después del `load`, así que los ~290 KB de JavaScript del
+contenedor (GA4 + Google Ads + lo que se sume) igual se ejecutan dentro de esa
+ventana. En un CPU móvil emulado eso son del orden de 300 a 600 ms de hilo
+principal, y alcanza para bajar Performance de 100 a algo entre 85 y 92.
+
+El único camino a un 100 literal con GTM en la página es el modo **solo
+interacción**, y cuesta datos. Está implementado y documentado, apagado por
+defecto: la decisión es de negocio, no técnica.

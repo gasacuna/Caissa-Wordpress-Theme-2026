@@ -280,4 +280,31 @@ if grep -q 'nav-mobile' "$OUT/header.php"; then
 fi
 [ "$(grep -c 'class="btn btn-primary"' "$OUT/header.php")" = "1" ] || die "esperaba UN solo CTA en header.php (el de desktop), hay $(grep -c 'class="btn btn-primary"' "$OUT/header.php")"
 
+# --- 16. Google Tag Manager, global y diferido ------------------------------
+# El modulo entero vive en parche-gtm.php y se escribe en cada build, asi que la
+# fuente de verdad es el generador y no el tema: editar inc/gtm.php se pierde.
+#
+# El require va junto a los otros, no al final del archivo, y solo si no esta:
+# functions.php viene del esqueleto y sobre un esqueleto ya parchado la linea ya
+# existe. Sin ese grep, reconstruir declararia el require dos veces.
+cp "$HERE/parche-gtm.php" "$OUT/inc/gtm.php"
+if ! grep -q "inc/gtm.php" "$OUT/functions.php"; then
+  sed -i "s|require_once CAISSA_DIR . '/inc/parts.php';|require_once CAISSA_DIR . '/inc/gtm.php';       // GTM, global y con carga diferida\nrequire_once CAISSA_DIR . '/inc/parts.php';|" "$OUT/functions.php"
+fi
+grep -q "inc/gtm.php" "$OUT/functions.php" || die "no pude agregar el require de inc/gtm.php a functions.php"
+[ "$(grep -c "inc/gtm.php" "$OUT/functions.php")" = "1" ] || die "el require de inc/gtm.php quedo duplicado en functions.php"
+grep -q 'CAISSA_GTM_ID' "$OUT/inc/gtm.php" || die "inc/gtm.php no define CAISSA_GTM_ID"
+# Un solo lugar donde se ARMA la URL de gtm.js, o el script se inyectaria dos
+# veces. Ojo: el archivo nombra ese dominio dos veces a proposito, y la otra es
+# el selector que detecta si otro inyector ya lo puso. El chequeo tiene que
+# mirar la asignacion del src, no el dominio suelto.
+[ "$(grep -c "s.src='https://www.googletagmanager.com/gtm.js?id='" "$OUT/inc/gtm.php")" = "1" ] || die "inc/gtm.php arma el src de gtm.js mas de una vez"
+[ "$(grep -c 'script\[src\*=' "$OUT/inc/gtm.php")" = "1" ] || die "inc/gtm.php tiene mas de un selector de deteccion"
+# El noscript y el cargador tienen que salir del MISMO contenedor.
+grep -q 'ns.html?id=' "$OUT/inc/gtm.php" || die "falta el noscript de GTM"
+grep -q 'caissa_gtm_id()' "$OUT/inc/gtm.php" || die "el modulo de GTM no usa caissa_gtm_id()"
+# La guarda antiduplicado es lo que impide contar dos veces cada conversion si en
+# produccion sigue activo el otro inyector. Que no se caiga en una edicion.
+grep -q 'google_tag_manager' "$OUT/inc/gtm.php" || die "falta la guarda antiduplicado de GTM"
+
 :
