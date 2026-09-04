@@ -738,7 +738,7 @@ get_header();
         <div class="rv-ml">en leads calificados</div>
         <p class="rv-q">“Hemos trabajado juntos desde el día uno, como si Caissa fuera parte de Clean It.”</p>
         <div class="rv-w">
-          <span class="rv-av">JG<!-- FOTO: falta la de Juan Gonzalez Trück (Clean It). §9 lo tiene pendiente. --></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/juan-clean-it.webp" alt="Juan Gonzalez Trück, dueño de Clean It" width="800" height="800" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Juan Gonzalez Trück</b><span>Dueño · Clean It</span></div>
           <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.webp" alt="Clean It" loading="lazy" decoding="async" />
         </div>

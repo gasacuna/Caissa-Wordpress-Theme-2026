@@ -239,3 +239,37 @@ grep -q 'foot-feat-t' "$OUT/assets/css/blog.css" || cat "$HERE/parche-feat.css" 
 grep -q 'foot-feat-t' "$OUT/assets/css/blog.css" || die "no pude agregar la regla de .foot-feat-t a blog.css"
 
 :
+
+# --- 14. La barra sticky de la home, a partir de 100px de scroll ------------
+# Pedido de Gaston. El repo la dejo siempre visible (Manuel pidio eso) con puro
+# CSS. Aca se le suma un umbral SOLO en la home, que es donde tapaba el CTA del
+# hero. El CSS del umbral vive en overrides/tpl-home.css.
+if ! grep -q 'caissa-sticky-scroll' "$OUT/assets/js/base.js"; then
+  cat "$HERE/parche-sticky-scroll.js" >> "$OUT/assets/js/base.js"
+fi
+grep -q 'caissa-sticky-scroll' "$OUT/assets/js/base.js" || die "no pude agregar el umbral de scroll a base.js"
+if ! grep -q 'caissa-sticky-scroll' "$OUT/inc/parts.php"; then
+  cat "$HERE/parche-body-class.php" >> "$OUT/inc/parts.php"
+fi
+grep -q "'body_class'" "$OUT/inc/parts.php" || die "no pude agregar la clase caissa-sticky-scroll al body"
+
+# --- 15. El CTA del drawer mobile ------------------------------------------
+# Pedido de Gaston: sacar el CTA del menu SOLO en mobile. El nav tiene dos: el de
+# .nav-cta (que en mobile ya lo esconde el CSS) y el del drawer. Se saca el del
+# drawer, asi que desaparece unicamente en mobile y el de desktop queda intacto.
+# Motivo: con la barra sticky abajo, abrir el menu mostraba el mismo boton dos
+# veces en la misma pantalla.
+if grep -q 'nav-mobile' "$OUT/header.php"; then
+  gawk '
+    /^  <div class="nav-mobile"/ { dentro=1; print; next }
+    dentro && /class="btn btn-primary"/ {
+      print "    <?php /* El CTA del drawer se saco a pedido de Gaston: en mobile la barra"
+      print "       sticky de abajo ya ofrece el mismo boton, y abrir el menu lo mostraba"
+      print "       dos veces en la misma pantalla. El de desktop (.nav-cta) sigue. */ ?>"
+      quitado=1; next }
+    /^  <\/div>$/ && dentro { dentro=0; print; next }
+    { print }' "$OUT/header.php" > "$OUT/header.tmp" && mv "$OUT/header.tmp" "$OUT/header.php"
+fi
+[ "$(grep -c 'class="btn btn-primary"' "$OUT/header.php")" = "1" ] || die "esperaba UN solo CTA en header.php (el de desktop), hay $(grep -c 'class="btn btn-primary"' "$OUT/header.php")"
+
+:

@@ -860,7 +860,7 @@
     .crow > div{border-left:0 !important;padding:14px 18px;display:block}
     .c-label{background:var(--ink);color:#fff;font-size:1.08rem;font-weight:800}
     .c-before::before{content:"La mayoría de las agencias";display:block;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:6px}
-    .c-after::before{content:"";display:block;width:76px;height:16px;background:url(logo-caissa.webp) no-repeat left center/contain;margin-bottom:8px}
+    .c-after::before{content:"";display:block;width:76px;height:16px;background:url(../img/logo-caissa.webp) no-repeat left center/contain;margin-bottom:8px}
     .c-after{border-top:1px solid var(--line)}
     .c-before .ci,.c-after .ci{display:inline-block;vertical-align:-4px;margin-right:7px;margin-top:0}
   }
@@ -993,3 +993,36 @@
    por el mismo motivo que los titulos de columna: es una etiqueta, no una seccion
    del documento. Copia lo que base.css le da a .foot-feat h3. */
 .foot-feat .foot-feat-t{color:var(--ink);font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0}
+
+/* =============================================================================
+   OVERRIDE · home
+   ============================================================================= */
+
+/* La barra sticky no aparece hasta los primeros 100px de scroll.
+   -------------------------------------------------------------------------
+   Pedido de Gaston. El repo la dejo SIEMPRE visible (Manuel pidio eso) y su
+   visibilidad quedo como puro CSS, sin JavaScript. Acá se le agrega un umbral,
+   pero SOLO en la home: es la unica pagina donde la barra tapaba el CTA del
+   hero, o sea el "doble call to action" del ATF.
+
+   Como funciona: base.js le pone la clase .show al body pasados los 100px. La
+   clase caissa-sticky-scroll la pone inc/parts.php, y es la que hace que este
+   bloque aplique: sin ella la barra se comporta como en el resto del sitio.
+
+   Se anima con transform y no con display, que no es animable. El 110% la saca
+   completa incluso con el safe-area de los iPhone con notch.
+
+   Sin JavaScript la barra se ve de entrada, que es el comportamiento del repo:
+   vale mas tener el CTA que esconderlo esperando un scroll que nadie va a medir. */
+@media (max-width:820px){
+  body.caissa-sticky-scroll .sticky-cta{
+    transform:translateY(110%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);
+    will-change:transform
+  }
+  body.caissa-sticky-scroll.sticky-visible .sticky-cta{transform:none}
+  html:not(.js) body.caissa-sticky-scroll .sticky-cta{transform:none}
+}
+@media (max-width:820px) and (prefers-reduced-motion:reduce){
+  body.caissa-sticky-scroll .sticky-cta{transition:none}
+}

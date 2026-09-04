@@ -480,7 +480,6 @@ get_header();
         <div>
           <h3>B2B e industria</h3>
           <p>Ciclos largos y poco volumen de búsqueda. Todo pasa por la precisión de las keywords y por medir la calidad del lead, no la cantidad.</p>
-          <a href="https://caissa.digital/caso/axionlift/">Ver el caso Axion Lift</a>
           <div class="ind-logos">
             <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" />
             <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/dynamic-logistics.webp" alt="Dynamic Logistics" loading="lazy" decoding="async" />

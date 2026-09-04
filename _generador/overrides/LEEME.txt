@@ -1,0 +1,19 @@
+CAPA DE OVERRIDES DEL TEMA
+==========================
+
+Todo lo que hay en el tema sale del HTML del repo. Cuando hace falta un ajuste que
+NO esta en el repo -- porque es propio de WordPress, o porque el pedido llego por
+otro lado -- va aca, y el generador lo aplica siempre. Asi no se pierde en la
+proxima regeneracion y queda a la vista que es una divergencia deliberada.
+
+  overrides/tpl-<slug>.css   se agrega al final de assets/css/tpl-<slug>.css,
+                             DESPUES del blindaje, asi que gana la cascada.
+                             Solo se carga en esa plantilla.
+  overrides/todas.css        se agrega al final de TODAS las tpl-*.css.
+  overrides/markup.awk       transformaciones del markup, por slug.
+  assets-extra/              imagenes que usa el tema y no salen del repo.
+
+REGLA: cada override lleva un comentario que diga QUE cambia, POR QUE, y si
+corresponde replicarlo en el repo. Si algo de aca se puede resolver en el HTML de
+Manu, ahi va mejor: el repo es la fuente de verdad y este directorio es la
+excepcion, no el lugar por defecto.

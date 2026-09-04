@@ -1,0 +1,32 @@
+/* =============================================================================
+   OVERRIDE · home
+   ============================================================================= */
+
+/* La barra sticky no aparece hasta los primeros 100px de scroll.
+   -------------------------------------------------------------------------
+   Pedido de Gaston. El repo la dejo SIEMPRE visible (Manuel pidio eso) y su
+   visibilidad quedo como puro CSS, sin JavaScript. Acá se le agrega un umbral,
+   pero SOLO en la home: es la unica pagina donde la barra tapaba el CTA del
+   hero, o sea el "doble call to action" del ATF.
+
+   Como funciona: base.js le pone la clase .show al body pasados los 100px. La
+   clase caissa-sticky-scroll la pone inc/parts.php, y es la que hace que este
+   bloque aplique: sin ella la barra se comporta como en el resto del sitio.
+
+   Se anima con transform y no con display, que no es animable. El 110% la saca
+   completa incluso con el safe-area de los iPhone con notch.
+
+   Sin JavaScript la barra se ve de entrada, que es el comportamiento del repo:
+   vale mas tener el CTA que esconderlo esperando un scroll que nadie va a medir. */
+@media (max-width:820px){
+  body.caissa-sticky-scroll .sticky-cta{
+    transform:translateY(110%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);
+    will-change:transform
+  }
+  body.caissa-sticky-scroll.sticky-visible .sticky-cta{transform:none}
+  html:not(.js) body.caissa-sticky-scroll .sticky-cta{transform:none}
+}
+@media (max-width:820px) and (prefers-reduced-motion:reduce){
+  body.caissa-sticky-scroll .sticky-cta{transition:none}
+}

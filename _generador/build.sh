@@ -109,7 +109,19 @@ while read -r a; do
   cp "$SKEL/assets/img/$a" "$OUT/assets/img/$a"
   propios=$((propios+1))
 done < "$W/propios.txt"
-msg "     $n del repo + $propios propios del tema"
+
+# Imagenes que usa el tema y NO salen del repo (ver overrides/LEEME.txt). Hoy es
+# la foto de Juan Gonzalez Truck, que el HTML de Manuel todavia muestra como
+# iniciales: la transformacion de markup la reemplaza por esta imagen.
+extra=0
+if [ -d "$HERE/assets-extra" ]; then
+  for f in "$HERE"/assets-extra/*; do
+    [ -f "$f" ] || continue
+    cp "$f" "$OUT/assets/img/$(basename "$f")"
+    extra=$((extra+1))
+  done
+fi
+msg "     $n del repo + $propios propios del tema + $extra de assets-extra"
 # LEEME.md y CHANGELOG.md son documentacion escrita a mano, no generada: viven en
 # _generador/docs/ y se copian aca. Antes vivian solo dentro del tema y el rm -rf
 # del paso 1 se las llevaba en cada regeneracion.
@@ -200,9 +212,12 @@ msg "     chasis compartido:$(awk -F'\t' '{printf " %s", $2}' "$W/chasis.txt")"
 
 # --- 4. Escribir el CSS ------------------------------------------------------
 msg "4/9  CSS"
+# Los chasis compartidos. cssurl.awk reapunta las url() relativas: en el repo el
+# CSS es inline y se resuelven contra la pagina, pero desde assets/css/ hay que
+# escribirlas ../img/ o quedan en 404 sin decir nada.
 while IFS=$'\t' read -r h nm; do
   f=$(awk -F'\t' -v H="$h" '$1==H{print $3"/"$2".css"; exit}' "$W/blocks.txt")
-  cp "$W/sty/$f" "$OUT/assets/css/$nm.css"
+  gawk -f "$HERE/cssurl.awk" "$W/sty/$f" > "$OUT/assets/css/$nm.css"
 done < "$W/chasis.txt"
 
 : > "$W/cssdeps.tsv"
@@ -224,10 +239,20 @@ while IFS=$'\t' read -r rel slug nombre lang pre; do
   k=0
   while read -r f; do k=$((k+1)); [ "$k" -gt 1 ] && printf '\n' >> "$W/tpl.css"; cat "$f" >> "$W/tpl.css"; done < "$W/lista"
   cat "$HERE/blindaje.css" >> "$W/tpl.css"
-  cp "$W/tpl.css" "$OUT/assets/css/tpl-$slug.css"
+
+  # La capa de overrides va DESPUES del blindaje, o sea ultima de todo el archivo:
+  # es lo que le permite ganarle a cualquier regla del repo con la misma
+  # especificidad. Ver overrides/LEEME.txt.
+  [ -f "$HERE/overrides/todas.css" ] && cat "$HERE/overrides/todas.css" >> "$W/tpl.css"
+  if [ -f "$HERE/overrides/tpl-$slug.css" ]; then
+    printf '\n' >> "$W/tpl.css"
+    cat "$HERE/overrides/tpl-$slug.css" >> "$W/tpl.css"
+    msg "     override: tpl-$slug.css"
+  fi
+
+  gawk -f "$HERE/cssurl.awk" "$W/tpl.css" > "$OUT/assets/css/tpl-$slug.css"
   printf '%s\t%s\n' "$slug" "$(echo $cadena)" >> "$W/cssdeps.tsv"
 done < "$TSV"
-
 # --- 5. JS -------------------------------------------------------------------
 #  Cada pagina trae 1 o 2 bloques JSON-LD, despues el JS principal, y algunas un
 #  script extra (la conversion de Google Ads, el inyector de Typeform).
@@ -281,19 +306,23 @@ while IFS=$'\t' read -r rel slug nombre lang pre; do
     done
     echo '<?php endif; ?>' >> "$T"
   fi
-  # contenido. Las 18 paginas que ya traian <main> se copian con ese elemento tal
-  # cual esta en el HTML; las tres nuevas no lo tenian y se les agrega, para que las
-  # 21 tengan el landmark (se verifico que ninguna regla CSS depende de la jerarquia).
-  # notas.awk saca los <p class="legal-nota">, que son notas internas del equipo.
+  # contenido. Las paginas que traen <main> se copian con ese elemento tal cual
+  # esta en el HTML; las que no lo tenian lo reciben, para que las 22 tengan el
+  # landmark (ninguna regla CSS depende de la jerarquia).
+  #   imgpaths  reescribe src/srcset/poster a CAISSA_IMG
+  #   notas     saca los <p class="legal-nota">, que son notas internas del equipo
+  #   markup    aplica los overrides de markup (ver overrides/markup.awk)
   if grep -q '<main>' "$REPO/$rel"; then
     gawk -v RS='\x01' -v A='<main>' -v B='</main>' -f "$HERE/between.awk" "$REPO/$rel" \
       | gawk -v RS='\x01' -v DIR="$dir" -f "$HERE/imgpaths.awk" \
-      | gawk -f "$HERE/notas.awk" >> "$T"
+      | gawk -f "$HERE/notas.awk" \
+      | gawk -v SLUG="$slug" -f "$HERE/overrides/markup.awk" >> "$T"
   else
     printf '<main>\n\n' >> "$T"
     gawk -v RS='\x01' -v A='</header>' -v B='<footer>' -f "$HERE/inner.awk" "$REPO/$rel" \
       | gawk -v RS='\x01' -v DIR="$dir" -f "$HERE/imgpaths.awk" \
       | gawk -f "$HERE/notas.awk" \
+      | gawk -v SLUG="$slug" -f "$HERE/overrides/markup.awk" \
       | gawk -v RS='\x01' '{gsub(/^[ \n\t]+|[ \n\t]+$/,""); printf "%s", $0}' >> "$T"
     printf '\n\n</main>' >> "$T"
   fi

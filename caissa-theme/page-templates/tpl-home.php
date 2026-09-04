@@ -411,7 +411,7 @@ get_header();
           <div class="rc-metric">+155% en leads calificados</div>
           <p class="rc-quote">“Hemos trabajado juntos desde el día uno, <b>como si Caissa fuera parte de Clean It</b>.”</p>
           <div class="rc-who">
-            <span class="rc-av">JG<!-- FOTO: falta la foto de Juan Gonzalez Trück (Clean It) --></span>
+            <span class="rc-av"><img src="<?php echo CAISSA_IMG; ?>/juan-clean-it.webp" alt="Juan Gonzalez Trück, dueño de Clean It" width="800" height="800" loading="lazy" decoding="async" /></span>
             <span class="rc-id"><b>Juan Gonzalez Trück</b><span>Dueño · Clean It</span></span>
             <span class="rc-logo"><img src="<?php echo CAISSA_IMG; ?>/logos/cleanit.webp" alt="Clean It" width="220" height="108" loading="lazy" decoding="async" /></span>
           </div>

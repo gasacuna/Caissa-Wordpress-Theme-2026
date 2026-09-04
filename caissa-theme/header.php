@@ -63,6 +63,8 @@ wp_head();
   </div>
   <div class="nav-mobile" id="navMobile">
     <?php caissa_nav_mobile(); ?>
-    <a href="<?php echo esc_url( caissa_cta_url() ); ?>"<?php echo caissa_cta_actual() ? ' aria-current="page"' : ''; ?> class="btn btn-primary">Reservá tu consultoría gratuita</a>
+    <?php /* El CTA del drawer se saco a pedido de Gaston: en mobile la barra
+       sticky de abajo ya ofrece el mismo boton, y abrir el menu lo mostraba
+       dos veces en la misma pantalla. El de desktop (.nav-cta) sigue. */ ?>
   </div>
 </header>

@@ -1,0 +1,51 @@
+/* =============================================================================
+   OVERRIDE · /reservar-consultoria/
+
+   Pedido de Gaston: el menu deja de ser sticky, el panel del formulario va a
+   todo el ancho de la pantalla y mide 90vh de alto.
+
+   El razonamiento detras: es la pagina mas desnuda del sitio y su unico trabajo
+   es que el formulario se complete. Todo lo que no sea el formulario compite.
+
+   Este archivo se carga SOLO en esta plantilla (tpl-reservar-consultoria.css se
+   encola nada mas que acá), asi que tocar header.nav aca no afecta al resto del
+   sitio.
+   ============================================================================= */
+
+/* 1. El menu deja de ser sticky.
+      En una pagina de una sola pantalla, un header pegado se come 73px de alto
+      util todo el tiempo y no lleva a ningun lado: quien llego aca ya decidio.
+      position:static y ademas se saca el z-index, que sin sticky no hace nada. */
+header.nav{position:static;z-index:auto}
+
+/* 2. El panel, de borde a borde.
+      El .wrap le mete 24px de padding a cada lado y el panel se limita a 900px.
+      Se anulan las tres cosas: padding del wrap, ancho maximo y el marco. Se
+      sacan tambien el redondeo y los bordes laterales, que a sangre completa
+      quedan cortados por la mitad, y la sombra, que no tiene donde proyectarse. */
+.book .wrap{max-width:none;padding:0}
+.book-form{
+  max-width:none;
+  margin:0;
+  border-radius:0;
+  border-left:0;
+  border-right:0;
+  box-shadow:none
+}
+
+/* 3. Alto de 90vh.
+      min-height:0 es imprescindible: la regla original impone 520px de minimo y,
+      en un celular apoyado de costado, 520px es MAS que 90vh, asi que sin esto
+      el minimo le ganaba al alto pedido. */
+.book-form > div{height:90vh;min-height:0}
+
+/* El titulo y la bajada siguen con su medida de lectura: son texto, y a todo el
+   ancho quedarian ilegibles. Lo que va a sangre completa es el panel. */
+.book .book-head{max-width:720px;margin-left:auto;margin-right:auto;padding:0 24px}
+.book .book-fallback{padding:0 24px}
+
+@media (max-width:720px){
+  /* En mobile el alto pedido se mantiene, pero se descuenta el header, que aca
+     ya no es sticky y por lo tanto ocupa lugar real arriba del panel. */
+  .book-form > div{height:90vh;min-height:0}
+}

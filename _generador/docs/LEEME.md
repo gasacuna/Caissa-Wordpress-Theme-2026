@@ -8,13 +8,14 @@ Generado desde el repo `Caissa-Nueva-Web-2026`, rama `barra-sticky-fija-y-limpie
 
 ## Versión
 
-**Actual: 1.12.** El número vive en **un solo lugar** (el argumento que recibe el generador)
+**Actual: 1.13.** El número vive en **un solo lugar** (el argumento que recibe el generador)
 y de ahí se inyecta en los dos sitios donde tiene que aparecer: la cabecera `Version:` de
 `style.css`, que es la que lee WordPress, y la constante `CAISSA_VER` de `functions.php`.
 El build falla si no puede escribir en alguno de los dos, así que no se pueden desincronizar.
 
 | | |
 |---|---|
+| **1.13** | Seis ajustes de mobile y el arreglo del `url()` del CSS. Nace la capa `_generador/overrides/`. |
 | **1.12** | "Enlaces destacados": la fila nueva del footer, como cuarto menú de WordPress. |
 | **1.11** | Regenerado desde la rama de produccion: 22 plantillas (entra `/sobre-caissa/`), barra sticky siempre visible, assets sincronizados desde el repo (WebP) y `srcset`. |
 | **1.10** | Pasada de SEO sobre la nota del blog: headings, entidad autor, breadcrumb visible, categoría primaria de Rank Math y enriquecimiento de su grafo. |
@@ -101,6 +102,112 @@ cuatro `og:`, tal como los declara el HTML del repo. El tema no los escribe.
 Los **22 canonical son absolutos**: el de `/reservar-consultoria/` venía relativo y la rama
 de producción lo corrigió, así que ya no hay excepciones en el set. La única fila con
 `robots` distinto es `/llamada-confirmada/`, que va `noindex, follow` (ver el paso 2).
+
+---
+
+## Qué cambió en 1.13: seis ajustes de mobile
+
+Pedidos de Gastón sobre el comportamiento en teléfono, más un bug del generador que salió
+de uno de ellos.
+
+### La capa de overrides (novedad de arquitectura)
+
+Todo lo que hay en el tema sale del HTML del repo. Cuando hace falta un ajuste que **no
+está en el repo** —porque es propio de WordPress, o porque el pedido llegó por otro lado—
+ahora vive en **`_generador/overrides/`** y el generador lo aplica siempre:
+
+| | |
+|---|---|
+| `overrides/tpl-<slug>.css` | se agrega al final de `assets/css/tpl-<slug>.css`, **después del blindaje**, así que gana la cascada. Se carga sólo en esa plantilla |
+| `overrides/todas.css` | se agrega al final de todas las `tpl-*.css` |
+| `overrides/markup.awk` | transformaciones del markup, por slug |
+| `assets-extra/` | imágenes que usa el tema y no salen del repo |
+
+**La regla:** si algo se puede resolver en el HTML de Manu, ahí va mejor. El repo es la
+fuente de verdad y este directorio es la excepción, no el lugar por defecto. Cada override
+lleva un comentario que dice qué cambia, por qué, y si corresponde replicarlo en el repo.
+
+### 1. La barra sticky de la home, a partir de 100px de scroll
+
+El repo la dejó **siempre visible** (Manuel pidió eso) y su visibilidad quedó como puro CSS,
+sin JavaScript. Ahora tiene un umbral, pero **sólo en la home**: es la única página donde
+tapaba el CTA del hero, o sea el "doble call to action" del ATF que §18.b ya tenía anotado.
+
+- `base.js` pone una clase en el `<body>` pasados los 100px, con listener `passive` y
+  throttle por reloj (no por `rAF`, que no corre en una pestaña en segundo plano).
+- `inc/parts.php` marca qué plantillas llevan umbral, hoy sólo `home`. Se amplía con el
+  filtro `caissa_sticky_con_umbral`.
+- El CSS vive en `overrides/tpl-home.css` y anima `transform`, no `display`, que no es
+  animable. Respeta `prefers-reduced-motion`.
+- **Sin JavaScript la barra se ve de entrada**, que es el comportamiento del repo: vale más
+  tener el CTA que esconderlo esperando un scroll que nadie va a medir.
+
+### 2. ⚠️ El logo de la comparativa: era un bug del generador, no del CSS de Manu
+
+En la comparativa apilada en mobile, cada fila "Caissa" muestra el logo azul en vez de un
+rótulo de texto. No aparecía, y la causa era mía:
+
+```css
+.c-after::before{ background:url(logo-caissa.webp) ... }
+```
+
+En el repo el CSS es **inline dentro de la página**, así que `url(logo-caissa.webp)` se
+resuelve contra la URL de la página y funciona. Al moverlo a `assets/css/tpl-home.css` se
+resuelve contra **la carpeta del CSS**: `assets/css/logo-caissa.webp`, que no existe. Un 404
+silencioso, sin error en consola ni nada que se note salvo la imagen faltante.
+
+Ahora **`cssurl.awk` reapunta todas las `url()` relativas a `../img/`**, en los chasis
+compartidos y en las `tpl-*.css`. Deja intactas las absolutas, las `data:` y las `http`.
+
+Es una clase de bug que valía la pena cerrar de raíz: **cualquier** `url()` relativa que
+Manuel agregue al CSS iba a romperse igual, y no se nota mirando el build. La regla entró
+con el commit `3b7d4d3`, así que el tema 1.08 nunca la tuvo y la regresión sigue siendo
+válida.
+
+### 3. La foto de Juan Gonzalez Trück (Clean It)
+
+El HTML lo muestra con las iniciales **"JG"** y un comentario que dice que falta la foto: un
+pendiente que el `CLAUDE.md` del repo arrastra desde agosto. Gastón pasó la foto, así que se
+reemplaza por la imagen en la **home** y en **`/reviews/`**, que usan clases distintas para
+el avatar (`.rc-av` y `.rv-av`).
+
+- La foto **no sale del repo**: viaja en `_generador/assets-extra/juan-clean-it.webp`.
+- Se **renombró**: llegó como `juan clean it.webp` y un espacio en una URL hay que escaparlo.
+- Es 800x800, cuadrada como los otros avatares, así que el recorte a la cara que hace
+  `.rc-av img` le sirve igual.
+
+⚠️ **Conviene pasarlo al repo.** Mientras la foto y el `<img>` no estén en el HTML de Manuel,
+esto es una divergencia que hay que mantener.
+
+### 4. El CTA del drawer mobile
+
+El nav tenía dos CTA: el de `.nav-cta` (que en mobile ya lo esconde el CSS) y el del drawer.
+Se saca **el del drawer**, así que desaparece únicamente en mobile y el de desktop queda
+intacto. Con la barra sticky abajo, abrir el menú mostraba el mismo botón dos veces en la
+misma pantalla.
+
+### 5. El CTA a Axion Lift en la landing de Google Ads
+
+Se quitó el enlace "Ver el caso Axion Lift" de la tarjeta **B2B e industria**. Apuntaba a
+`caissa.digital/caso/axionlift/`, una página que vive sólo en producción y que no se migró.
+El texto de la tarjeta queda igual: lo único que se va es el enlace.
+
+### 6. `/reservar-consultoria/`: el formulario a sangre completa
+
+Es la página más desnuda del sitio y su único trabajo es que el formulario se complete, así
+que todo lo que no sea el formulario compite.
+
+| | |
+|---|---|
+| El menú deja de ser sticky | `position:static`. En una página de una sola pantalla, un header pegado se come 73px de alto útil todo el tiempo y no lleva a ningún lado: quien llegó ya decidió |
+| El panel va de borde a borde | Se anulan el padding del `.wrap`, el ancho máximo de 900px, el redondeo, los bordes laterales y la sombra. A sangre completa, un borde redondeado queda cortado por la mitad |
+| El panel mide 90vh | Con **`min-height:0`**, que es imprescindible: la regla original impone 520px de mínimo y en un celular de costado 520px es *más* que 90vh, así que sin eso el mínimo le ganaba al alto pedido |
+
+El título y la bajada conservan su medida de lectura: son texto y a todo el ancho quedarían
+ilegibles. Lo que va a sangre completa es el panel.
+
+Como `tpl-reservar-consultoria.css` se encola **sólo en esa plantilla**, tocar `header.nav`
+ahí no afecta al resto del sitio.
 
 ---
 
