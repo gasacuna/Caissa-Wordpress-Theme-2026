@@ -1,20 +1,30 @@
-# Tema Caissa 2026 · versión 1.09
+# Tema Caissa 2026 · versión 1.15
 
-Actualización del tema de WordPress con el contenido del commit **`20f8ff9`** del repo
-`Caissa-Nueva-Web-2026`. El tema que tenías (1.08) venía del commit `3234daf`, o sea justo
-una actualización atrás.
+## 👉 Antes que nada: **`PENDIENTES.md`**
+
+Ahí está lo que falta para lanzar, ordenado por momento del deploy y con los
+bloqueantes marcados. Dos de ellos no se ven mirando la web y hunden el sitio si
+se pasan por alto: el `robots.txt` del staging y los redirects que producción
+tiene en la base de datos.
 
 ## Qué hay en esta carpeta
 
 | | |
 |---|---|
-| **`caissa-theme.zip`** | **Esto es lo que subís a WordPress.** 1,7 MB, 171 archivos. |
+| **`caissa-theme.zip`** | **Esto es lo que subís a WordPress.** 1,4 MB, 191 archivos, 24 plantillas. |
+| **`PENDIENTES.md`** | **Lo que falta, por momento del deploy.** Empezá por acá. |
 | `caissa-theme/` | El tema descomprimido, por si preferís subirlo por SFTP a `wp-content/themes/`. |
-| `SEO-para-Rank-Math.tsv` | Las 21 URLs con su `title`, `meta description`, `robots`, `canonical` y las cuatro `og:`. El tema no emite metas: las pone Rank Math. Se abre con Excel o Google Sheets. |
+| `redirects/` | El bloque de 301 de la migración, el mapeo leído de la planilla y el script que los verifica contra cualquier host. |
+| `SEO-para-Rank-Math.tsv` | Las URLs con su `title`, `meta description`, `robots`, `canonical` y las cuatro `og:`. El tema no emite metas: las pone Rank Math. Se abre con Excel o Google Sheets. |
 | `_generador/` | El script que construye el tema desde el repo. No va adentro del ZIP. |
 
 La documentación completa está en **`caissa-theme/LEEME.md`**, y el detalle de versiones en
 `caissa-theme/CHANGELOG.md`. Los dos viajan adentro del ZIP.
+
+⚠️ **Las secciones de más abajo describen la 1.09**, que es cuando se escribió este
+archivo. Lo que cambió desde entonces (1.10 a 1.15: el blog, los seis ajustes de
+mobile, las dos páginas nuevas y GTM) está en **`_generador/docs/LEEME.md`**, que
+es el documento que se mantiene al día.
 
 ## Cómo subirlo
 
