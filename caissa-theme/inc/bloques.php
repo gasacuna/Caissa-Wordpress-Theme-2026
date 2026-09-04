@@ -17,13 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 function caissa_bloque_badges() {
 	?>
 <div class="foot-badges">
-        <a href="https://www.google.com/partners/agency?id=9889692537" target="_blank" rel="noopener" aria-label="Google Partner Premier 2025"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-premier.png" alt="Google Partner Premier 2025" width="52" height="50" loading="lazy" decoding="async" /></a>
-        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-meta.jpg" alt="Meta Business Partner" width="66" height="38" loading="lazy" decoding="async" />
-        <a href="https://clutch.co/profile/caissa" target="_blank" rel="noopener" aria-label="Caissa en Clutch"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-clutch.jpg" alt="Caissa tiene 5 estrellas en Clutch" width="67" height="38" loading="lazy" decoding="async" /></a>
-        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.png" alt="Certificado Great Place To Work" width="29" height="50" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-ecommerce.png" alt="eCommerce Specialist" width="51" height="50" loading="lazy" decoding="async" />
-        <a href="https://cace.org.ar/socio/caissa/" target="_blank" rel="noopener" aria-label="Caissa, socio de CACE"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-cace.jpg" alt="CACE, Cámara Argentina de Comercio Electrónico" width="80" height="38" loading="lazy" decoding="async" /></a>
-        <a href="https://www.sortlist.es/agency/caissa" target="_blank" rel="noopener" aria-label="Caissa en Sortlist"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-sortlist.jpg" alt="Top Rated Agency, Sortlist" width="93" height="38" loading="lazy" decoding="async" /></a>
+        <a href="https://www.google.com/partners/agency?id=9889692537" target="_blank" rel="noopener" aria-label="Google Partner Premier 2025"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-premier.webp" alt="Google Partner Premier 2025" width="52" height="50" loading="lazy" decoding="async" /></a>
+        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-meta.webp" alt="Meta Business Partner" width="66" height="38" loading="lazy" decoding="async" />
+        <a href="https://clutch.co/profile/caissa" target="_blank" rel="noopener" aria-label="Caissa en Clutch"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-clutch.webp" alt="Caissa tiene 5 estrellas en Clutch" width="67" height="38" loading="lazy" decoding="async" /></a>
+        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Certificado Great Place To Work" width="29" height="50" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-ecommerce.webp" alt="eCommerce Specialist" width="51" height="50" loading="lazy" decoding="async" />
+        <a href="https://cace.org.ar/socio/caissa/" target="_blank" rel="noopener" aria-label="Caissa, socio de CACE"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-cace.webp" alt="CACE, Cámara Argentina de Comercio Electrónico" width="80" height="38" loading="lazy" decoding="async" /></a>
+        <a href="https://www.sortlist.es/agency/caissa" target="_blank" rel="noopener" aria-label="Caissa en Sortlist"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-sortlist.webp" alt="Top Rated Agency, Sortlist" width="93" height="38" loading="lazy" decoding="async" /></a>
       </div>
 	<?php
 }

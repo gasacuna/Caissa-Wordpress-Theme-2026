@@ -238,7 +238,7 @@ get_header();
             <span class="btag">Vigente</span>
           </div>
           <div class="pp-b past">
-            <span class="bfig"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-premier.png" alt="Insignia de Google Partner Premier 2025 de Caissa" width="98" height="94" loading="lazy" decoding="async" /></span>
+            <span class="bfig"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-premier.webp" alt="Insignia de Google Partner Premier 2025 de Caissa" width="98" height="94" loading="lazy" decoding="async" /></span>
             <span class="bt">Partner Premier</span>
             <span class="bs">El 3% de las agencias de cada país</span>
             <span class="btag">2025</span>
@@ -409,10 +409,10 @@ get_header();
           <p>Shopping, Performance Max y remarketing con foco en el retorno por categoría y en la salud del feed. Hogar y deco, moda, deportes, educación.</p>
           <a href="/industrias/ecommerce/">Ver casos de e-commerce</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.png" alt="Espacio Casa" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/padel-store.png" alt="Padel Store" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/multitelas_blanco.png" alt="Multitelas" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.webp" alt="Espacio Casa" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/padel-store.webp" alt="Padel Store" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/multitelas_blanco.webp" alt="Multitelas" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -430,11 +430,11 @@ get_header();
           <h3>Automotriz y concesionarias</h3>
           <p>Búsqueda por modelo, segmentación por punto de venta y medición de visitas a la tienda. La conversión online conectada con la venta presencial.</p>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/jeep-blanco.png" alt="Jeep" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/peugeot-blanco.png" alt="Peugeot" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/ram.png" alt="RAM" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/fiat.png" alt="Fiat" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/citroen.png" alt="Citroën" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/jeep-blanco.webp" alt="Jeep" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/peugeot-blanco.webp" alt="Peugeot" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/ram.webp" alt="RAM" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/fiat.webp" alt="Fiat" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/citroen.webp" alt="Citroën" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -445,7 +445,7 @@ get_header();
           <p>Clínicas, centros médicos y consultorios. Google tiene políticas particulares en el rubro, y se mide el turno efectivo, no el formulario enviado.</p>
           <a href="/industrias/salud/">Ver casos de salud</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.png" alt="Neuros Center" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.webp" alt="Neuros Center" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -456,10 +456,10 @@ get_header();
           <p>Operadores y agencias de viaje. Fuerte estacionalidad: hay que anticipar la ventana de reserva de cada destino.</p>
           <a href="/industrias/turismo/">Ver casos de turismo</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/atrapalo-blanco.png" alt="Atrápalo" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.png" alt="Latitud Ushuaia Travel" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.png" alt="Cruzando Mares" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/calafate-tour.png" alt="Calafate Tour" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/atrapalo-blanco.webp" alt="Atrápalo" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.webp" alt="Latitud Ushuaia Travel" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.webp" alt="Cruzando Mares" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/calafate-tour.webp" alt="Calafate Tour" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -470,8 +470,8 @@ get_header();
           <p>Negocios con local y tienda online, midiendo el impacto real de la publicidad digital sobre la venta presencial.</p>
           <!-- Rubro de estos dos INFERIDO del nombre de la marca. Confirmar con Manu. -->
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/club-de-la-milanesa.png" alt="El Club de la Milanesa" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/top-iluminaciones.png" alt="Top Iluminaciones" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/club-de-la-milanesa.webp" alt="El Club de la Milanesa" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/top-iluminaciones.webp" alt="Top Iluminaciones" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -482,9 +482,9 @@ get_header();
           <p>Ciclos largos y poco volumen de búsqueda. Todo pasa por la precisión de las keywords y por medir la calidad del lead, no la cantidad.</p>
           <a href="https://caissa.digital/caso/axionlift/">Ver el caso Axion Lift</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.png" alt="Axion Lift" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/dynamic-logistics.png" alt="Dynamic Logistics" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/aislatek.png" alt="Aislatek" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/dynamic-logistics.webp" alt="Dynamic Logistics" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/aislatek.webp" alt="Aislatek" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>

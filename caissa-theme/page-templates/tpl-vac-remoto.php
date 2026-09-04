@@ -85,11 +85,11 @@ get_header();
       <span class="jchip">Full time</span>
 <!-- GPTW, OJO CON LA FECHA: el badge del repo dice "Certificada JUL 2025 - JUL 2026 ARG",
      o sea que VENCIO en julio de 2026. Manuel pidio destacarla el 24/08/2026; se asume
-     renovada. CONFIRMAR: si se renovo, reemplazar footer/badge-gptw.png por el badge
+     renovada. CONFIRMAR: si se renovo, reemplazar footer/badge-gptw.webp por el badge
      nuevo; si NO se renovo, pasar todo este copy a pasado (mismo criterio que Premier,
      CLAUDE.md par.10.b). -->
       <span class="jchip">100% remoto · Argentina</span>
-      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.png" alt="Great Place to Work, certificación Argentina" width="300" height="509" loading="lazy" decoding="async" /> Great Place to Work</span>
+      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="151" height="256" loading="lazy" decoding="async" /> Great Place to Work</span>
     </div>
     <h1>Especialista en Performance Marketing (remoto)</h1>
     <p>Para especialistas que dominan Google Ads y Meta Ads y quieren cuentas exigentes, objetivos claros y un equipo senior alrededor. Si venís de agencia y sentís que tocaste el techo, este es el salto.</p>

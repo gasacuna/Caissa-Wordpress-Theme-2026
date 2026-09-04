@@ -66,12 +66,12 @@ get_header();
     <h1>Trabajá con nosotros</h1>
 <!-- GPTW, OJO CON LA FECHA: el badge del repo dice "Certificada JUL 2025 - JUL 2026 ARG",
      o sea que VENCIO en julio de 2026. Manuel pidio destacarla el 24/08/2026; se asume
-     renovada. CONFIRMAR: si se renovo, reemplazar footer/badge-gptw.png por el badge
+     renovada. CONFIRMAR: si se renovo, reemplazar footer/badge-gptw.webp por el badge
      nuevo; si NO se renovo, pasar todo este copy a pasado (mismo criterio que Premier,
      CLAUDE.md par.10.b). -->
     <p>Estamos construyendo el mejor equipo de performance de habla hispana. Buscamos personas curiosas, analíticas y con obsesión por los resultados.</p>
     <div class="jchips reveal" style="margin-top:24px;margin-bottom:0">
-      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.png" alt="Great Place to Work, certificación Argentina" width="300" height="509" loading="lazy" decoding="async" /> Somos Great Place to Work</span>
+      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="151" height="256" loading="lazy" decoding="async" /> Somos Great Place to Work</span>
     </div>
   </div>
 </section>
@@ -112,7 +112,7 @@ get_header();
     </div>
     <div class="cul reveal">
       <div class="cul-c cul-badge">
-        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.png" alt="Certificación Great Place to Work Argentina" width="300" height="509" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Certificación Great Place to Work Argentina" width="151" height="256" loading="lazy" decoding="async" />
       </div>
       <div class="cul-c">
         <div class="cul-n">100%</div>
@@ -151,7 +151,7 @@ get_header();
 <section class="sec-white">
   <div class="wrap">
     <div class="cband reveal">
-      <img src="<?php echo CAISSA_IMG; ?>/equipo-caissa-final.jpeg" alt="El equipo de Caissa" width="1564" height="273" loading="lazy" decoding="async" />
+      <img src="<?php echo CAISSA_IMG; ?>/equipo-caissa-final.webp" alt="El equipo de Caissa" width="1564" height="273" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>

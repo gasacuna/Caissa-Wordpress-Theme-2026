@@ -319,7 +319,7 @@ get_header();
       <div class="tq-w">
         <b>Néstor</b>
         <span>Colchonería Ideal</span>
-        <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" />
+        <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" />
       </div>
     </div>
     <div class="sec-cta reveal">

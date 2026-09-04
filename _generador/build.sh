@@ -37,9 +37,79 @@ for f in 404.php archive.php home.php index.php page.php search.php single.php \
 for f in setup.php enqueue.php limpieza.php nav.php parts.php blog.php; do cp "$SKEL/inc/$f" "$OUT/inc/$f"; done
 cp "$SKEL"/template-parts/*.php "$OUT/template-parts/"
 cp "$SKEL"/assets/fonts/* "$OUT/assets/fonts/"
-cp -r "$SKEL"/assets/img/. "$OUT/assets/img/"
+# assets/img ya NO se copia del tema anterior: ver el paso 1.b, mas abajo
 cp "$SKEL/assets/css/blog.css" "$OUT/assets/css/"
 cp "$SKEL/assets/js/base.js" "$SKEL/assets/js/blog.js" "$OUT/assets/js/"
+
+# --- 1.b Assets: se sincronizan DESDE EL REPO, no del tema anterior ---------
+#
+# Antes assets/img/ se copiaba entero del tema anterior. Funciono mientras las
+# imagenes no cambiaron y se rompio en cuanto el repo paso a WebP: el HTML empezo
+# a pedir 56 archivos .webp que el tema no tenia y el chequeo del paso 9 abortaba
+# el build. Bien abortado, pero la causa era esta: la fuente de verdad de las
+# imagenes es el repo, no la version anterior del tema.
+#
+# Ahora se copia SOLO lo que el HTML referencia, resuelto desde cada pagina (las
+# rutas son relativas al archivo, hay que normalizar los ../). Efecto colateral
+# bueno: lo que el repo deja de usar no se arrastra.
+msg "1.b  assets desde el repo"
+: > "$W/assets.txt"
+while IFS=$'\t' read -r rel slug nombre lang pre; do
+  [ -z "${rel:-}" ] && continue
+  dir="$(dirname "$rel")"; [ "$dir" = "." ] && dir=""
+  # src, poster y cada ruta de un srcset. Un srcset NO es una ruta: es una lista
+  # separada por comas donde cada elemento es "ruta descriptor" ("foto-600.webp 600w"),
+  # asi que se parte por comas y de cada pedazo se toma el primer token.
+  { grep -o '\(src\|poster\|srcset\)="[^"]*"' "$REPO/$rel" || true; } \
+    | sed 's/^[a-z]*="//; s/"$//' \
+    | tr ',' '\n' \
+    | sed 's/^[[:space:]]*//; s/[[:space:]].*$//' \
+    | while read -r v; do
+        [ -z "$v" ] && continue
+        case "$v" in http*|//*|/*|data:*|'#'*) continue;; esac
+        if [ -z "$dir" ]; then p="$v"; else p="$dir/$v"; fi
+        printf '%s\n' "$p" | gawk -F/ '{n=0
+          for(i=1;i<=NF;i++){s=$i; if(s==""||s==".")continue; if(s==".."){if(n>0)n--;continue} a[++n]=s}
+          r=""; for(i=1;i<=n;i++) r=r (i>1?"/":"") a[i]; print r}'
+      done >> "$W/assets.txt"
+done < "$TSV"
+sort -u -o "$W/assets.txt" "$W/assets.txt"
+
+# Copiar cada asset referenciado, creando las subcarpetas que haga falta.
+n=0
+while read -r a; do
+  [ -z "$a" ] && continue
+  [ -f "$REPO/$a" ] || die "el HTML referencia $a y no esta en el repo"
+  mkdir -p "$OUT/assets/img/$(dirname "$a")"
+  cp "$REPO/$a" "$OUT/assets/img/$a"
+  n=$((n+1))
+done < "$W/assets.txt"
+
+# Los que usa el TEMA y no el repo: hoy es la foto de autor de la caja de las notas
+# del blog, que no sale de ninguna pagina. Se detectan leyendo las referencias
+# CAISSA_IMG del PHP del esqueleto, asi que si manana se suma otra, viaja sola.
+#
+# La lista se arma en un archivo y despues se recorre, en vez de encadenar el for con
+# un while por una tuberia: con pipefail, un grep sin resultados en cualquier archivo
+# hace fallar toda la tuberia y el build abortaba sin decir nada. Y ademas un die()
+# dentro del while de una tuberia corre en un subshell y no llega a matar al build.
+: > "$W/propios.txt"
+for f in "$SKEL"/*.php "$SKEL"/inc/*.php "$SKEL"/template-parts/*.php; do
+  [ -f "$f" ] || continue
+  { grep -ho "CAISSA_IMG \. '/[^']*'" "$f" || true; } | sed "s|.*'/||; s|'||" >> "$W/propios.txt"
+done
+sort -u -o "$W/propios.txt" "$W/propios.txt"
+
+propios=0
+while read -r a; do
+  [ -z "$a" ] && continue
+  [ -f "$OUT/assets/img/$a" ] && continue
+  [ -f "$SKEL/assets/img/$a" ] || die "el tema referencia assets/img/$a y no esta ni en el repo ni en el tema anterior"
+  mkdir -p "$OUT/assets/img/$(dirname "$a")"
+  cp "$SKEL/assets/img/$a" "$OUT/assets/img/$a"
+  propios=$((propios+1))
+done < "$W/propios.txt"
+msg "     $n del repo + $propios propios del tema"
 # LEEME.md y CHANGELOG.md son documentacion escrita a mano, no generada: viven en
 # _generador/docs/ y se copian aca. Antes vivian solo dentro del tema y el rm -rf
 # del paso 1 se las llevaba en cada regeneracion.
@@ -86,6 +156,11 @@ nombre_chasis(){
   grep -q 'CSS propio de /equipo/<persona>/'  "$f" && { echo perfiles;      return; }
   grep -q 'Cada landing tiene su temperatura' "$f" && { echo industrias;    return; }
   grep -q 'HERO propio: H1 chico como kicker' "$f" && { echo landing;       return; }
+  # Hay DOS variantes del design system y las dos tienen el --ink: la de las 19
+  # paginas con barra sticky reserva su alto con body{padding-bottom}, y la de las
+  # tres que no la llevan lo omite a proposito (dejarlo colgaba fondo vacio al pie
+  # en mobile). Esta firma va ANTES que la generica o se la come.
+  grep -q 'SIN el body{padding-bottom}'       "$f" && { echo base-sin-barra; return; }
   grep -q -- '--ink:#10143A'                  "$f" && { echo base;          return; }
   grep -q 'HERO INSTITUCIONAL'                "$f" && { echo institucional; return; }
   echo ""
@@ -443,7 +518,17 @@ printf "\t\t\t'nombre'  => 'Vistas sin plantilla (blog)',\n"
 printf "\t\t\t'origen'  => null,\n"
 printf "\t\t\t'lang'    => 'es-AR',\n"
 printf "\t\t\t'preload' => null,\n"
-printf "\t\t\t'css'     => array('base'),\n"
+# Las vistas del blog NO llevan barra sticky (la variante 'default' tiene sticky vacio),
+# asi que les toca la variante del design system que no reserva su alto: con la otra
+# quedaba un colchon de 5,25rem de fondo vacio al pie en mobile, para un elemento que
+# nunca se dibuja. Es el mismo motivo por el que el repo la creo para las tres paginas
+# sin barra. Si algun dia todas las paginas llevan barra, base-sin-barra no se genera y
+# esto cae en 'base' solo.
+if [ -f "$OUT/assets/css/base-sin-barra.css" ]; then
+  printf "\t\t\t'css'     => array('base-sin-barra'),\n"
+else
+  printf "\t\t\t'css'     => array('base'),\n"
+fi
 printf "\t\t\t'robots'  => '',\n"
 printf "\t\t\t'preconnect' => array(),\n"
 emit_heredoc bajada "$W/bajada.txt"
@@ -483,7 +568,7 @@ while read -r u; do
 done < "$W/urls.txt"
 [ -n "$mal" ] && die "quedaron enlaces internos absolutos: $mal"
 # b) todos los assets referenciados existen
-grep -ho '<?php echo CAISSA_IMG; ?>/[^"]*' "$OUT"/page-templates/*.php "$OUT"/inc/bloques.php \
+grep -ho '<?php echo CAISSA_IMG; ?>/[^", ]*' "$OUT"/page-templates/*.php "$OUT"/inc/bloques.php \
   | sed 's|<?php echo CAISSA_IMG; ?>/||' | sort -u > "$W/need.txt"
 while read -r a; do [ -f "$OUT/assets/img/$a" ] || die "falta el asset assets/img/$a"; done < "$W/need.txt"
 # c) llaves balanceadas en todos los .php (find -print0: las rutas tienen espacios)

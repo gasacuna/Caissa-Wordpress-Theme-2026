@@ -1,20 +1,21 @@
 # Tema Caissa 2026
 
-Tema de WordPress con el diseño 2026. **Veintiuna plantillas de página**, header y footer
+Tema de WordPress con el diseño 2026. **Veintidós plantillas de página**, header y footer
 compartidos, menús nativos de WordPress y el CSS servido como archivos cacheables.
 Sin frameworks, sin jQuery, sin peticiones a terceros.
 
-Generado desde el repo `Caissa-Nueva-Web-2026`, commit `20f8ff9`.
+Generado desde el repo `Caissa-Nueva-Web-2026`, rama `barra-sticky-fija-y-limpieza-produccion` (commit `8a8b9d8`).
 
 ## Versión
 
-**Actual: 1.10.** El número vive en **un solo lugar** (el argumento que recibe el generador)
+**Actual: 1.11.** El número vive en **un solo lugar** (el argumento que recibe el generador)
 y de ahí se inyecta en los dos sitios donde tiene que aparecer: la cabecera `Version:` de
 `style.css`, que es la que lee WordPress, y la constante `CAISSA_VER` de `functions.php`.
 El build falla si no puede escribir en alguno de los dos, así que no se pueden desincronizar.
 
 | | |
 |---|---|
+| **1.11** | Regenerado desde la rama de produccion: 22 plantillas (entra `/sobre-caissa/`), barra sticky siempre visible, assets sincronizados desde el repo (WebP) y `srcset`. |
 | **1.10** | Pasada de SEO sobre la nota del blog: headings, entidad autor, breadcrumb visible, categoría primaria de Rank Math y enriquecimiento de su grafo. |
 | **1.09** | 21 plantillas: entraron `/aviso-legal/`, `/reservar-consultoria/` y `/llamada-confirmada/`. Contenido actualizado en 16. Once correcciones al chasis. El tema ahora viaja con su generador. |
 | **1.08** | Caja de autor de las notas. |
@@ -33,16 +34,21 @@ El build falla si no puede escribir en alguno de los dos, así que no se pueden 
 
 Son cinco cosas, y tres son nuevas de esta versión.
 
-### 1. Crear las tres páginas nuevas y asignarles su plantilla
+### 1. Crear las páginas nuevas y asignarles su plantilla
 
 | Página nueva | Slug (tiene que ser exacto) | Plantilla |
 |---|---|---|
 | Aviso legal | `aviso-legal` | Caissa — Aviso legal y privacidad |
 | Reservar consultoría | `reservar-consultoria` | Caissa — Reservar consultoría |
 | Llamada confirmada | `llamada-confirmada` | Caissa — Llamada confirmada |
+| **Sobre Caissa** | `sobre-caissa` | **Caissa — Sobre Caissa** |
 
-Los slugs importan: **los 103 CTA del sitio apuntan a `/reservar-consultoria/`** y el
+Los slugs importan: **los CTA del sitio apuntan a `/reservar-consultoria/`** y el
 Aviso Legal del footer a `/aviso-legal/`. Si el slug no coincide, el enlace da 404.
+
+⚠️ **`llms.txt` no es una plantilla y no viaja en el tema.** El repo lo agregó en la raíz
+del dominio, así que va subido a la raíz de WordPress (al lado de `wp-config.php`), no a
+`wp-content/themes/`. Se sirve en `https://caissa.digital/llms.txt`.
 
 ### 2. Poner `/llamada-confirmada/` en noindex
 

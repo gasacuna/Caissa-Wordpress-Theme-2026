@@ -37,8 +37,8 @@ HTML,
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 <div class="ytlb" id="ytlb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Testimonio en video">
@@ -62,16 +62,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -87,16 +88,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -112,7 +114,7 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital con oficinas en Neuquén Capital, especializada en performance marketing (Google Ads y Meta Ads). Trabajamos con empresas del Alto Valle, de la Patagonia y de toda Latinoamérica. Somos Google Partner y Meta Business Partner.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
@@ -123,9 +125,8 @@ HTML,
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Krawczyk 619, Neuquén Capital</a>
-<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
-<a class="foot-loc" href="https://caissa.digital/agencia-marketing-digital-argentina/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing en Argentina</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -141,16 +142,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -166,16 +168,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -191,16 +194,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -216,16 +220,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -241,16 +246,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -266,16 +272,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -291,16 +298,17 @@ HTML,
 			'robots'  => 'index, follow, max-snippet:-1, max-image-preview:large',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 <div class="ytlb" id="ytlb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Testimonio en video">
@@ -324,14 +332,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
-
+<div class="sticky-cta">
+  <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
+</div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -347,14 +358,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
-
+<div class="sticky-cta">
+  <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
+</div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -370,14 +384,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
-
+<div class="sticky-cta">
+  <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
+</div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -393,16 +410,17 @@ HTML,
 			'robots'  => 'index, follow, max-image-preview:large, max-snippet:-1',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
   <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -418,14 +436,17 @@ HTML,
 			'robots'  => 'index, follow, max-snippet:-1, max-image-preview:large',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
-
+<div class="sticky-cta">
+  <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
+</div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -441,7 +462,7 @@ HTML,
 			'robots'  => 'index, follow, max-snippet:-1, max-image-preview:large',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
@@ -449,8 +470,8 @@ HTML,
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -466,7 +487,7 @@ HTML,
 			'robots'  => 'index, follow, max-snippet:-1, max-image-preview:large',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 <div class="sticky-cta">
@@ -474,8 +495,8 @@ HTML,
 </div>
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -487,18 +508,18 @@ HTML,
 			'origen'  => 'aviso-legal/index.html',
 			'lang'    => 'es-AR',
 			'preload' => null,
-			'css'     => array('base', 'landing', 'institucional'),
+			'css'     => array('base-sin-barra', 'landing', 'institucional'),
 			'robots'  => 'index, follow',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -510,18 +531,18 @@ HTML,
 			'origen'  => 'reservar-consultoria/index.html',
 			'lang'    => 'es-AR',
 			'preload' => null,
-			'css'     => array('base', 'landing', 'institucional'),
+			'css'     => array('base-sin-barra', 'landing', 'institucional'),
 			'robots'  => 'index, follow',
 			'preconnect' => array('https://embed.typeform.com', 'https://form.typeform.com'),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -533,18 +554,44 @@ HTML,
 			'origen'  => 'llamada-confirmada/index.html',
 			'lang'    => 'es-AR',
 			'preload' => null,
-			'css'     => array('base', 'landing', 'institucional'),
+			'css'     => array('base-sin-barra', 'landing', 'institucional'),
 			'robots'  => 'noindex, follow',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'sticky'  => <<<'HTML'
 
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
+HTML,
+			'cola'    => <<<'HTML'
+
+HTML,
+		),
+		'page-templates/tpl-sobre-caissa.php' => array(
+			'slug'    => 'sobre-caissa',
+			'nombre'  => 'Caissa — Sobre Caissa',
+			'origen'  => 'sobre-caissa/index.html',
+			'lang'    => 'es-AR',
+			'preload' => null,
+			'css'     => array('base', 'landing', 'institucional'),
+			'robots'  => 'index, follow, max-snippet:-1',
+			'preconnect' => array(),
+			'bajada'  => <<<'HTML'
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
+HTML,
+			'sticky'  => <<<'HTML'
+<div class="sticky-cta">
+  <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita</a>
+  <!-- WHATSAPP: cuando esté el número, sumar acá el botón de WhatsApp -->
+</div>
+HTML,
+			'ubicaciones' => <<<'HTML'
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'cola'    => <<<'HTML'
 
@@ -556,15 +603,15 @@ HTML,
 			'origen'  => null,
 			'lang'    => 'es-AR',
 			'preload' => null,
-			'css'     => array('base'),
+			'css'     => array('base-sin-barra'),
 			'robots'  => '',
 			'preconnect' => array(),
 			'bajada'  => <<<'HTML'
-<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Meta Business Partner y Google Partner, y trabajamos con más de 50 empresas en múltiples países.
+<b>Caissa</b> es una agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads). Ayudamos a empresas de habla hispana a crecer con publicidad online, CRO y optimización de procesos de venta. Somos Google Partner y Meta Business Partner, fuimos seleccionados Partner Premier en 2025, y trabajamos con más de 50 empresas en múltiples países.
 HTML,
 			'ubicaciones' => <<<'HTML'
-<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Oficinas en Argentina</a>
-<a class="foot-loc" href="/agencia-marketing-neuquen/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Marketing Neuquén</a>
+<a class="foot-loc" href="https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg>Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C · Neuquén Capital</a>
+<a class="foot-loc" href="tel:+5492994695443"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z" stroke-linejoin="round"/></svg>+54 9 299 469-5443</a>
 HTML,
 			'sticky'  => '',
 			'cola'    => '',

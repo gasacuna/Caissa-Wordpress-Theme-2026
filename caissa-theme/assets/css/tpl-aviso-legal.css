@@ -59,7 +59,8 @@
 
   /* /aviso-legal/ - tipologia propia: documento legal. Medida de lectura angosta,
      jerarquia sobria y CERO argumentos comerciales (sin bloque de consultoria ni
-     barra sticky, igual que /equipo/). Registro formal, no voseo comercial:
+     barra sticky; es una de las tres paginas sin barra, con /reservar-consultoria/ y
+     /llamada-confirmada/). Registro formal, no voseo comercial:
      es la unica pagina del sitio asi. */
   .legal{padding:64px 0 80px}
   .legal-wrap{max-width:820px;margin:0 auto}
@@ -83,8 +84,6 @@
   /* Leyenda de texto obligatorio (Res. AAIP 14/2018, art. 3): su redaccion esta
      impuesta por norma, NO se edita ni se parafrasea. */
   .legal-leyenda{background:var(--bg-lav);border-left:3px solid var(--violet);border-radius:0 10px 10px 0;padding:14px 18px;font-size:.94rem !important;color:var(--ink) !important}
-  .legal-nota{margin-top:48px;padding:20px 24px;background:#FFF6F4;border:1px solid #FFD9D3;border-radius:var(--radius);font-size:.92rem;color:var(--ink-soft);line-height:1.6}
-  .legal-nota b{color:var(--ink)}
   @media(max-width:720px){
     .legal{padding:44px 0 60px}
     .legal-toc ol{columns:1}

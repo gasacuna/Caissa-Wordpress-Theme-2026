@@ -87,7 +87,7 @@ get_header();
         <li><a href="#confidencialidad">6. Confidencialidad</a></li>
         <li><a href="#propiedad">7. Propiedad intelectual</a></li>
         <li><a href="#enlaces">8. Enlaces externos</a></li>
-        <li><a href="#credenciales">9. Credenciales y contenidos del sitio</a></li>
+        <li><a href="#credenciales">9. Contenidos del sitio</a></li>
         <li><a href="#responsabilidad">10. Limitación de responsabilidad</a></li>
         <li><a href="#modificaciones">11. Modificaciones</a></li>
         <li><a href="#jurisdiccion">12. Ley aplicable y jurisdicción</a></li>
@@ -224,8 +224,7 @@ get_header();
       </section>
 
       <section class="legal-sec" id="credenciales">
-        <h2>9. Credenciales y contenidos del sitio</h2>
-<p>Caissa es <strong>Google Partner</strong> y <strong>Meta Business Partner</strong>. Fue seleccionada <strong>Google Partner Premier en 2025</strong>; esa distinción corresponde a ese año y no se enuncia como vigente. Las certificaciones pueden verificarse en los directorios públicos de cada plataforma.</p>
+        <h2>9. Contenidos del sitio</h2>
 <p>Los contenidos informativos y los casos publicados describen trabajos efectivamente realizados. Los resultados alcanzados por un cliente dependen de su mercado, su producto, su inversión y su operación, y no constituyen una promesa de resultados para otros.</p>
       </section>
 

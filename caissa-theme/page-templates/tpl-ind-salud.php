@@ -561,7 +561,7 @@ get_header();
         <summary><h3>¿Se puede hacer publicidad médica en Google?</h3><svg class="faqo-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
         <div class="faqo-body">
           <p>Sí, y de hecho es el canal más efectivo del rubro: el paciente que busca "especialidad más zona" quiere un turno. Lo que no se puede es publicitar de cualquier manera: la categoría salud tiene políticas propias en Google y en Meta, más la regulación de la publicidad médica.</p>
-          <p>Trabajar dentro de ese marco no limita los resultados: <a href="#reglas">los ordena</a>.</p>
+          <p>Trabajar dentro de ese marco no limita los resultados: los ordena.</p>
         </div>
       </details>
       <details class="faqo reveal">

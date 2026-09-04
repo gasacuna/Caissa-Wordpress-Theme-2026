@@ -1,38 +1,10 @@
 
-  /* ===== Barra sticky mobile: aparece solo cuando NO hay otro CTA grande en pantalla.
-     Evita el "doble call to action" del ATF y el del cierre. ===== */
-  (function(){
-    var bar = document.querySelector('.sticky-cta');
-    if(!bar) return;
-    /* Todos los botones de reserva de la pagina, no solo el del hero y el del cierre:
-       cualquiera de ellos en pantalla ya es el CTA visible y la barra sobra. */
-    var big = [].slice.call(document.querySelectorAll('a.btn[href*="reservar-consultoria"]'))
-      .filter(function(a){ return !a.closest('.sticky-cta') && !a.closest('header.nav'); });
-    if(!big.length){ bar.classList.add('show'); return; }
-    /* Barato: seis getBoundingClientRect y un toggle de clase, como mucho una vez por frame.
-       Se lee todo primero y recién después se escribe la clase, para no forzar reflow. */
-    var evaluate = function(){
-      var solo = true;
-      for(var i = 0; i < big.length; i++){
-        var r = big[i].getBoundingClientRect();
-        if(r.bottom > 0 && r.top < (window.innerHeight || 0) - 76){ solo = false; break; }
-      }
-      bar.classList.toggle('show', solo);
-    };
-    /* Throttle por reloj, no por rAF: rAF no corre en una pestaña en segundo plano
-       y la barra se quedaba pegada en el estado con el que cargó la página. */
-    var last = 0, timer = null;
-    var onScroll = function(){
-      var now = +new Date();
-      if(now - last > 110){ last = now; evaluate(); return; }
-      clearTimeout(timer);
-      timer = setTimeout(function(){ last = +new Date(); evaluate(); }, 110);
-    };
-    /* la primera pasada corre en el load listener: fuera del critical path (forced-reflow) */
-    window.addEventListener('scroll', onScroll, {passive: true});
-    window.addEventListener('resize', onScroll);
-    window.addEventListener('load', evaluate);
-  })();
+  /* ===== Barra sticky mobile: queda SIEMPRE visible (pedido de Manuel, 04/09/2026).
+     Antes se ocultaba cuando habia otro CTA de reserva en pantalla y reaparecia al salir
+     de vista: en la home eso daba 11 cambios de estado en un scroll completo y 7 en cada
+     landing. Se elimino el IIFE que alternaba la clase .show junto con sus listeners de
+     scroll/resize; ahora la visibilidad es puro CSS. Esto REVIERTE el comportamiento que
+     documenta CLAUDE.md 18.b. ===== */
   var burger = document.getElementById('burger');
   var navMobile = document.getElementById('navMobile');
   if(burger){ burger.addEventListener('click', function(){
@@ -49,8 +21,81 @@
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
+  /* ===== Carrusel de videos: arrastrable (mouse y tactil) =====
+     Mientras se arrastra se pausa el marquee y se mueve la pista a mano; al soltar,
+     se retoma la animacion desde ese punto (animation-delay negativo) tras 2,5 s.
+     Un arrastre de mas de 6px anula el click de la tarjeta. */
+  function carruselArrastrable(mqSel, trSel, anim, DUR){
+    var mq=document.querySelector(mqSel), tr=mq&&mq.querySelector(trSel);
+    if(!mq||!tr||!window.PointerEvent) return;
+    var drag=false, moved=false, x0=0, base=0, pos=0, timer=null;
+    function ancho(){ return tr.scrollWidth/2; }
+    function actual(){
+      var m=getComputedStyle(tr).transform; if(!m||m==='none') return 0;
+      var v=m.match(/matrix\(([^)]+)\)/); return v?parseFloat(v[1].split(',')[4]):0;
+    }
+    function fijar(v){ var W=ancho(); pos=((v%W)+W)%W-W; tr.style.transform='translate3d('+pos+'px,0,0)'; }
+    mq.addEventListener('pointerdown',function(e){
+      if(e.button&&e.button!==0) return;
+      drag=true; moved=false; x0=e.clientX; clearTimeout(timer);
+      base=actual(); tr.style.animation='none'; tr.style.transform='translate3d('+base+'px,0,0)';
+      mq.setPointerCapture(e.pointerId);
+    });
+    mq.addEventListener('pointermove',function(e){
+      if(!drag) return; var dx=e.clientX-x0; if(Math.abs(dx)>6) moved=true; fijar(base+dx);
+    });
+    function soltar(){
+      if(!drag) return; drag=false;
+      timer=setTimeout(function(){
+        var W=ancho(), frac=(-pos)/W; tr.style.transform='';
+        tr.style.animation=anim+' '+(DUR/1000)+'s linear infinite';
+        tr.style.animationDelay=(-frac*DUR/1000)+'s';
+      },2500);
+    }
+    mq.addEventListener('pointerup',soltar); mq.addEventListener('pointercancel',soltar);
+    mq.addEventListener('click',function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); moved=false; } },true);
+    mq.querySelectorAll('img').forEach(function(i){ i.draggable=false; });
+  }
+  carruselArrastrable('.vidmarquee','.vidtrack','vid-scroll',46000);
 
-  /* ===== Tecnología en vivo (AEGIS + velocidad) ===== */
+  /* ===== Prensa: se clona el grupo para cerrar el loop =====
+     El HTML trae UN solo grupo (asi los titulares no se duplican en el documento). El clon va
+     aria-hidden y sin foco: para lectores de pantalla y para el tabulado las notas son 5, no 10.
+     Recien con el clon puesto se activa la clase .loop, que es la que enciende la animacion;
+     si el JS no corre, la seccion queda como un carrusel de scroll manual y no como un track roto. */
+  (function(){
+    var mq=document.querySelector('.pr-marquee'), tr=mq&&mq.querySelector('.pr-track');
+    var g=tr&&tr.firstElementChild;
+    if(!mq||!tr||!g) return;
+    var clon=g.cloneNode(true);
+    clon.setAttribute('aria-hidden','true');
+    clon.querySelectorAll('a').forEach(function(a){ a.setAttribute('tabindex','-1'); });
+    tr.appendChild(clon);
+    mq.classList.add('loop');
+    carruselArrastrable('.pr-marquee','.pr-track','pr-scroll',44000);
+  })();
+  /* ===== Pausa fuera de pantalla: marquees, blinks del panel y la flecha SMIL del hero =====
+     La flecha (svg.grow, SMIL) fuerza un frame del main thread cada 16 ms mientras corre, aunque
+     el hero este 20.000 px arriba: se pausa al salir del viewport y sigue desde donde quedo al
+     volver. Con prefers-reduced-motion nunca se despausa (manda la pausa del bloque AEGIS). */
+  (function(){
+    if(!('IntersectionObserver' in window)) return;
+    var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var grow = document.querySelector('svg.grow');
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        e.target.classList.toggle('offscreen', !e.isIntersecting);
+        if(grow && !rm && grow.pauseAnimations && e.target.contains(grow)){
+          if(e.isIntersecting) grow.unpauseAnimations(); else grow.pauseAnimations();
+        }
+      });
+    }, {rootMargin:'150px 0px'});
+    ['section.hero','.hero-brands','.vidmarquee','.pr-marquee','#tecnologia'].forEach(function(sel){
+      var el = document.querySelector(sel); if(el) io.observe(el);
+    });
+  })();
+
+  /* ===== Tecnologia en vivo (AEGIS + velocidad) ===== */
   (function(){
     var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(rm){ var _grow=document.querySelector('.grow'); if(_grow && _grow.pauseAnimations) _grow.pauseAnimations(); }

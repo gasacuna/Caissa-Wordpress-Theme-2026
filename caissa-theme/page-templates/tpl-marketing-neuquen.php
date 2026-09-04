@@ -99,7 +99,7 @@ get_header();
       "mainEntity": [
         { "@type": "Question", "name": "¿Dónde queda la oficina de Caissa en Neuquén?", "acceptedAnswer": { "@type": "Answer", "text": "En Teniente de Navío Eliana María Krawczyk 619, Edificio Zafiro, Piso 1° C, Neuquén Capital. Atendemos de lunes a viernes de 8 a 17 y podés llamarnos al +54 9 299 469-5443. Es una oficina propia con equipo trabajando ahí todos los días, no una dirección de correspondencia." } },
         { "@type": "Question", "name": "¿Puedo ir a la oficina a reunirme con el equipo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Podés venir a la oficina de Neuquén Capital o vamos nosotros a tu empresa si estás en el Alto Valle. También trabajamos por videollamada si te resulta más cómodo. La consultoría inicial de 15 minutos es gratuita en cualquiera de las tres formas." } },
-        { "@type": "Question", "name": "¿Trabajan solo en Neuquén Capital o también en el Alto Valle?", "acceptedAnswer": { "@type": "Answer", "text": "En todo el Alto Valle: Neuquén Capital, Plottier, Centenario, Cipolletti, General Roca, Cinco Saltos y las localidades de la zona. También en Añelo y en el resto de la Patagonia. Para reuniones presenciales nos movemos por la región sin costo adicional." } },
+        { "@type": "Question", "name": "¿Trabajan solo en Neuquén Capital o también en el Alto Valle?", "acceptedAnswer": { "@type": "Answer", "text": "En todo el Alto Valle: Neuquén Capital, Plottier, Centenario, Cipolletti, General Roca, Cinco Saltos y las localidades de la zona. También en Añelo y en el resto de la Patagonia." } },
         { "@type": "Question", "name": "¿Cuánto cuesta contratar una agencia de marketing digital en Neuquén?", "acceptedAnswer": { "@type": "Answer", "text": "El honorario de la agencia y la inversión publicitaria son dos números distintos: uno lo cobra la agencia y el otro va directo a Google o Meta. Conviene no mezclarlos nunca. Nosotros trabajamos con un honorario mensual fijo según el alcance del proyecto y sin contratos de permanencia, con empresas que invierten más de USD 3.000 por mes en marketing digital. El número exacto sale de mirar tu caso en la consultoría." } },
         { "@type": "Question", "name": "¿Qué inversión mínima necesito para empezar?", "acceptedAnswer": { "@type": "Answer", "text": "Trabajamos con empresas que invierten más de USD 3.000 por mes en marketing digital. Es el mínimo, y no es un número comercial: por debajo de eso las campañas no juntan las conversiones que Google y Meta necesitan para optimizar, y la cuenta se pasa la vida reiniciando el aprendizaje. Si tu presupuesto todavía está por debajo, te lo decimos en la primera llamada en vez de venderte algo que no va a funcionar." } },
         { "@type": "Question", "name": "¿En cuánto tiempo se ven resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los anuncios pueden empezar a mostrarse apenas se aprueban, pero la lectura confiable llega después: cada campaña necesita acumular conversiones antes de estabilizarse, y durante esa etapa los números se mueven mucho. En general, entre la tercera y la sexta semana ya se puede decidir con datos. Lo estructural, como la página donde cae el clic o qué pasa con la consulta después, tarda un poco más y es lo que más mueve la aguja." } },
@@ -136,7 +136,7 @@ get_header();
         <a href="/reservar-consultoria/" class="btn btn-primary">Reservá tu consultoría gratuita
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <p class="hga-note">Presencial en el Alto Valle o por videollamada. Sin permanencia.</p>
+      <p class="hga-note">Por videollamada. Sin permanencia.</p>
       <!-- NAP ARRIBA DEL PLIEGUE (pedido de la SEO, Update 04). Son exactamente los mismos tres
            datos que en #oficina, en la FAQ, en el footer y en el JSON-LD. Si cambia uno, se
            cambian todos y el Perfil de Empresa de Google el mismo día. Va en <address>, que es
@@ -424,18 +424,18 @@ get_header();
     <div class="loc-wall">
       <h3>Marcas de la región que confían en Caissa</h3>
       <div class="loc-logos reveal">
-        <img src="<?php echo CAISSA_IMG; ?>/logos/casino-del-rio-blanco.png" alt="Casino del Río" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/betsur_blanco.png" alt="Betsur" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/piren-rayen.png" alt="Pirén Rayén" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/del-rio-blanco.png" alt="Del Río" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/mil-ruedas.png" alt="Mil Ruedas" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/blanco-amor.png" alt="Blanco Amor" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/bazar_blanco.png" alt="Bazar" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.png" alt="Cruzando Mares" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/calafate-tour.png" alt="Calafate Tour" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.png" alt="Latitud Ushuaia Travel" width="220" height="108" loading="lazy" decoding="async" />
-        <img src="<?php echo CAISSA_IMG; ?>/logos/aislatek.png" alt="Aislatek" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/casino-del-rio-blanco.webp" alt="Casino del Río" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/betsur_blanco.webp" alt="Betsur" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/piren-rayen.webp" alt="Pirén Rayén" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/del-rio-blanco.webp" alt="Del Río" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/mil-ruedas.webp" alt="Mil Ruedas" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/blanco-amor.webp" alt="Blanco Amor" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/bazar_blanco.webp" alt="Bazar" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.webp" alt="Cruzando Mares" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/calafate-tour.webp" alt="Calafate Tour" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.webp" alt="Latitud Ushuaia Travel" width="220" height="108" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/logos/aislatek.webp" alt="Aislatek" width="220" height="108" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>
@@ -542,7 +542,7 @@ get_header();
          se le baja el cuerpo a --h2-sub, el mismo tamaño que usa el H2 del bloque de oficina. -->
     <div class="head-left head-cov reveal">
       <h2>Zonas donde trabajamos: Neuquén, Plottier, Centenario, Cipolletti y General Roca</h2>
-      <p>Si tu empresa está en la región, llegamos. Para reuniones presenciales nos movemos por la zona sin cargo.</p>
+      <p>Si tu empresa está en la región, conocemos tu mercado. Trabajamos por videollamada.</p>
     </div>
     <div class="cov">
       <div class="cov-c reveal"><b>Neuquén Capital</b><span>Donde está nuestra oficina.</span></div>
@@ -615,7 +615,6 @@ get_header();
         <summary><h3>¿Trabajan solo en Neuquén Capital o también en el Alto Valle?</h3><svg class="faqo-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
         <div class="faqo-body">
           <p>En todo el Alto Valle: Neuquén Capital, Plottier, Centenario, Cipolletti, General Roca, Cinco Saltos y las localidades de la zona. También en Añelo y en el resto de la Patagonia.</p>
-          <p>Para reuniones presenciales nos movemos por la región sin costo adicional.</p>
         </div>
       </details>
       <details class="faqo reveal">
@@ -684,7 +683,7 @@ get_header();
       <p>Estamos en Neuquén Capital y atendemos todo el Alto Valle. Quince minutos con tu cuenta en pantalla y te decimos qué cambiaríamos primero.</p>
       <a href="/reservar-consultoria/" class="btn btn-light">Reservá tu consultoría gratuita
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <div class="rea">Presencial o por videollamada · Sin contratos de permanencia</div>
+      <div class="rea">Por videollamada · Sin contratos de permanencia</div>
     </div>
   </div>
 </section>

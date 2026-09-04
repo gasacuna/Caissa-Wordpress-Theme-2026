@@ -186,3 +186,21 @@ if [ -n "$dup" ]; then
 fi
 
 :
+
+# --- 12. El comentario de la clase .js quedo desactualizado -----------------
+# Explicaba la clase por la barra sticky, y la rama de produccion borro las dos
+# reglas que la sostenian (html:not(.js) .sticky-cta y .sticky-cta.show): la barra
+# ahora es puro CSS. La clase sigue siendo necesaria por otras 12 reglas, asi que
+# lo que cambia es el motivo, no la decision.
+if grep -q 'html:not(.js) .sticky-cta{transform:none} como respaldo' "$OUT/header.php"; then
+  ini=$(grep -n ' \* La clase .js va aca' "$OUT/header.php" | cut -d: -f1)
+  fin=$(gawk -v s="$ini" 'NR>s && /^ \*\/$/{print NR; exit}' "$OUT/header.php")
+  gawk -v F="$HERE/parche-js-comentario.txt" -v A="$ini" -v B="$fin" '
+    NR==A { while ((getline l < F) > 0) print l; close(F); next }
+    NR>A && NR<B { next }
+    { print }' "$OUT/header.php" > "$OUT/header.tmp" && mv "$OUT/header.tmp" "$OUT/header.php"
+fi
+grep -q 'su visibilidad es' "$OUT/header.php" || die "no pude actualizar el comentario de la clase .js"
+grep -q 'como respaldo para' "$OUT/header.php" && die "quedo el comentario viejo de la clase .js en header.php"
+
+:

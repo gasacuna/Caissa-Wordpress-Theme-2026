@@ -482,7 +482,7 @@ get_header();
 <section class="sec-white">
   <div class="wrap">
     <div class="feat reveal">
-      <div class="feat-av"><img src="<?php echo CAISSA_IMG; ?>/paula-luzzi.jpg" alt="Paula Luzzi, CEO de Luzzi Digital" width="400" height="400" loading="lazy" decoding="async" /></div>
+      <div class="feat-av"><img src="<?php echo CAISSA_IMG; ?>/paula-luzzi.webp" alt="Paula Luzzi, CEO de Luzzi Digital" width="400" height="400" loading="lazy" decoding="async" /></div>
       <div>
         <p class="feat-q">“No tengo palabras para describir lo que cambió mi empresa después de empezar a trabajar con Manu y su equipo. Obtuve mejores resultados, procesos más fluidos y un acompañamiento continuo de parte de profesionales que son expertos, con una experiencia increíble. Mi vida cambió después de ellos. Si están pensando en contratarlos, no lo duden ni un segundo.”</p>
         <div class="feat-w">
@@ -512,7 +512,7 @@ get_header();
                       <span class="vc-metric">+249%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Colchonería Ideal<span>Ventas online</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Colchonería Ideal<span>Ventas online</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" href="https://youtu.be/-lwp7bWlWsU" data-yt="-lwp7bWlWsU" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Espacio Casa">
@@ -520,7 +520,7 @@ get_header();
                       <span class="vc-metric">+343%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Espacio Casa<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.png" alt="Espacio Casa" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Espacio Casa<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.webp" alt="Espacio Casa" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" href="https://youtu.be/JmsoXM6RJ1Q" data-yt="JmsoXM6RJ1Q" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Axion Lift">
@@ -528,7 +528,7 @@ get_header();
                       <span class="vc-metric">+400%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Axion Lift<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.png" alt="Axion Lift" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Axion Lift<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" href="https://youtu.be/RqmeH2SVeNo" data-yt="RqmeH2SVeNo" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Clean It">
@@ -536,7 +536,7 @@ get_header();
                       <span class="vc-metric">+155%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Clean It<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.png" alt="Clean It" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Clean It<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.webp" alt="Clean It" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" href="https://youtu.be/jx52kfHID5w" data-yt="jx52kfHID5w" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Neuros Center">
@@ -544,7 +544,7 @@ get_header();
                       <span class="vc-metric">+300%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Neuros Center<span>Leads</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.png" alt="Neuros Center" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Neuros Center<span>Leads</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.webp" alt="Neuros Center" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" href="https://youtu.be/9c2Mfic5VJA" data-yt="9c2Mfic5VJA" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Cefil Pool">
@@ -568,7 +568,7 @@ get_header();
                       <span class="vc-metric">+85%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Cruzando Mares<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.png" alt="Cruzando Mares" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Cruzando Mares<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.webp" alt="Cruzando Mares" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
         </div>
@@ -580,7 +580,7 @@ get_header();
                       <span class="vc-metric">+249%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Colchonería Ideal<span>Ventas online</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Colchonería Ideal<span>Ventas online</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" tabindex="-1" href="https://youtu.be/-lwp7bWlWsU" data-yt="-lwp7bWlWsU" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Espacio Casa">
@@ -588,7 +588,7 @@ get_header();
                       <span class="vc-metric">+343%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Espacio Casa<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.png" alt="Espacio Casa" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Espacio Casa<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.webp" alt="Espacio Casa" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" tabindex="-1" href="https://youtu.be/JmsoXM6RJ1Q" data-yt="JmsoXM6RJ1Q" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Axion Lift">
@@ -596,7 +596,7 @@ get_header();
                       <span class="vc-metric">+400%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Axion Lift<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.png" alt="Axion Lift" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Axion Lift<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" tabindex="-1" href="https://youtu.be/RqmeH2SVeNo" data-yt="RqmeH2SVeNo" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Clean It">
@@ -604,7 +604,7 @@ get_header();
                       <span class="vc-metric">+155%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Clean It<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.png" alt="Clean It" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Clean It<span>Leads calificados</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.webp" alt="Clean It" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" tabindex="-1" href="https://youtu.be/jx52kfHID5w" data-yt="jx52kfHID5w" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Neuros Center">
@@ -612,7 +612,7 @@ get_header();
                       <span class="vc-metric">+300%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Neuros Center<span>Leads</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.png" alt="Neuros Center" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Neuros Center<span>Leads</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.webp" alt="Neuros Center" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
           <a class="vidcard" tabindex="-1" href="https://youtu.be/9c2Mfic5VJA" data-yt="9c2Mfic5VJA" target="_blank" rel="noopener" aria-label="Ver el testimonio en video de Cefil Pool">
@@ -636,7 +636,7 @@ get_header();
                       <span class="vc-metric">+85%</span>
                       
                       <span class="vc-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-                      <span class="vc-foot"><span class="vc-name">Cruzando Mares<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.png" alt="Cruzando Mares" loading="lazy" decoding="async" /></span>
+                      <span class="vc-foot"><span class="vc-name">Cruzando Mares<span>Ventas</span></span><img width="220" height="108" class="vc-logo" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.webp" alt="Cruzando Mares" loading="lazy" decoding="async" /></span>
                     </span>
                   </a>
         </div>
@@ -672,7 +672,7 @@ get_header();
         <div class="rv-w">
           <span class="rv-av">I</span>
           <div class="rv-wt"><b>Ignacio</b><span>Gerente de Marketing · Axion Lift</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.png" alt="Axion Lift" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
@@ -680,9 +680,9 @@ get_header();
         <div class="rv-ml">en ventas</div>
         <p class="rv-q">“Ayudan a traducir todo el esfuerzo de la empresa en ventas. Lograron un ROAS récord. Son un gran aliado de nuestra empresa.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img class="av-espacio" src="<?php echo CAISSA_IMG; ?>/espacio-casa.jpg" alt="Pamela Cochia, cofundadora de Espacio Casa" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img class="av-espacio" src="<?php echo CAISSA_IMG; ?>/espacio-casa.webp" alt="Pamela Cochia, cofundadora de Espacio Casa" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Pamela Cochia</b><span>Cofundadora · Espacio Casa</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.png" alt="Espacio Casa" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.webp" alt="Espacio Casa" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
@@ -690,9 +690,9 @@ get_header();
         <div class="rv-ml">en ventas online</div>
         <p class="rv-q">“Superamos todas las expectativas y logramos récords en ventas. Gracias al caso de éxito lanzamos nuestro segundo e-commerce junto a ellos.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/colchoneria-ideal.jpg" alt="Juan París, E-commerce Manager de Colchonería Ideal" width="389" height="389" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/colchoneria-ideal.webp" alt="Juan París, E-commerce Manager de Colchonería Ideal" width="389" height="389" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Juan París</b><span>E-commerce Manager · Colchonería Ideal</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
@@ -700,7 +700,7 @@ get_header();
         <div class="rv-ml">en leads calificados</div>
         <p class="rv-q">“Caissa nos consiguió unos costes por leads y por click verdaderamente eficientes.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/cefilpool.jpg" alt="Jon Uría, Cefil Pool" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/cefilpool.webp" alt="Jon Uría, Cefil Pool" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Jon Uría</b><span>Dir. de ventas y marketing · Cefil Pool</span></div>
         </div>
       </article>
@@ -709,9 +709,9 @@ get_header();
         <div class="rv-ml">en facturación · 3x en clientes</div>
         <p class="rv-q">“Fue un verdadero placer trabajar con ellos.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/guillermo.jpg" alt="Guillermo Oliveti, COO de GOIAR" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/guillermo.webp" alt="Guillermo Oliveti, COO de GOIAR" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Guillermo Oliveti</b><span>COO · GOIAR</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/goiar-blanco.png" alt="GOIAR" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/goiar-blanco.webp" alt="GOIAR" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
@@ -721,7 +721,7 @@ get_header();
         <div class="rv-w">
           <span class="rv-av">M</span>
           <div class="rv-wt"><b>Mariana Luaces</b><span>Cofundadora · Cruzando Mares</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.png" alt="Cruzando Mares" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.webp" alt="Cruzando Mares" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
@@ -740,7 +740,7 @@ get_header();
         <div class="rv-w">
           <span class="rv-av">JG<!-- FOTO: falta la de Juan Gonzalez Trück (Clean It). §9 lo tiene pendiente. --></span>
           <div class="rv-wt"><b>Juan Gonzalez Trück</b><span>Dueño · Clean It</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.png" alt="Clean It" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/cleanit.webp" alt="Clean It" loading="lazy" decoding="async" />
         </div>
       </article>
     </div>
@@ -758,22 +758,22 @@ get_header();
       <article class="rv reveal">
         <p class="rv-q">“Lo que más nos impresionó fue su calidad humana, su paciencia y su profesionalismo.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/ana.jpg" alt="Ana Kaltenbrunner, Brand Manager de El Club de la Milanesa" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/ana.webp" alt="Ana Kaltenbrunner, Brand Manager de El Club de la Milanesa" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Ana Kaltenbrunner</b><span>Brand Manager · El Club de la Milanesa</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/club-de-la-milanesa.png" alt="El Club de la Milanesa" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/club-de-la-milanesa.webp" alt="El Club de la Milanesa" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
         <p class="rv-q">“La comunicación es siempre muy rápida, y la respuesta también.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/camila.jpg" alt="Camila Jiménez, Marketing Manager de Youtooproject" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/camila.webp" alt="Camila Jiménez, Marketing Manager de Youtooproject" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Camila Jiménez</b><span>Marketing Manager · Youtooproject</span></div>
         </div>
       </article>
       <article class="rv reveal">
         <p class="rv-q">“Estuvieron presentes, atentos y proactivos durante todo el proceso.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/pablo.jpg" alt="Pablo Marcovich, CEO de SAMBA" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/pablo.webp" alt="Pablo Marcovich, CEO de SAMBA" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Pablo Marcovich</b><span>CEO · SAMBA</span></div>
         </div>
       </article>
@@ -794,9 +794,9 @@ get_header();
         <div class="rv-ml">en leads</div>
         <p class="rv-q">“Ordenaron muy bien nuestra estrategia y aumentaron mucho nuestros clientes y conversiones.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/neuroscenter.jpg" alt="Sydney Pinoy, CEO de Neuros Center" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/neuroscenter.webp" alt="Sydney Pinoy, CEO de Neuros Center" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Sydney Pinoy</b><span>CEO · Neuros Center</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.png" alt="Neuros Center" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.webp" alt="Neuros Center" loading="lazy" decoding="async" />
         </div>
       </article>
       <article class="rv reveal">
@@ -804,9 +804,9 @@ get_header();
         <div class="rv-ml">en consultas · +20-25% de ROI</div>
         <p class="rv-q">“Entienden nuestro negocio, nuestros objetivos y la dinámica del turismo.”</p>
         <div class="rv-w">
-          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/silvana.jpg" alt="Silvana Ponce, fundadora de Latitud Ushuaia Travel" width="400" height="400" loading="lazy" decoding="async" /></span>
+          <span class="rv-av"><img src="<?php echo CAISSA_IMG; ?>/silvana.webp" alt="Silvana Ponce, fundadora de Latitud Ushuaia Travel" width="400" height="400" loading="lazy" decoding="async" /></span>
           <div class="rv-wt"><b>Silvana Ponce</b><span>Fundadora · Latitud Ushuaia Travel</span></div>
-          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.png" alt="Latitud Ushuaia Travel" loading="lazy" decoding="async" />
+          <img width="220" height="108" class="rv-logo" src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.webp" alt="Latitud Ushuaia Travel" loading="lazy" decoding="async" />
         </div>
       </article>
     </div>

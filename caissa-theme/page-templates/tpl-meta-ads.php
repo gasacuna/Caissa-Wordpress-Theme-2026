@@ -228,7 +228,7 @@ get_header();
   <div class="wrap">
     <div class="mbp">
       <div class="mbp-badge reveal">
-        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-meta.jpg" alt="Caissa es Meta Business Partner" width="1024" height="587" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-meta.webp" alt="Caissa es Meta Business Partner" width="223" height="128" loading="lazy" decoding="async" />
         <div class="t">Meta Business Partner</div>
         <div class="s">Certificación oficial de Meta para agencias con volumen y rendimiento demostrable.</div>
         <span class="tag">Vigente</span>
@@ -449,10 +449,10 @@ get_header();
           <p>Catálogo, Advantage+ y remarketing dinámico. Acá Meta rinde más que en ningún otro rubro si el feed está sano.</p>
           <a href="/industrias/ecommerce/">Ver casos de e-commerce</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.png" alt="Espacio Casa" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/padel-store.png" alt="Padel Store" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/multitelas_blanco.png" alt="Multitelas" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/espacioCasa_blanco.webp" alt="Espacio Casa" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/padel-store.webp" alt="Padel Store" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/multitelas_blanco.webp" alt="Multitelas" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -471,7 +471,7 @@ get_header();
           <p>Meta es estricto con el rubro: hay palabras y promesas que directamente no pasan revisión. Lo que cuenta al final es el paciente que llega, no el clic.</p>
           <a href="/industrias/salud/">Ver casos de salud</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.png" alt="Neuros Center" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/neuroscenter_blanco.webp" alt="Neuros Center" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -482,9 +482,9 @@ get_header();
           <p>Acá el video vende solo: la gente compra el lugar antes que el precio. La pauta arranca meses antes de la temporada.</p>
           <a href="/industrias/turismo/">Ver casos de turismo</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/atrapalo-blanco.png" alt="Atrápalo" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.png" alt="Latitud Ushuaia Travel" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.png" alt="Cruzando Mares" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/atrapalo-blanco.webp" alt="Atrápalo" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/ushuaia-travel.webp" alt="Latitud Ushuaia Travel" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/cruzando-mares.webp" alt="Cruzando Mares" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -495,8 +495,8 @@ get_header();
           <p>Campañas por radio de cobertura para llenar el local, con la creatividad hablándole a cada sucursal.</p>
           <!-- Rubro de estos dos INFERIDO del nombre de la marca. Confirmar con Manu. -->
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/club-de-la-milanesa.png" alt="El Club de la Milanesa" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/top-iluminaciones.png" alt="Top Iluminaciones" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/club-de-la-milanesa.webp" alt="El Club de la Milanesa" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/top-iluminaciones.webp" alt="Top Iluminaciones" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -507,8 +507,8 @@ get_header();
           <p>Meta funciona en B2B cuando se lo usa para generar demanda, no para cerrar. Contenido que educa y remarketing largo.</p>
           <a href="https://caissa.digital/caso/axionlift/">Ver el caso Axion Lift</a>
           <div class="ind-logos">
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.png" alt="Axion Lift" loading="lazy" decoding="async" />
-            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/dynamic-logistics.png" alt="Dynamic Logistics" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" />
+            <img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/dynamic-logistics.webp" alt="Dynamic Logistics" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -539,7 +539,7 @@ get_header();
         <p class="tst2-q">“Con Caissa, bajamos costos y tomamos mejores decisiones de marketing.”</p>
         <div class="tst2-w">
           <span><b>Celeste</b><span>Axion Lift</span></span>
-          <span class="tst2-logo"><img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.png" alt="Axion Lift" loading="lazy" decoding="async" /></span>
+          <span class="tst2-logo"><img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/axion-lift-blanco.webp" alt="Axion Lift" loading="lazy" decoding="async" /></span>
         </div>
       </article>
       <article class="tst2-c reveal">
@@ -548,7 +548,7 @@ get_header();
         <p class="tst2-q">“Junto a Caissa, crecimos desde cero y superamos todas las expectativas.”</p>
         <div class="tst2-w">
           <span><b>Néstor</b><span>CEO · Colchonería Ideal</span></span>
-          <span class="tst2-logo"><img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.png" alt="Colchonería Ideal" loading="lazy" decoding="async" /></span>
+          <span class="tst2-logo"><img width="220" height="108" src="<?php echo CAISSA_IMG; ?>/logos/colchoneria_blanco.webp" alt="Colchonería Ideal" loading="lazy" decoding="async" /></span>
         </div>
       </article>
     </div>

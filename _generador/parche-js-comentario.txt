@@ -1,0 +1,11 @@
+ * La clase .js va aca, en linea, y no en el JS diferido.
+ *
+ * Antes el motivo era la barra sticky: el CSS traia html:not(.js) .sticky-cta como
+ * respaldo y, si la clase llegaba con defer, la barra parpadeaba en cada carga. Esa
+ * regla ya no existe: desde que la barra quedo siempre visible, su visibilidad es
+ * puro CSS y no depende de JavaScript.
+ *
+ * Pero la clase SIGUE haciendo falta, y por eso no se toca: alimenta 12 reglas por
+ * pagina (.js .reveal y el embudo del metodo PCO). Si llegara con defer, el contenido
+ * con .reveal se veria un instante y despues se ocultaria hasta que el observer lo
+ * revele. Son 62 bytes y no bloquean nada.

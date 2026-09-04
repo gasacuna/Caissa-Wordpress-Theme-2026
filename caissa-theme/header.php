@@ -14,10 +14,16 @@
 <?php
 /*
  * La clase .js va aca, en linea, y no en el JS diferido.
- * El CSS usa html:not(.js) .sticky-cta{transform:none} como respaldo para
- * quien no tiene JavaScript. Si la clase se agregara desde un script con
- * defer, la barra se veria un instante y despues desapareceria: un parpadeo
- * en mobile en cada carga. Son 62 bytes y no bloquean nada.
+ *
+ * Antes el motivo era la barra sticky: el CSS traia html:not(.js) .sticky-cta como
+ * respaldo y, si la clase llegaba con defer, la barra parpadeaba en cada carga. Esa
+ * regla ya no existe: desde que la barra quedo siempre visible, su visibilidad es
+ * puro CSS y no depende de JavaScript.
+ *
+ * Pero la clase SIGUE haciendo falta, y por eso no se toca: alimenta 12 reglas por
+ * pagina (.js .reveal y el embudo del metodo PCO). Si llegara con defer, el contenido
+ * con .reveal se veria un instante y despues se ocultaria hasta que el observer lo
+ * revele. Son 62 bytes y no bloquean nada.
  */
 ?>
 <script>document.documentElement.classList.add('js')</script>
