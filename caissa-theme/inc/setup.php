@@ -29,6 +29,7 @@ add_action(
 				'principal'        => __( 'Principal (header)', 'caissa' ),
 				'footer_servicios' => __( 'Footer - Servicios', 'caissa' ),
 				'footer_caissa'    => __( 'Footer - Caissa', 'caissa' ),
+				'footer_destacados' => __( 'Footer - Enlaces destacados', 'caissa' ),
 			)
 		);
 

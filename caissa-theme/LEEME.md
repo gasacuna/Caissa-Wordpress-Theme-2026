@@ -8,13 +8,14 @@ Generado desde el repo `Caissa-Nueva-Web-2026`, rama `barra-sticky-fija-y-limpie
 
 ## Versión
 
-**Actual: 1.11.** El número vive en **un solo lugar** (el argumento que recibe el generador)
+**Actual: 1.12.** El número vive en **un solo lugar** (el argumento que recibe el generador)
 y de ahí se inyecta en los dos sitios donde tiene que aparecer: la cabecera `Version:` de
 `style.css`, que es la que lee WordPress, y la constante `CAISSA_VER` de `functions.php`.
 El build falla si no puede escribir en alguno de los dos, así que no se pueden desincronizar.
 
 | | |
 |---|---|
+| **1.12** | "Enlaces destacados": la fila nueva del footer, como cuarto menú de WordPress. |
 | **1.11** | Regenerado desde la rama de produccion: 22 plantillas (entra `/sobre-caissa/`), barra sticky siempre visible, assets sincronizados desde el repo (WebP) y `srcset`. |
 | **1.10** | Pasada de SEO sobre la nota del blog: headings, entidad autor, breadcrumb visible, categoría primaria de Rank Math y enriquecimiento de su grafo. |
 | **1.09** | 21 plantillas: entraron `/aviso-legal/`, `/reservar-consultoria/` y `/llamada-confirmada/`. Contenido actualizado en 16. Once correcciones al chasis. El tema ahora viaja con su generador. |
@@ -32,7 +33,8 @@ El build falla si no puede escribir en alguno de los dos, así que no se pueden 
 
 ## LO PRIMERO: qué hacer en WordPress después de subir el tema
 
-Son cinco cosas, y tres son nuevas de esta versión.
+Son cinco cosas. Novedades de esta versión: la página **Sobre Caissa** en el paso 1 y el
+**cuarto menú** ("Enlaces destacados") en el paso 4.
 
 ### 1. Crear las páginas nuevas y asignarles su plantilla
 
@@ -65,29 +67,40 @@ El repo sumó un enlace **Prensa, a `/#prensa`** en la segunda columna del foote
 Tecnología y Equipo. El footer del tema sale de menús de WordPress, así que ese enlace no
 viene en el código: hay que agregarlo en Apariencia, Menús, **Footer - Caissa**.
 
-### 4. Revisar los tres menús
+### 4. Revisar los CUATRO menús
 
 | Ubicación | Qué va |
 |---|---|
 | **Principal (header)** | Servicios (con Google Ads y Meta Ads como hijos) · Testimonios a `/reviews/` · Blog a `https://caissa.digital/blog/` |
 | **Footer - Servicios** | Agencia de Google Ads · Agencia de Meta Ads · Marketing en Neuquén · Marketing por industria a `/industrias/` |
-| **Footer - Caissa** | Tecnología · **Prensa a `/#prensa`** · Equipo · Valores Core a `/equipo/#valores` · Testimonios a `/reviews/` · Trabajá con nosotros a `/carreras/` · Contacto |
+| **Footer - Caissa** | Tecnología · Prensa a `/#prensa` · Equipo · **Sobre Caissa a `/sobre-caissa/`** · Valores Core a `/equipo/#valores` · Testimonios a `/reviews/` · Trabajá con nosotros a `/carreras/` · Contacto |
+| **Footer - Enlaces destacados** ⬅ nueva | Mejores Agencias de Marketing Digital Argentina a `https://caissa.digital/blog/mejores-agencias-marketing-digital-argentina-2026/` · Agencia Google Ads a `/agencia-google-ads/` · Mejores Agencias de Google Ads Argentina a `https://caissa.digital/blog/las-mejores-agencias-google-ads-argentina/` |
 
 El desplegable del header sale de la **jerarquía del menú**: arrastrá "Google Ads" y
 "Meta Ads" debajo de "Servicios". Soporta un solo nivel. Si un menú no está asignado, ese
 bloque no se imprime: no hay enlaces de respaldo cableados, para que no aparezca nada que
 nadie configuró.
 
+**Sobre "Enlaces destacados".** Es la fila que el repo agregó al pie del mapa del sitio, a
+lo ancho de las dos columnas, para SEO/GEO. En el HTML los tres enlaces están cableados; en
+el tema salen de un menú porque son justo el tipo de enlace que cambia seguido. Dos apuntan
+a notas del blog, que vive en WordPress y no en el repo, así que van con URL absoluta.
+
+⚠️ Un detalle que el propio repo anota: `/agencia-google-ads/` **ya está enlazada arriba, en
+la columna Servicios**, y Google sólo cuenta el anchor del **primer** enlace a una misma URL
+dentro de una página. O sea que el anchor que pesa es "Agencia de Google Ads" (el de arriba)
+y el de esta fila no suma nada para SEO. Está igual porque Manuel lo pidió así; si algún día
+se quiere que ese anchor cuente, hay que sacarlo de Servicios.
+
 ### 5. Cargar los títulos y descripciones en Rank Math
 
 Están todos en **`SEO-para-Rank-Math.tsv`**, que viaja al lado del tema (no adentro del ZIP):
-las 21 URLs con su `title`, su `meta description`, su `robots` y su `canonical`, tal como los
-declara el HTML del repo. El tema no los escribe.
+las **22 URLs** con su `title`, su `meta description`, su `robots`, su `canonical` y las
+cuatro `og:`, tal como los declara el HTML del repo. El tema no los escribe.
 
-⚠️ Una de las 21 filas tiene el canonical **relativo**: `/reservar-consultoria/`. Viene así
-del HTML del repo, donde las otras 20 lo declaran absoluto. Un canonical relativo es válido
-para Google pero es la excepción del set: conviene cargarlo en Rank Math como
-`https://caissa.digital/reservar-consultoria/` y corregirlo también en el repo.
+Los **22 canonical son absolutos**: el de `/reservar-consultoria/` venía relativo y la rama
+de producción lo corrigió, así que ya no hay excepciones en el set. La única fila con
+`robots` distinto es `/llamada-confirmada/`, que va `noindex, follow` (ver el paso 2).
 
 ---
 

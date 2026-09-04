@@ -123,3 +123,8 @@
    font-weight:800 ni el line-height de h1,h2,h3,h4, van explicitos. Se ven igual
    que con .foot-col h2 / .foot-col h3, que es lo que declara base.css. */
 .foot-col .foot-col-t{color:var(--ink);font-size:1rem;font-weight:800;line-height:1.12;margin:0 0 15px}
+
+/* Rotulo de "Enlaces destacados", la ultima fila del footer. Va en <p> y no en <h3>
+   por el mismo motivo que los titulos de columna: es una etiqueta, no una seccion
+   del documento. Copia lo que base.css le da a .foot-feat h3. */
+.foot-feat .foot-feat-t{color:var(--ink);font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0}

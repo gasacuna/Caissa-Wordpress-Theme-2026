@@ -28,6 +28,7 @@
           ?>
         </div>
       </div>
+      <?php caissa_footer_destacados(); ?>
     </div>
     <div class="foot-bottom">
       <div class="foot-legal">

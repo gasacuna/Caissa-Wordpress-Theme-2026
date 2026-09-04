@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CAISSA_VER', '1.11' );
+define( 'CAISSA_VER', '1.12' );
 define( 'CAISSA_DIR', get_template_directory() );
 define( 'CAISSA_URI', get_template_directory_uri() );
 define( 'CAISSA_IMG', CAISSA_URI . '/assets/img' );

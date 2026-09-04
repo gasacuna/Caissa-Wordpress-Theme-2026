@@ -204,3 +204,38 @@ grep -q 'su visibilidad es' "$OUT/header.php" || die "no pude actualizar el come
 grep -q 'como respaldo para' "$OUT/header.php" && die "quedo el comentario viejo de la clase .js en header.php"
 
 :
+
+# --- 13. "Enlaces destacados": la ultima fila del footer ---------------------
+# La trajo el chasis unificado del repo (commit 6f05fe5) y el tema no la tenia,
+# porque footer.php es un archivo del esqueleto y no se genera del HTML. Se suma
+# como CUARTO menu de WordPress y no cableada: son tres enlaces de SEO que hoy
+# apuntan a dos notas del blog y a la landing de Google Ads, y cambian seguido.
+if ! grep -q "'footer_destacados'" "$OUT/inc/setup.php"; then
+  sed -i "s|\t\t\t\t'footer_caissa'    => __( 'Footer - Caissa', 'caissa' ),|\t\t\t\t'footer_caissa'    => __( 'Footer - Caissa', 'caissa' ),\n\t\t\t\t'footer_destacados' => __( 'Footer - Enlaces destacados', 'caissa' ),|" "$OUT/inc/setup.php"
+fi
+grep -q "'footer_destacados'" "$OUT/inc/setup.php" || die "no pude registrar la ubicacion de menu footer_destacados"
+
+if ! grep -q 'function caissa_footer_destacados' "$OUT/inc/nav.php"; then
+  cat "$HERE/parche-destacados.php" >> "$OUT/inc/nav.php"
+fi
+grep -q 'function caissa_footer_destacados' "$OUT/inc/nav.php" || die "no pude agregar caissa_footer_destacados()"
+
+# La fila va DENTRO de .foot-top y DESPUES de .foot-links: su CSS es
+# grid-column:1/-1, o sea que es un item de la grilla de .foot-top y ocupa las dos
+# columnas. Si se metiera adentro de .foot-links quedaria dentro de otra grilla.
+if ! grep -q 'caissa_footer_destacados();' "$OUT/footer.php"; then
+  gawk '
+    /^      <\/div>$/ && !hecho && vistolinks { print; print "      <?php caissa_footer_destacados(); ?>"; hecho=1; next }
+    /<div class="foot-links"/ { vistolinks=1 }
+    { print }' "$OUT/footer.php" > "$OUT/footer.tmp" && mv "$OUT/footer.tmp" "$OUT/footer.php"
+fi
+grep -q 'caissa_footer_destacados();' "$OUT/footer.php" || die "no pude llamar a caissa_footer_destacados() desde footer.php"
+
+# El rotulo en <p> necesita su regla: al blindaje (las 22 tpl) y a blog.css.
+# La regla del rotulo ya vive en _generador/blindaje.css, que es un INPUT del paso 4.
+# No se agrega desde aca: parches.sh corre en el paso 9, cuando los tpl-*.css ya se
+# escribieron, asi que un append tardio no llegaria a esta corrida.
+grep -q 'foot-feat-t' "$OUT/assets/css/blog.css" || cat "$HERE/parche-feat.css" >> "$OUT/assets/css/blog.css"
+grep -q 'foot-feat-t' "$OUT/assets/css/blog.css" || die "no pude agregar la regla de .foot-feat-t a blog.css"
+
+:
