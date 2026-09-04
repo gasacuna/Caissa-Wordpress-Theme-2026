@@ -21,7 +21,7 @@
         caissa_footer_col( 'footer_caissa', 'Caissa' );
         ?>
         <div class="foot-col">
-          <h3><?php esc_html_e( 'Enlaces', 'caissa' ); ?></h3>
+          <p class="foot-col-t"><?php esc_html_e( 'Enlaces', 'caissa' ); ?></p>
           <?php
           caissa_bloque_social();
           caissa_ubicaciones();

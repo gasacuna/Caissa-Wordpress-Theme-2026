@@ -8,13 +8,14 @@ Generado desde el repo `Caissa-Nueva-Web-2026`, commit `20f8ff9`.
 
 ## Versión
 
-**Actual: 1.09.** El número vive en **un solo lugar** (el argumento que recibe el generador)
+**Actual: 1.10.** El número vive en **un solo lugar** (el argumento que recibe el generador)
 y de ahí se inyecta en los dos sitios donde tiene que aparecer: la cabecera `Version:` de
 `style.css`, que es la que lee WordPress, y la constante `CAISSA_VER` de `functions.php`.
 El build falla si no puede escribir en alguno de los dos, así que no se pueden desincronizar.
 
 | | |
 |---|---|
+| **1.10** | Pasada de SEO sobre la nota del blog: headings, entidad autor, breadcrumb visible, categoría primaria de Rank Math y enriquecimiento de su grafo. |
 | **1.09** | 21 plantillas: entraron `/aviso-legal/`, `/reservar-consultoria/` y `/llamada-confirmada/`. Contenido actualizado en 16. Once correcciones al chasis. El tema ahora viaja con su generador. |
 | **1.08** | Caja de autor de las notas. |
 | **1.07** | Blog: listado, archivos, búsqueda, nota abierta y 404. |
@@ -81,6 +82,152 @@ declara el HTML del repo. El tema no los escribe.
 del HTML del repo, donde las otras 20 lo declaran absoluto. Un canonical relativo es válido
 para Google pero es la excepción del set: conviene cargarlo en Rank Math como
 `https://caissa.digital/reservar-consultoria/` y corregirlo también en el repo.
+
+---
+
+## Qué cambió en 1.10: la nota del blog
+
+Salió de una auditoría SEO que comparó la nota del blog en la versión nueva contra la de
+producción. Lo que sigue es lo que se resolvió **en el tema**; al final está lo que hay que
+hacer en el panel, que el código no puede resolver.
+
+### ⚠️ La regla que ordena todo esto: el schema es de Rank Math
+
+**Ninguna plantilla del blog emite JSON-LD.** Verificable: no hay un solo
+`application/ld+json` en `single.php`, `home.php`, `archive.php`, `search.php`, `404.php` ni
+en los parciales. El `CAISSA_SCHEMA_PROPIO` de `functions.php` sólo afecta a las 21
+plantillas de página; el blog nunca lo usó.
+
+O sea que **no hay conflicto de schema en el blog**, y no lo hubo nunca. Todo lo que el tema
+agrega al marcado entra por los **filtros propios de Rank Math** y modifica el nodo que él ya
+emite. Es la diferencia que importa: dos nodos `BlogPosting` en la misma página compiten y
+Google elige uno solo. Ese era el problema del snippet suelto que había en Elementor.
+
+### Headings: seis h2 de chrome que competían con el artículo
+
+Alrededor del cuerpo de la nota había seis `<h2>` que no son estructura del artículo: el
+nombre del autor, "Seguí leyendo", los tres títulos de las notas relacionadas y el titular
+del CTA de cierre. Los `<h2>` que importan son los del **cuerpo**, que escribe el editor: son
+la estructura que Google y los modelos de lenguaje leen para entender de qué habla la nota.
+
+Ahora `single.php` emite **un solo heading, el `<h1>` del título**. Todo lo demás es `<p>` con
+clase, y **se ve exactamente igual**: las reglas nuevas de `blog.css` les copian el estilo que
+tenían como heading (un `<p>` no hereda el `font-weight:800` ni el `line-height:1.12` de
+`h1,h2,h3,h4`, así que van explícitos).
+
+| Antes | Ahora |
+|---|---|
+| `<h2>` nombre del autor | `<p class="bl-autor-nombre">` |
+| `<h2>Seguí leyendo</h2>` | `<p class="bl-rel-t">` |
+| `<h2>` de cada nota relacionada | `<p class="bl-card-t">` |
+| `<h2>Veamos si te podemos ayudar</h2>` | `<p class="bl-cta-t">` |
+| `<h3>` de columna del footer | `<p class="foot-col-t">` |
+
+**La tarjeta del blog tiene el título configurable**, y esto es importante no romperlo: en el
+**listado** del blog el título de cada tarjeta **sigue siendo un `<h2>`**, porque ahí sí es la
+estructura de ese documento. `single.php` es el único que pide `'titulo' => 'p'`, para el
+bloque de relacionadas. Si algún día se reusa la tarjeta en otro lado, el criterio es el
+mismo: `h2` si es una sección del documento, `p` si está dentro de un artículo que ya tiene
+sus propios `h2`.
+
+⚠️ **Los títulos del footer divergen del HTML del repo**, que sigue usando `<h3>`. Es a
+propósito. `footer.php` e `inc/nav.php` son archivos del esqueleto y el parche los convierte
+siempre, así que la divergencia se sostiene sola en cada regeneración. Queda decidir si se
+replica en el repo.
+
+### La categoría visible ahora la elige Rank Math
+
+La nota tiene tres categorías (Marketing Online, PPC y Ranking). El eyebrow mostraba **PPC**
+mientras `article:section` declaraba **Marketing Online**: el rótulo de la pantalla
+contradecía al marcado.
+
+`caissa_categoria_principal()` ahora lee primero la **categoría primaria de Rank Math**
+(el meta `rank_math_primary_category`), que es la misma que él usa para `article:section` y
+para el breadcrumb. Sin Rank Math, o sin primaria elegida, cae en la categoría con más
+entradas, que era el comportamiento anterior. También lee el meta de Yoast, por si algún día
+se migra.
+
+### Breadcrumb visible
+
+El `BreadcrumbList` estaba en el schema pero no había nada en pantalla que le correspondiera,
+y Google pide que el marcado se corresponda con algo visible.
+
+`caissa_breadcrumb()` **usa el breadcrumb de Rank Math cuando está disponible**
+(`rank_math_the_breadcrumbs()`), y no uno propio: así lo que se ve y lo que se declara salen
+de la **misma fuente** y no pueden divergir. Si el módulo está apagado, arma uno equivalente a
+mano, **con el nivel "Blog" incluido** (Inicio › Blog › Categoría › Artículo), que era el que
+faltaba en las dos versiones del sitio.
+
+### La entidad autor, en una sola URL
+
+El schema y el contenido apuntaban a `/equipo/manu-ferrini/`, pero el link "por Manu Ferrini"
+apuntaba a `/blog/author/manu-ferrini/`. Dos URLs para la misma persona diluyen la entidad
+justo donde más rinde: el nodo `Person` es lo que leen Google y los modelos de IA para saber
+quién firma.
+
+- `caissa_enlace_autor()` apunta al **perfil del sitio** (`/equipo/<persona>/`), con
+  `rel="author me"`, que es lo que tenía la versión anterior. El mapa se amplía sin tocar
+  código con el filtro `caissa_perfiles_autor`; si una persona no tiene perfil, cae en el
+  archivo de autor de WordPress, como antes.
+- **La foto del autor dejó de tener `alt=""`.** Un `alt` vacío declara "esta imagen no aporta
+  nada", y acá aporta: es el retrato de quien firma. Ahora lleva "Foto de <nombre>", así que
+  el retrato también ancla la entidad.
+- **El archivo de autor de WordPress va a `noindex`**, pero **sólo si Rank Math no está
+  activo**. Si está, esa decisión es suya (Títulos y Metas → Otros archivos) y el tema no le
+  discute.
+
+### Enriquecer el grafo de Rank Math, sin competirle
+
+Rank Math no pone `wordCount`, `mainEntityOfPage` ni `image` en el `BlogPosting`, y los tres
+son de los que usan Google y los motores generativos para dimensionar y ubicar el artículo. El
+filtro `rank_math/json_ld` los agrega **sobre su nodo**.
+
+**Y para las notas que son un listado** —del tipo "las 10 mejores agencias"— hay una casilla
+nueva en la columna lateral del editor: **Caissa · listado → "Esta nota es un listado"**. Al
+tildarla, el tema arma un `ItemList` con los `<h2>` del cuerpo (cada uno como `ListItem` con
+su `position`, su `name` y, si el `h2` tiene un enlace adentro, su `url`) y lo cuelga del
+`BlogPosting` como `mainEntity`. Es el marcado que Google usa para los carruseles de listas y
+el que parsean más limpio los modelos para responder "cuáles son las mejores agencias de
+Argentina".
+
+**No se hace solo en todas las notas, y es a propósito**: en una nota común los `h2` no son
+ítems de nada y el marcado sería falso. Por eso se activa nota por nota.
+
+### Los menores del informe
+
+- **El `title="… 1"` autogenerado de la imagen destacada.** WordPress arrastra el título del
+  adjunto al atributo `title`, y los que genera solos no describen nada (además de mostrarse
+  como tooltip). Se saca con un filtro; el `alt` se conserva, que es el que importa.
+- **`og:locale` decía `es_ES`** (España) mientras el documento declara `lang="es-AR"`. Se
+  corrige a **`es_LA`**, que es el español de Latinoamérica: `es_AR` no está en la lista de
+  locales que soporta Facebook.
+- **El tiempo de lectura ahora es filtrable** (`caissa_minutos_lectura`). La nota mostraba
+  "17 min" en pantalla y "16 minutos" en `twitter:data2`: son dos algoritmos distintos y no
+  hay forma de que coincidan solos. Con el filtro se puede forzar el del tema al del plugin.
+
+### Lo que el tema NO puede resolver: cuatro cosas del panel
+
+1. **Cargar LinkedIn, X y la foto en el perfil de usuario de WordPress.** Es la forma correcta
+   de recuperar lo que hacía el snippet de Elementor: así el nodo `Person` que emite Rank Math
+   sale completo, con su `sameAs`. Pegar el snippet de vuelta sería peor, porque metería un
+   segundo `BlogPosting` a competir.
+2. **Verificar que el autor de la nota sea el usuario correcto.** En el demo el post está
+   asignado a otro usuario, y por eso el `Person` de Rank Math apunta a un Gravatar con hash
+   distinto. En producción tiene que ser el mismo usuario.
+3. **Caché y CDN.** La versión de producción tiene WP Rocket (lazyload, preload de enlaces,
+   Speculation Rules) y la nueva no tiene nada. El tema es liviano y compensa bastante, pero
+   caché de página y CDN siguen haciendo falta.
+4. **El `og:image` de la nota**, si se quiere uno propio distinto de la imagen destacada.
+
+### Antes de cambiar el DNS
+
+Del informe, y no es del tema: search-replace de URLs, desactivar el plugin de "coming soon",
+quitar "disuadir a los motores de búsqueda" en Ajustes → Lectura, reimportar la configuración
+de Rank Math desde producción, verificar el autor del post y cargar GTM. Al publicar:
+`curl -A Googlebot` deslogueado y comparar el `<head>` contra la versión actual, Rich Results
+Test, Inspección de URL en Search Console con solicitud de indexación, y monitorear esa URL en
+GSC un par de semanas. **El ID del post y el slug son los mismos, así que el artículo no
+necesita redirección.**
 
 ---
 

@@ -2,6 +2,16 @@
 /**
  * La nota abierta. Plantilla de la JERARQUIA de WordPress: se aplica sola.
  *
+ * OJO CON LOS HEADINGS. Adentro de <article> el unico h1 es el titulo, y los h2 son los
+ * del CUERPO de la nota: los escribe el editor y son la estructura que Google y los
+ * modelos de lenguaje leen para entender de que habla el articulo. Todo lo que este
+ * ALREDEDOR del cuerpo (el nombre del autor, "Segui leyendo", los titulos de las notas
+ * relacionadas, el CTA de cierre) va como <p> con estilo, NO como heading: si compite en
+ * el mismo nivel, ensucia el esquema del articulo. Era el caso: habia seis h2 de chrome
+ * peleandole a los del contenido.
+ *
+ * El schema lo emite RANK MATH, no esta plantilla. Aca no hay ni un application/ld+json.
+ *
  * @package Caissa
  */
 
@@ -11,9 +21,20 @@ while ( have_posts() ) :
 	the_post();
 	$cat = caissa_categoria_principal();
 	$min = caissa_minutos_lectura();
+	$uid = (int) get_the_author_meta( 'ID' );
 	?>
 <main id="contenido">
 	<article <?php post_class(); ?>>
+
+		<?php
+		/*
+		 * Breadcrumb visible. El BreadcrumbList estaba en el schema sin nada en pantalla
+		 * que le correspondiera, y Google pide que se correspondan. Sale del breadcrumb de
+		 * Rank Math cuando esta disponible, para que lo visible y lo declarado no puedan
+		 * divergir.
+		 */
+		caissa_breadcrumb();
+		?>
 
 		<header class="bl-post-head">
 			<div class="wrap">
@@ -26,7 +47,7 @@ while ( have_posts() ) :
 					<span class="punto" aria-hidden="true"></span>
 					<span><?php echo esc_html( $min ); ?> min de lectura</span>
 					<span class="punto" aria-hidden="true"></span>
-					<span><?php esc_html_e( 'por', 'caissa' ); ?> <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a></span>
+					<span><?php esc_html_e( 'por', 'caissa' ); ?> <?php caissa_enlace_autor( $uid ); ?></span>
 				</div>
 			</div>
 		</header>
@@ -56,8 +77,11 @@ while ( have_posts() ) :
 			 *   - sin biografia: solo la foto y el nombre. Es el caso de las notas que
 			 *     escribe otra persona del equipo, donde no hay nada mas que decir.
 			 * La bio se llena en Usuarios > Perfil > Informacion biografica.
+			 *
+			 * El nombre va en <p class="bl-autor-nombre"> y no en <h2>: es la firma de la
+			 * nota, no una seccion del articulo. Y el enlace apunta al perfil del sitio
+			 * (/equipo/<persona>/), que es la URL de entidad, no al archivo de autor.
 			 */
-			$uid = (int) get_the_author_meta( 'ID' );
 			$bio = trim( (string) get_the_author_meta( 'description' ) );
 			?>
 			<aside class="bl-autor<?php echo $bio ? '' : ' bl-autor--simple'; ?>">
@@ -66,7 +90,7 @@ while ( have_posts() ) :
 					<?php if ( $bio ) : ?>
 					<span class="bl-autor-rot"><?php esc_html_e( 'Escrito por', 'caissa' ); ?></span>
 					<?php endif; ?>
-					<h2><?php the_author(); ?></h2>
+					<p class="bl-autor-nombre"><?php caissa_enlace_autor( $uid ); ?></p>
 					<?php if ( $bio ) : ?>
 					<p class="bl-autor-bio" id="bio-autor"><?php echo esc_html( $bio ); ?></p>
 					<button type="button" class="bl-autor-mas" aria-expanded="false" aria-controls="bio-autor">
@@ -92,12 +116,17 @@ while ( have_posts() ) :
 			?>
 		<section class="bl-rel">
 			<div class="wrap">
-				<h2><?php esc_html_e( 'Seguí leyendo', 'caissa' ); ?></h2>
+				<p class="bl-rel-t"><?php esc_html_e( 'Seguí leyendo', 'caissa' ); ?></p>
 				<div class="bl-grid">
 					<?php
 					while ( $rel->have_posts() ) :
 						$rel->the_post();
-						get_template_part( 'template-parts/tarjeta-post' );
+						/*
+						 * titulo => 'p': en el listado del blog el titulo de cada tarjeta
+						 * SI es un h2 (es la estructura de ese documento), pero aca esta
+						 * dentro de un articulo que ya tiene sus propios h2.
+						 */
+						get_template_part( 'template-parts/tarjeta-post', null, array( 'titulo' => 'p' ) );
 					endwhile;
 					wp_reset_postdata();
 					?>

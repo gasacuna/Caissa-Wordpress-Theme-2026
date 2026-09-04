@@ -15,15 +15,29 @@ sed -i "s|'caissa_cta_url', 'https://caissa.digital/reservar-consultoria/'|'cais
 grep -q 'href="/aviso-legal/"' "$OUT/footer.php"                        || die "no pude reapuntar el Aviso Legal del footer"
 grep -q "'caissa_cta_url', '/reservar-consultoria/'" "$OUT/inc/nav.php" || die "no pude reapuntar caissa_cta_url()"
 
-# --- 2. Los titulos de columna del footer: h2 -> h3 --------------------------
-# El commit 20f8ff9 los bajo de h2 a h3 a proposito, para sacarlos del outline de
-# encabezados de la home. El CSS ya cubre las dos etiquetas (.foot-col h2,.foot-col h3),
-# asi que se ve exactamente igual; lo que cambia es la jerarquia que lee Google.
-sed -i "s|echo '<div class=\"foot-col\"><h2>' . esc_html( \$titulo ) . '</h2>'|echo '<div class=\"foot-col\"><h3>' . esc_html( \$titulo ) . '</h3>'|" "$OUT/inc/nav.php"
-sed -i 's|<h2><?php esc_html_e( .Enlaces., .caissa. ); ?></h2>|<h3><?php esc_html_e( '"'"'Enlaces'"'"', '"'"'caissa'"'"' ); ?></h3>|' "$OUT/footer.php"
-grep -q '<div class="foot-col"><h3>' "$OUT/inc/nav.php" || die "no pude bajar a h3 el titulo de columna de caissa_footer_col()"
-grep -q '<h3><?php esc_html_e' "$OUT/footer.php"        || die "no pude bajar a h3 el titulo Enlaces del footer"
-[ "$(grep -c '<h2>' "$OUT/footer.php")" = "0" ]          || die "quedo un <h2> en el footer"
+# --- 2. Los titulos de columna del footer: dejan de ser headings -------------
+# El commit 20f8ff9 los bajo de h2 a h3, y la auditoria SEO del blog pidio bajarlos
+# un paso mas: "Servicios", "Caissa" y "Enlaces" son ROTULOS de columna, no secciones
+# del documento. Como headings ensucian el esquema de cada pagina, y en una nota del
+# blog compiten con los h2 del cuerpo del articulo, que son la estructura que leen
+# Google y los modelos de lenguaje.
+#
+# Se ven exactamente igual: la regla .foot-col .foot-col-t (en blindaje.css para las 21
+# plantillas y en blog.css para las vistas del blog) les copia el estilo que base.css le
+# da a .foot-col h2 y .foot-col h3.
+#
+# OJO: esto diverge del HTML del repo, que sigue usando <h3>. Es a proposito y hay que
+# decidir si se replica alla; mientras no se replique, el tema lo aplica igual porque
+# footer.php e inc/nav.php son archivos del esqueleto y este parche los toca siempre.
+for et in h2 h3; do
+  sed -i "s|echo '<div class=\"foot-col\"><$et>' . esc_html( \$titulo ) . '</$et>'|echo '<div class=\"foot-col\"><p class=\"foot-col-t\">' . esc_html( \$titulo ) . '</p>'|" "$OUT/inc/nav.php"
+  sed -i "s|<$et><?php esc_html_e( 'Enlaces', 'caissa' ); ?></$et>|<p class=\"foot-col-t\"><?php esc_html_e( 'Enlaces', 'caissa' ); ?></p>|" "$OUT/footer.php"
+done
+grep -q '<div class="foot-col"><p class="foot-col-t">' "$OUT/inc/nav.php" || die "no pude convertir a <p> el titulo de columna de caissa_footer_col()"
+grep -q '<p class="foot-col-t"><?php esc_html_e' "$OUT/footer.php"        || die "no pude convertir a <p> el titulo Enlaces del footer"
+if grep -qE '<h[23]>' "$OUT/footer.php"; then
+  die "quedo un heading en el footer"
+fi
 
 # --- 3. aria-current en el boton del CTA ------------------------------------
 # El repo marca el boton del nav con aria-current="page" en /reservar-consultoria/.

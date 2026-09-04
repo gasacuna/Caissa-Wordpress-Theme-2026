@@ -244,3 +244,71 @@ a.eyebrow:hover{background:#DFE4FE}
   height:auto;left:5px;line-height:normal;padding:15px 23px 14px;
   text-decoration:none;top:5px;width:auto;z-index:100000
 }
+
+/* =============================================================================
+   HEADINGS QUE DEJARON DE SER HEADINGS
+
+   Alrededor del cuerpo de una nota habia seis h2 de chrome —el nombre del autor,
+   "Segui leyendo", los tres titulos de las relacionadas y el titular del CTA— que
+   competian con los h2 del CUERPO del articulo, que son la estructura que Google y
+   los modelos de lenguaje leen para entender de que habla la nota.
+
+   Pasaron a <p> con clase. Estas reglas les dan el mismo aspecto que tenian como
+   heading: un <p> no hereda el font-weight:800 ni el line-height:1.12 de
+   h1,h2,h3,h4, asi que van explicitos.
+
+   Se ve IGUAL que antes. Lo unico que cambia es el esquema de encabezados.
+   ============================================================================= */
+
+/* Titulo de tarjeta. En el listado del blog sigue siendo un h2 de verdad (ahi SI es
+   la estructura del documento); en las relacionadas de una nota abierta es un <p>. */
+.bl-card .bl-card-t{font-weight:800;line-height:1.28;letter-spacing:-.015em}
+
+/* Nombre del autor en la firma. Ojo: .bl-autor p ya define color y tamano de la bio,
+   asi que esta regla va DESPUES para ganarle. */
+.bl-autor .bl-autor-nombre{font-weight:800;line-height:1.12;font-size:1.05rem;
+  color:var(--ink);margin:4px 0 0}
+.bl-autor .bl-autor-nombre a{color:inherit}
+.bl-autor .bl-autor-nombre a:hover{color:var(--violet)}
+.bl-autor--simple .bl-autor-nombre{margin:0;font-size:1rem}
+
+/* "Segui leyendo" */
+.bl-rel > .wrap > .bl-rel-t{font-weight:800;font-size:var(--h2-sub);line-height:1.12;
+  letter-spacing:-.025em;color:var(--ink);text-align:center;margin:0 0 34px}
+
+/* Titular del CTA de cierre. Copia el estilo de .final-panel h2 de base.css. */
+.bl-cta .final-copy .bl-cta-t{font-weight:800;font-size:var(--h2);line-height:1.12;
+  letter-spacing:-.028em;margin:0 0 16px;color:#fff}
+
+/* Titulos de columna del footer. Misma razon: son rotulos, no estructura. Toman el
+   estilo que base.css le da a .foot-col h2 y .foot-col h3. */
+.foot-col .foot-col-t{color:var(--ink);font-size:1rem;font-weight:800;line-height:1.12;
+  margin:0 0 15px}
+
+
+/* =============================================================================
+   BREADCRUMB VISIBLE
+
+   El BreadcrumbList vivia en el schema sin nada en pantalla que le correspondiera, y
+   Google pide que el marcado se corresponda con algo visible. Cuando Rank Math tiene
+   el modulo activo, el markup lo imprime el (nav.rank-math-breadcrumb): las reglas
+   cubren las dos formas para que se vea igual en cualquiera de los dos casos.
+   ============================================================================= */
+.bl-crumbs{padding-top:26px;font-size:.84rem;color:var(--muted);line-height:1.5}
+.bl-crumbs a{color:var(--muted)}
+.bl-crumbs a:hover{color:var(--violet);text-decoration:underline;text-underline-offset:3px}
+.bl-crumbs .sep,
+.bl-crumbs .separator{margin:0 7px;color:var(--line)}
+.bl-crumbs [aria-current="page"],
+.bl-crumbs .last{color:var(--ink-soft);font-weight:600}
+/* El breadcrumb de Rank Math trae su propio nav adentro del wrap: que no sume ancho. */
+.bl-crumbs .rank-math-breadcrumb{margin:0}
+.bl-crumbs .rank-math-breadcrumb p{margin:0}
+
+@media (max-width:760px){
+  .bl-crumbs{padding-top:18px;font-size:.79rem}
+  /* En el celular el titulo de la nota en las migas se come tres renglones: se corta. */
+  .bl-crumbs [aria-current="page"],
+  .bl-crumbs .last{display:inline-block;max-width:100%;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+}

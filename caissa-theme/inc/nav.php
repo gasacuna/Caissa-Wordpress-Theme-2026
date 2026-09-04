@@ -161,7 +161,7 @@ function caissa_footer_col( $ubicacion, $titulo ) {
 	if ( ! $arbol ) {
 		return;
 	}
-	echo '<div class="foot-col"><h3>' . esc_html( $titulo ) . '</h3>' . "
+	echo '<div class="foot-col"><p class="foot-col-t">' . esc_html( $titulo ) . '</p>' . "
 ";
 	foreach ( $arbol as $nodo ) {
 		$it = $nodo['item'];

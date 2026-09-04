@@ -2,12 +2,20 @@
 /**
  * Una tarjeta del listado del blog.
  *
- * @param bool $args['destacada'] La primera del listado va horizontal y mas grande.
+ * @param bool   $args['destacada'] La primera del listado va horizontal y mas grande.
+ * @param string $args['titulo']    Etiqueta del titulo: 'h2' (por defecto) o 'p'.
+ *
+ * Por que el titulo es configurable: en el listado del blog cada tarjeta ES una seccion
+ * del documento y su titulo corresponde que sea un h2. Pero la misma tarjeta se reusa en
+ * el bloque de relacionadas de una nota abierta, y ahi ese h2 competiria con los h2 del
+ * cuerpo del articulo, que son la estructura que leen Google y los modelos de lenguaje.
+ * En ese caso single.php pide 'p'.
  *
  * @package Caissa
  */
 
 $destacada = ! empty( $args['destacada'] );
+$titulo    = ( isset( $args['titulo'] ) && 'p' === $args['titulo'] ) ? 'p' : 'h2';
 $cat       = caissa_categoria_principal();
 $min       = caissa_minutos_lectura();
 $tiene_img = has_post_thumbnail();
@@ -37,7 +45,7 @@ $tiene_img = has_post_thumbnail();
 		<?php if ( $cat ) : ?>
 		<span class="bl-tag"><?php echo esc_html( $cat->name ); ?></span>
 		<?php endif; ?>
-		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+		<<?php echo esc_attr( $titulo ); ?> class="bl-card-t"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></<?php echo esc_attr( $titulo ); ?>>
 		<?php
 		$resumen = get_the_excerpt();
 		if ( $resumen ) :
