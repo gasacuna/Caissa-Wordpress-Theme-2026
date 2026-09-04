@@ -1,0 +1,45 @@
+# =========================================================================
+# REDIRECTS 301 - hoja "MAPEO REDIRECTS FINAL"
+#
+# Va en el .htaccess de la raiz, ARRIBA de la linea "# BEGIN WordPress".
+#
+# Cada patron esta anclado con ^ y $, asi que las reglas son independientes
+# entre si y el orden no importa. El /?$ del final hace que cada linea
+# tome la URL con barra final y sin ella.
+# =========================================================================
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteRule ^agencia-instagram-ads/?$                               /agencia-meta-ads/  [R=301,L,NC]
+RewriteRule ^agencia-facebook-ads/?$                                /agencia-meta-ads/  [R=301,L,NC]
+RewriteRule ^agencia-growth-marketing/?$                            /blog/contratar-agencia-growth-marketing/  [R=301,L,NC]
+RewriteRule ^agencia-marketing-digital-argentina/?$                 /  [R=301,L,NC]
+RewriteRule ^llamada/?$                                             /reservar-consultoria/  [R=301,L,NC]
+RewriteRule ^plantilla-optimizar-google-ads/?$                      /blog/como-por-que-crear-landing-pages-google-ads/  [R=301,L,NC]
+RewriteRule ^valores/?$                                             /equipo/  [R=301,L,NC]
+RewriteRule ^sumate/?$                                              /carreras/  [R=301,L,NC]
+RewriteRule ^equipo/candela-ivon-pesiney/?$                         /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/liana-valdebenito/?$                            /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/gaston-acuna/?$                                 /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/lucas-accoce/?$                                 /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/juan-fornero/?$                                 /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/facundo-alvarez/?$                              /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/jose-salinas/?$                                 /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/alejandra-blanco/?$                             /equipo/  [R=301,L,NC]
+RewriteRule ^equipo/raquel-galeano/?$                               /equipo/  [R=301,L,NC]
+RewriteRule ^careers/?$                                             /carreras/  [R=301,L,NC]
+RewriteRule ^careers/especialista-performance-marketing-neuquen/?$  /carreras/especialista-performance-marketing-neuquen/  [R=301,L,NC]
+RewriteRule ^careers/especialista-en-performance-marketing/?$       /carreras/especialista-en-performance-marketing/  [R=301,L,NC]
+RewriteRule ^caso/?$                                                /industrias/  [R=301,L,NC]
+RewriteRule ^caso/ecommerce/?$                                      /industrias/ecommerce/  [R=301,L,NC]
+RewriteRule ^caso/ecommerce/padel/?$                                /industrias/ecommerce/  [R=301,L,NC]
+RewriteRule ^caso/generacion-de-leads/juridico/?$                   /industrias/abogados/  [R=301,L,NC]
+RewriteRule ^caso/rubro-salud/?$                                    /industrias/salud/  [R=301,L,NC]
+RewriteRule ^caso/generacion-de-leads/rubro-salud/?$                /industrias/salud/  [R=301,L,NC]
+RewriteRule ^caso/generacion-de-leads/constructoras/?$              /industrias/constructoras/  [R=301,L,NC]
+RewriteRule ^caso/constructoras/?$                                  /industrias/constructoras/  [R=301,L,NC]
+RewriteRule ^caso/generacion-de-leads/turismo/?$                    /industrias/turismo/  [R=301,L,NC]
+RewriteRule ^caso/generacion-de-leads/?$                            /industrias/  [R=301,L,NC]
+
+</IfModule>

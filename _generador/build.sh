@@ -579,7 +579,21 @@ sed -i "s/^Version:.*/Version:     $VER/" "$OUT/style.css"
 sed -i "s/define( 'CAISSA_VER', '[^']*' );/define( 'CAISSA_VER', '$VER' );/" "$OUT/functions.php"
 grep -q "Version:     $VER" "$OUT/style.css"          || die "no pude escribir la version en style.css"
 grep -q "'CAISSA_VER', '$VER'" "$OUT/functions.php"    || die "no pude escribir la version en functions.php"
-sed -i "s/Diez plantillas de pagina/Veintiuna plantillas de pagina/" "$OUT/style.css"
+# El numero de plantillas de la Description, que es lo que se lee en Apariencia >
+# Temas. Antes esto era un sed de "Diez" a "Veintiuna" cableado: servia una sola vez
+# y despues quedaba viejo en silencio. Con 24 plantillas la descripcion seguia
+# diciendo "Veintiuna". Ahora sale del conteo real y se escribe sobre cualquier
+# numero anterior, asi que se corrige solo en cada build.
+NPLA=$(ls "$OUT"/page-templates/tpl-*.php | wc -l)
+case "$NPLA" in
+  10) PALA="Diez";;         20) PALA="Veinte";;        21) PALA="Veintiuna";;
+  22) PALA="Veintidos";;    23) PALA="Veintitres";;    24) PALA="Veinticuatro";;
+  25) PALA="Veinticinco";;  26) PALA="Veintiseis";;    27) PALA="Veintisiete";;
+  28) PALA="Veintiocho";;   29) PALA="Veintinueve";;   30) PALA="Treinta";;
+  *)  PALA="$NPLA";;
+esac
+sed -i -E "s/(Diez|Veinte|Veintiun[ao]|Veintidos|Veintitres|Veinticuatro|Veinticinco|Veintiseis|Veintisiete|Veintiocho|Veintinueve|Treinta|[0-9]+) plantillas de pagina/$PALA plantillas de pagina/" "$OUT/style.css"
+grep -q "$PALA plantillas de pagina" "$OUT/style.css" || die "no pude poner el numero de plantillas ($NPLA) en la Description de style.css"
 
 # Parches al esqueleto: cambios que el repo hizo y que no viven en el contenido de
 # las plantillas sino en los archivos compartidos del tema. Cada uno se verifica.

@@ -47,7 +47,15 @@ if ! grep -q 'function caissa_cta_actual' "$OUT/inc/nav.php"; then
 fi
 grep -q 'function caissa_cta_actual' "$OUT/inc/nav.php" || die "no pude agregar caissa_cta_actual()"
 sed -i 's|<a href="<?php echo esc_url( caissa_cta_url() ); ?>" class="btn btn-primary">|<a href="<?php echo esc_url( caissa_cta_url() ); ?>"<?php echo caissa_cta_actual() ? '"'"' aria-current="page"'"'"' : '"''"'; ?> class="btn btn-primary">|g' "$OUT/header.php"
-[ "$(grep -c 'caissa_cta_actual()' "$OUT/header.php")" = "2" ] || die "esperaba dos botones de CTA marcados con aria-current en header.php"
+# El numero de botones NO se cablea. Hasta 1.12 el header tenia dos CTA (el del
+# nav y el del drawer mobile) y este chequeo exigia 2; el parche 15 saco el del
+# drawer, asi que sobre un esqueleto 1.13+ hay uno solo y el 2 hacia fallar el
+# build entero al reconstruir. La invariante de verdad no es cuantos hay, es que
+# TODOS lleven el aria-current, y esa se cumple en los dos casos.
+TOT=$(grep -c 'btn btn-primary' "$OUT/header.php")
+MARC=$(grep -c 'caissa_cta_actual()' "$OUT/header.php")
+[ "$TOT" -ge 1 ] || die "header.php se quedo sin ningun boton de CTA"
+[ "$MARC" = "$TOT" ] || die "header.php tiene $TOT CTA y solo $MARC con aria-current"
 
 # --- 4. Comentarios que quedaron con el numero viejo de plantillas -----------
 NPL=$(ls "$OUT"/page-templates/*.php | wc -l)

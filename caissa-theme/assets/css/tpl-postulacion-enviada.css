@@ -1,0 +1,173 @@
+
+@media (max-width:820px){
+  section{padding:52px 0}
+  .compare-sec,.audit,.results,.answer,.live,.services{padding:58px 0}
+  .proof,.rev2{padding:56px 0}
+  .method{padding:56px 0 60px}
+  .section-head{margin-bottom:30px}
+  .team-grid,.audit-panel,.answer-grid,.live-grid{gap:30px}
+  .steps{gap:26px}
+}
+@media (max-width:560px){
+  /* Ritmo de seccion */
+  section{padding:44px 0}
+  .compare-sec,.audit,.results,.answer,.live,.services{padding:48px 0}
+  .proof,.rev2{padding:46px 0}
+  .method{padding:46px 0 50px}
+  .final{padding:40px 0}
+  .rel{padding:40px 0}
+  .section-head{margin-bottom:24px}
+  .wrap{padding:0 20px}
+
+  /* Tarjetas de la home: menos marco, mismo contenido */
+  .rescard{padding:20px 20px}
+  .rescards{gap:12px}
+  .feat-review{padding:22px 20px;gap:16px}
+  .fit-card{padding:22px 20px}
+  .fit-cols{gap:14px}
+  .why-picky{padding:20px 22px}
+  .expect .card{padding:20px 22px}
+  .commit{padding:20px 22px}
+  .rcard{padding:20px 22px}
+  .r2card{padding:20px 22px}
+  .pf3-chat{padding:22px 20px}
+  .final-panel{padding:32px 20px}
+  .screenmock .scr{padding:16px}
+
+  /* Tarjetas compartidas por las landings */
+  .svc-card,.ind,.tst,.pcard,.cons,.faqo,.wedo-c,.pp-b,.cta-ga{padding:20px 20px}
+  .price-note{padding:18px 20px}
+
+  /* Titulares un escalon mas chicos: a 375px un H2 de 32,8px se come tres renglones.
+     Valores planos, no clamp: con vw el titulo crecia justo por debajo del breakpoint. */
+  :root{--h2:1.86rem;--h2-sub:1.62rem}
+  .rescard h3{font-size:1.22rem}
+  .m4-verb{font-size:1.3rem}
+
+  /* Tabla comparativa apilada: 6 filas x 237px eran 1.448px de alto para 74 palabras.
+     Se afina el aire de cada celda y la barra de titulo; el contenido no cambia. */
+  .compare{gap:11px}
+  .crow > div{padding:11px 16px}
+  .c-label{font-size:1rem;padding-top:10px;padding-bottom:10px}
+  .c-before::before,.c-after::before{margin-bottom:3px}
+
+  /* Enlaces del footer: 24px de alto no es un objetivo tactil. Con el padding quedan en 44. */
+  .foot-col a{padding:10px 0;margin-bottom:0}
+  .foot-legal a,.foot-copy a{display:inline-block;padding:4px 0}
+}
+
+
+/* /postulacion-enviada/ - la pagina a la que cae quien termino de postularse a una
+   vacante. Es la gemela de /llamada-confirmada/ pero para candidatos, no para leads.
+
+   Va NOINDEX (no tiene que rankear) y NO lleva ningun CTA de reserva ni bloque de
+   consultoria: quien llega es un candidato. Venderle una consultoria de Google Ads
+   seria absurdo. Tampoco barra sticky, por lo mismo.
+
+   El texto es el de produccion, literal. Lo que cambia es la estructura: los
+   parrafos que arrancaban con un guion suelto pasan a ser enlaces y tarjetas de
+   verdad, y las expectativas del proceso salen del muro de texto. */
+
+.pe{padding:56px 0 8px}
+.pe-head{max-width:720px;margin:0 auto;text-align:center}
+
+/* La pildora del tilde: mismo patron que el .ok-badge de /llamada-confirmada/, en
+   verde porque confirma que algo llego bien, no que haya que hacer algo. */
+.pe-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;
+  padding:7px 15px 7px 12px;border-radius:999px;
+  background:rgba(22,163,74,.09);border:1px solid rgba(22,163,74,.2);
+  font-size:.8rem;font-weight:800;letter-spacing:.03em;color:#12813C}
+.pe-badge svg{width:15px;height:15px;flex:0 0 auto}
+.pe-head h1{font-size:clamp(1.72rem,4vw,2.5rem);line-height:1.12;letter-spacing:-.025em;margin:0}
+.pe-lead{font-size:1.06rem;line-height:1.62;color:var(--ink-soft);margin:18px auto 0;max-width:660px}
+
+/* --- Que pasa ahora (blanca) ---------------------------------------------- */
+.pe-next{background:var(--bg);padding:66px 0}
+.pe-next h2{text-align:center;margin:0 0 26px}
+.pe-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:900px;margin:0 auto}
+.pe-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:24px 24px 22px}
+.pe-card h3{font-size:1.06rem;letter-spacing:-.01em;margin:0 0 8px}
+.pe-card p{font-size:.94rem;line-height:1.6;color:var(--ink-soft);margin:0}
+
+/* --- Mientras tanto (soft) ------------------------------------------------- */
+.pe-more{background:var(--bg-soft);padding:66px 0 72px}
+.pe-more h2{text-align:center;margin:0 0 8px}
+.pe-sub{text-align:center;font-size:.99rem;color:var(--ink-soft);margin:0 auto 26px;max-width:620px}
+
+.pe-links{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:900px;margin:0 auto}
+.pe-link{background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow-sm)}
+.pe-link a{display:flex;align-items:center;gap:14px;padding:17px 19px;
+  text-decoration:none;color:inherit;border-radius:14px}
+.pe-ico{width:40px;height:40px;flex:0 0 auto;display:grid;place-items:center;
+  border-radius:11px;background:var(--bg-soft);color:var(--violet)}
+.pe-ico svg{width:20px;height:20px}
+.pe-link b{display:block;font-size:.98rem;font-weight:700;letter-spacing:-.01em}
+.pe-link span{display:block;font-size:.84rem;color:var(--muted);margin-top:2px}
+.pe-link:hover{border-color:#D9DCF2}
+.pe-link a:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* Las redes van como chips y no como tarjetas: son tres destinos de una palabra,
+   y tres tarjetas mas competirian con las dos notas de arriba. */
+.pe-redes{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 0}
+.pe-chip{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;
+  min-height:44px;box-sizing:border-box;
+  background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);
+  font-size:.9rem;font-weight:700;color:var(--ink);text-decoration:none}
+.pe-chip:hover{border-color:#D9DCF2;color:var(--violet)}
+.pe-chip svg{width:14px;height:14px;color:var(--muted)}
+.pe-chip:hover svg{color:var(--violet)}
+
+.pe-thanks{text-align:center;font-size:1.02rem;font-weight:700;color:var(--ink);
+  margin:44px 0 0;padding-top:30px;border-top:1px solid var(--line)}
+/* inline-block con padding: como enlace de texto medía 21px de alto y el minimo
+   tactil del proyecto es 44 (§24.d). */
+.pe-thanks a{display:inline-block;margin-top:6px;padding:11px 16px;
+  color:var(--violet);font-weight:700;text-decoration:none}
+.pe-thanks a:hover{text-decoration:underline}
+.pe-thanks a:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:8px}
+
+@media (max-width:760px){
+  .pe-cards,.pe-links{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .pe{padding:36px 0 4px}
+  .pe-next,.pe-more{padding:48px 0}
+  .pe-lead{font-size:1rem}
+  .pe-card{padding:20px 18px 18px}
+  .pe-thanks{margin-top:34px;padding-top:24px}
+}
+
+/* =====================================================================
+   BLINDAJE  (lo agrega el generador, no viene del HTML original)
+
+   Los badges del footer y estos logos se dimensionaban SOLO con el
+   atributo height del HTML. Cualquier hoja que declare img{height:auto}
+   lo anula y los manda al tamano natural: los badges pasan de 80px de
+   alto a 1727px. El tema ya saca el CSS de bloques de WordPress, que es
+   quien traia esa regla, pero declararlo aca cuesta 400 bytes y deja de
+   depender de eso. Tambien evita salto de layout (CLS) mientras cargan.
+   ===================================================================== */
+.foot-badges img{width:auto;height:38px;display:block}
+.foot-badges img[src*="badge-premier"],
+.foot-badges img[src*="badge-gptw"],
+.foot-badges img[src*="badge-ecommerce"]{height:50px}
+
+/* El panel del desplegable, un poco mas cerca del nav (venia con 9px de aire).
+   El ::before es un puente invisible que cubre ese hueco: sin el, al bajar el
+   mouse del boton al panel se dispara mouseleave y el menu se cierra en la cara
+   del usuario. Los dos numeros TIENEN que ser iguales. */
+.nav-menu{top:calc(100% + 4px)}
+.nav-menu::before{top:-4px;height:4px}
+
+/* Los titulos de columna del footer dejaron de ser headings: son rotulos, no
+   estructura del documento (auditoria SEO del blog). Como <p> no heredan el
+   font-weight:800 ni el line-height de h1,h2,h3,h4, van explicitos. Se ven igual
+   que con .foot-col h2 / .foot-col h3, que es lo que declara base.css. */
+.foot-col .foot-col-t{color:var(--ink);font-size:1rem;font-weight:800;line-height:1.12;margin:0 0 15px}
+
+/* Rotulo de "Enlaces destacados", la ultima fila del footer. Va en <p> y no en <h3>
+   por el mismo motivo que los titulos de columna: es una etiqueta, no una seccion
+   del documento. Copia lo que base.css le da a .foot-feat h3. */
+.foot-feat .foot-feat-t{color:var(--ink);font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0}
