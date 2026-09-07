@@ -28,7 +28,7 @@
   function carruselArrastrable(mqSel, trSel, anim, DUR){
     var mq=document.querySelector(mqSel), tr=mq&&mq.querySelector(trSel);
     if(!mq||!tr||!window.PointerEvent) return;
-    var drag=false, moved=false, x0=0, base=0, pos=0, timer=null;
+    var drag=false, moved=false, x0=0, base=0, pos=0, timer=null, pid=null, slop=6, objetivo=null;
     function ancho(){ return tr.scrollWidth/2; }
     function actual(){
       var m=getComputedStyle(tr).transform; if(!m||m==='none') return 0;
@@ -37,15 +37,36 @@
     function fijar(v){ var W=ancho(); pos=((v%W)+W)%W-W; tr.style.transform='translate3d('+pos+'px,0,0)'; }
     mq.addEventListener('pointerdown',function(e){
       if(e.button&&e.button!==0) return;
-      drag=true; moved=false; x0=e.clientX; clearTimeout(timer);
-      base=actual(); tr.style.animation='none'; tr.style.transform='translate3d('+base+'px,0,0)';
-      mq.setPointerCapture(e.pointerId);
+      drag=true; moved=false; x0=e.clientX; pid=e.pointerId; clearTimeout(timer);
+      /* El umbral depende del puntero. Con el dedo, 6px es nada: el touch slop de
+         las plataformas ronda los 15px, asi que un toque normal ya se movia mas
+         de 6 y el click quedaba suprimido: la tarjeta no abria. */
+      slop = (e.pointerType==='mouse') ? 6 : 14;
+      /* La tarjeta se guarda ACA, donde e.target es inequivoco. Si el click llega
+         redirigido, el lightbox la saca de aca. */
+      objetivo = (e.target && e.target.closest) ? e.target.closest('a,[data-yt]') : null;
+      base=actual();
+      /* La pista NO se toca todavia, y la captura del puntero NO se pide: las dos
+         cosas se hacen recien cuando el arrastre supera el umbral. Hacerlas en el
+         pointerdown era lo que rompia el toque simple. */
     });
     mq.addEventListener('pointermove',function(e){
-      if(!drag) return; var dx=e.clientX-x0; if(Math.abs(dx)>6) moved=true; fijar(base+dx);
+      if(!drag) return;
+      var dx=e.clientX-x0;
+      if(!moved){
+        if(Math.abs(dx)<=slop) return;   /* debajo del umbral no es arrastre: no se toca nada */
+        moved=true;
+        /* Recien ahora esto es un arrastre: se frena el marquee y se pide la
+           captura, que es lo que permite seguir arrastrando fuera del elemento. */
+        tr.style.animation='none'; tr.style.transform='translate3d('+base+'px,0,0)';
+        try{ mq.setPointerCapture(pid); }catch(err){}
+      }
+      fijar(base+dx);
     });
     function soltar(){
       if(!drag) return; drag=false;
+      /* Sin arrastre no hay nada que restaurar: la animacion nunca se freno. */
+      if(!moved) return;
       timer=setTimeout(function(){
         var W=ancho(), frac=(-pos)/W; tr.style.transform='';
         tr.style.animation=anim+' '+(DUR/1000)+'s linear infinite';
@@ -54,6 +75,8 @@
     }
     mq.addEventListener('pointerup',soltar); mq.addEventListener('pointercancel',soltar);
     mq.addEventListener('click',function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); moved=false; } },true);
+    /* El lightbox necesita la tarjeta aunque el click venga con otro target. */
+    mq.__objetivo = function(){ return objetivo; };
     mq.querySelectorAll('img').forEach(function(i){ i.draggable=false; });
   }
   carruselArrastrable('.vidmarquee','.vidtrack','vid-scroll',46000);
@@ -278,7 +301,11 @@
     }
     document.querySelectorAll('.vidmarquee').forEach(function(m){
       m.addEventListener('click', function(e){
-        var card=e.target.closest('.vidcard[data-yt]');
+        /* Primero por el target del evento. Si viniera redirigido (pasa cuando un
+           ancestro tuvo la captura del puntero), se cae a la tarjeta que el
+           carrusel guardo en el pointerdown. */
+        var card=e.target.closest && e.target.closest('.vidcard[data-yt]');
+        if(!card && m.__objetivo){ var g=m.__objetivo(); if(g && g.matches && g.matches('.vidcard[data-yt]')) card=g; }
         if(card){ e.preventDefault(); open(card.getAttribute('data-yt'), card); }
       });
     });

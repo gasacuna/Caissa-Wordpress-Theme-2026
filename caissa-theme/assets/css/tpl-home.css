@@ -255,8 +255,8 @@
      right:30px las rayitas cruzaban el circulo y se solapaban con el texto en PC.
      Si cambia esa palabra, recalcular este numero. */
   .m4-line{position:absolute;left:18px;right:102px;top:79px;height:2px;display:flex}
-  .m4-seg-solid{width:calc((100% - 174px)/3);background:var(--ink-soft);border-radius:2px}
-  .m4-seg-dash{flex:1;background:repeating-linear-gradient(90deg,#AEB4D6 0 7px,transparent 7px 15px)}
+  .m4-seg-solid{width:calc((100% - 174px)/3);background:var(--ink-soft);border-radius:2px;transform-origin:left center}
+  .m4-seg-dash{flex:1;background:repeating-linear-gradient(90deg,#AEB4D6 0 7px,transparent 7px 15px);transform-origin:left center}
 
   .m4-track{list-style:none;margin:0;padding:0 150px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px}
   .m4-node{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--ink-soft);font-weight:800;font-size:.95rem;color:var(--ink);transition:border-color .2s ease,color .2s ease}
@@ -305,7 +305,13 @@
   }
   @keyframes m4in{from{opacity:0;transform:translateY(10px)}}
   @keyframes m4pop{from{opacity:0;transform:scale(.8)}}
-  @keyframes m4draw{from{clip-path:inset(-3px 100% -3px 0)}to{clip-path:inset(-3px 0 -3px 0)}}
+  /* scaleX y no clip-path: clip-path NO es compuesta, asi que el navegador
+     repintaba cada frame y Lighthouse lo marcaba. En una linea horizontal el
+     efecto es el mismo. Unico matiz: en el segmento punteado las rayas se
+     estiran durante los 0,75s y recien al final quedan a su tamanio; con
+     clip-path aparecian ya del tamanio final. Es un reveal de tres cuartos de
+     segundo y nadie lo mira dos veces. */
+  @keyframes m4draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
   /* ---- Mobile: la línea se vuelve vertical (línea a la izquierda, etapas a la derecha) ---- */
   @media (max-width:760px){

@@ -69,3 +69,66 @@ ExpiresByType text/html                 "access plus 0 seconds"
 # "Content-Encoding: br" en el HTML, el CSS y el JS. Un bloque de mod_deflate
 # acá sería redundante y podría pisar el Brotli con gzip, que comprime peor.
 # =========================================================================
+
+
+# =========================================================================
+# CABECERAS DE SEGURIDAD
+#
+# Esto sube el **77 de Prácticas recomendadas**, no el rendimiento. De los
+# nueve ítems que Lighthouse marca en esa categoría, cinco son cabeceras que
+# el servidor no manda, y tres de esos cinco se resuelven acá sin ningún
+# riesgo. Van juntas en este archivo porque es el mismo `.htaccess`.
+# =========================================================================
+
+<IfModule mod_headers.c>
+
+  # HSTS: obliga a https durante un año. Requisito para el ítem "Usa una
+  # política de HSTS sólida".
+  #
+  # ⚠️ Antes de activarlo hay que estar seguro de que TODO el sitio y todos
+  # los subdominios andan por https. Con includeSubDomains, un subdominio que
+  # sólo exista en http queda inaccesible para quien ya visitó el sitio, y el
+  # navegador recuerda la orden durante un año: no se puede revertir sacando
+  # la cabecera. El staging (demo.caissa.digital) es un subdominio y hoy anda
+  # por https, así que está bien; si mañana aparece uno que no, hay que sacar
+  # includeSubDomains ANTES.
+  #
+  # "preload" NO se pone a propósito: eso pide entrar en la lista que viene
+  # compilada en los navegadores, y salir de esa lista lleva meses.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Clickjacking. Resuelve "Mitigar el clickjacking con XFO o CSP".
+  # SAMEORIGIN y no DENY: el propio sitio embebe iframes (el mapa de Neuquén,
+  # el Typeform, los videos de YouTube) y DENY rompería la vista previa del
+  # editor de WordPress.
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Aislamiento de origen. Resuelve "Asegúrate de que el aislamiento de origen
+  # sea adecuado con COOP".
+  #
+  # same-origin-allow-popups y NO same-origin: con same-origin se rompen los
+  # flujos que abren una ventana y esperan respuesta (los login social, y
+  # cualquier popup de pago). allow-popups deja pasar esos y cumple igual.
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+
+  # Estas dos no las pide Lighthouse pero son gratis y estándar.
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+</IfModule>
+
+# =========================================================================
+# LO QUE NO SE PUEDE ARREGLAR CON UNA LÍNEA
+#
+# Los otros dos ítems de Prácticas recomendadas son CSP contra XSS y Trusted
+# Types. Los dos exigen declarar de dónde puede venir cada script, y este
+# sitio carga GTM, GA4, Google Ads, el píxel de Meta, LinkedIn, YouTube,
+# Typeform y Google Maps. Una CSP escrita a ciegas rompe el seguimiento en
+# silencio: los scripts dejan de ejecutarse y no hay error visible en la
+# página, sólo datos que no llegan.
+#
+# Se hace, pero es un trabajo propio: armar la lista real de orígenes,
+# publicarla primero en modo Report-Only, mirar los informes una o dos
+# semanas y recién entonces hacerla obligatoria. No entra en un bloque de
+# .htaccess pegado a las apuradas.
+# =========================================================================
