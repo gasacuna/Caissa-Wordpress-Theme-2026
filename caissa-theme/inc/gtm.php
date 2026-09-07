@@ -21,6 +21,13 @@
  *      los navegadores que no lo tienen), asi que SIEMPRE carga,
  *   3. y si el visitante toca, teclea o gira la rueda antes, carga en ese
  *      momento, que es cuando ya no molesta a ninguna metrica.
+ *   4. y si la peticion trae la vista previa de GTM o el Asistente de etiquetas
+ *      (gtm_debug / gtm_preview / gtm_auth en la URL, o la cookie __TAG_ASSISTANT
+ *      o TA_ID), carga INMEDIATO. Sin esto el Asistente se queda esperando gtm.js
+ *      y reporta "no conectado", que es exactamente lo que hace pensar que el
+ *      contenedor no mide cuando en realidad mide. La deteccion es del lado del
+ *      cliente a proposito: leerla en PHP la hornearia en el HTML cacheado por
+ *      WP Rocket / LiteSpeed y por el CDN de Hostinger.
  *
  * Lo importante: NO se exige interaccion. Ese es el patron que usan los plugins
  * de cache para sacar 100 y el que hace perder entre el 10 y el 30 % de las
@@ -235,6 +242,7 @@ s.async=true;
 s.src='https://www.googletagmanager.com/gtm.js?id='+__ID__;
 (d.head||d.documentElement).appendChild(s)
 }
+if(/[?&]gtm_(debug|preview|auth)=/.test(w.location.search)||d.cookie.indexOf('__TAG_ASSISTANT')>-1||d.cookie.indexOf('TA_ID=')>-1){ir();return}
 if(__YA__){ir();return}
 for(i=0;i<ev.length;i++){w.addEventListener(ev[i],ir,op)}
 if(__SOLO__){return}

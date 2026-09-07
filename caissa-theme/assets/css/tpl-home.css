@@ -131,7 +131,11 @@
   .hero-press img{width:auto;filter:brightness(0);opacity:.5}
   .hp-img-infobae{height:17px}
   .hp-img-rionegro{height:16px}
-  @media(max-width:640px){.hp-img-infobae{height:15px}.hp-img-rionegro{height:14px}}
+  /* El wordmark de El Cronista es 7,1:1 contra el 4,2:1 de Infobae: a la misma
+     altura se veria enorme. Con 14px los tres quedan del mismo ancho, que es lo
+     que iguala el peso visual. */
+  .hp-img-cronista{height:14px}
+  @media(max-width:640px){.hp-img-infobae{height:15px}.hp-img-rionegro{height:14px}.hp-img-cronista{height:12px}}
 
   /* Credentials / trust bar */
   .creds{background:rgba(255,255,255,.72);border-top:1px solid rgba(16,20,58,.06);border-bottom:1px solid rgba(16,20,58,.06)}
@@ -498,6 +502,7 @@
   .founder-press img{width:auto;filter:brightness(0);opacity:.55}
   .founder-press .fp-infobae{height:17px}
   .founder-press .fp-rionegro{height:16px}
+  .founder-press .fp-cronista{height:14px}
   /* Bajados de H2 a texto por SEO (menos H2 en el outline), pero se ven igual:
      heredan el peso 800 y el interlineado de los titulos via .team-claim/.answer-claim. */
   .team-text h2,.team-text p.team-claim{font-size:var(--h2-sub);margin-bottom:20px}
@@ -745,6 +750,9 @@
      alineen igual tengan logo o texto. */
   .pr-medio{display:flex;align-items:center;min-height:18px;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--violet)}
   .pr-logo{height:17px;width:auto;display:block}
+  /* Mismo criterio que en los "Visto en": a 17px este wordmark se comeria media
+     tarjeta. A 13px queda del ancho del de Infobae. */
+  .pr-logo-cronista{height:13px}
   .pr-tit{font-size:.92rem;line-height:1.45;color:var(--ink);font-weight:600}
   .pr-ir{margin-top:auto;padding-top:6px;color:var(--muted);font-size:1rem}
   .pr-card:hover .pr-ir{color:var(--violet)}
@@ -849,6 +857,13 @@
     .services{padding:60px 0}
     .nav-links,.nav-cta .btn{display:none}
     .burger{display:flex}
+    /* Header mobile mas grande (pedido de Gaston, 07/09/2026): el nav pasa de 72 a
+       84px y el logo de 28 a 32. El scroll-padding sube en consecuencia, porque el
+       valor anterior estaba calculado para los 73px del header viejo y los anclas
+       quedarian tapados. */
+    .nav-inner{height:84px}
+    .nav-inner a img{height:32px}
+    html{scroll-padding-top:96px}
     .nav-mobile.open{display:flex}
     .fit-cols{grid-template-columns:1fr}
     .cases{grid-template-columns:1fr}
@@ -890,9 +905,13 @@
     /* Hero mobile: menos aire y una foto que no se coma media pantalla (§ATF) */
     .hero{padding:40px 0 44px}
     .hero-grid{gap:34px}
-    .hero-left .eyebrow{margin-bottom:14px}
-    .hero-left .sub{margin-top:18px}
-    .hero-cta{margin-top:26px}
+    /* Mas aire entre los textos (pedido de Gaston, 07/09/2026). Antes: 14 / 18 / 26px
+       con el H2 en line-height 1.08. */
+    .hero-left .eyebrow{margin-bottom:18px}
+    .hero-left h2{line-height:1.16}
+    .hero-left .sub{margin-top:24px}
+    .hero-left .sub-note{margin-top:18px}
+    .hero-cta{margin-top:32px}
     .hero-stage{max-width:286px}
     .hero-press{margin-top:24px}
   }

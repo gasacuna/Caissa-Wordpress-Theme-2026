@@ -1,0 +1,71 @@
+# =========================================================================
+# CACHÉ DE LOS ASSETS DEL TEMA - Caissa
+#
+# Va en el mismo .htaccess de la raíz que el bloque de redirects, también
+# ARRIBA de "# BEGIN WordPress". Los dos bloques son independientes.
+#
+# QUÉ ARREGLA, MEDIDO EL 07/09/2026
+#
+# Hoy el servidor manda "Cache-Control: public, max-age=604800" (7 días) para
+# el CSS, el JS, las fuentes y las imágenes del tema. Lighthouse marca como
+# defecto cualquier valor por debajo de un año en un recurso versionado, y en
+# una visita repetida el navegador revalida en vez de servir de disco.
+#
+# POR QUÉ UN AÑO ES SEGURO ACÁ, Y NO LO SERÍA EN CUALQUIER TEMA
+#
+# El tema encola TODOS sus assets con "?ver=CAISSA_VER", y esa constante se
+# reescribe en cada build (hoy 1.15). Al subir una versión nueva cambia la
+# query de cada archivo, así que el navegador pide una URL distinta y no hay
+# forma de que sirva la vieja. Un año de caché sobre una URL que cambia con
+# cada deploy no puede quedar rancio.
+#
+# ⚠️ La única excepción son las FUENTES, que el tema referencia desde el CSS
+# sin "?ver=". Igual llevan un año: son archivos que no cambian nunca, y si
+# alguna vez se reemplaza una hay que renombrarla.
+#
+# LO QUE ESTE BLOQUE NO ARREGLA
+#
+# Nada del servidor. La medición dice que el HTML se sirve con
+# "x-powered-by: PHP" en cada petición, o sea que NO hay caché de página, y el
+# TTFB queda entre 288 y 542 ms. Eso no se resuelve desde el .htaccess: se
+# resuelve activando la caché de LiteSpeed en el panel. Es el lever más grande
+# que queda y no es de este archivo.
+# =========================================================================
+
+<IfModule mod_expires.c>
+ExpiresActive On
+
+# Un año para lo que el tema versiona con ?ver= y para las fuentes.
+ExpiresByType text/css                  "access plus 1 year"
+ExpiresByType application/javascript    "access plus 1 year"
+ExpiresByType text/javascript           "access plus 1 year"
+ExpiresByType font/woff2                "access plus 1 year"
+ExpiresByType image/webp                "access plus 1 year"
+ExpiresByType image/svg+xml             "access plus 1 year"
+ExpiresByType image/png                 "access plus 1 year"
+ExpiresByType image/jpeg                "access plus 1 year"
+
+# El HTML NO se cachea en el navegador: cada visita tiene que ver la versión
+# publicada. La caché del HTML es la del servidor (LiteSpeed), no la del
+# cliente, y son dos cosas distintas.
+ExpiresByType text/html                 "access plus 0 seconds"
+</IfModule>
+
+# mod_expires escribe Expires y max-age. immutable no lo pone, y es el que le
+# dice al navegador que no revalide ni con un refresh: se puede afirmar sin
+# riesgo justamente porque la URL lleva ?ver=.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff2|webp|svg|png|jpe?g|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # El HTML, explícito, para que ningún proxy intermedio se lo guarde.
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# =========================================================================
+# COMPRESIÓN: NO HACE FALTA. Verificado el 07/09/2026: el servidor ya manda
+# "Content-Encoding: br" en el HTML, el CSS y el JS. Un bloque de mod_deflate
+# acá sería redundante y podría pisar el Brotli con gzip, que comprime peor.
+# =========================================================================

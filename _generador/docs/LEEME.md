@@ -734,6 +734,39 @@ y es el que hace desaparecer las sesiones sin clic.
 ese modo esté encendido: la página va noindex, su puntaje no le importa a nadie,
 y perder una conversión cuesta más que cualquier métrica.
 
+### Cómo verificar que mide (1.16)
+
+**El tag no está en el `<head>` y eso es correcto.** Ver el código fuente y no
+encontrar el snippet de Google no significa que no mida: `gtm.js` lo inyecta el
+cargador del pie, después del `load`.
+
+Hasta 1.15 eso rompía la forma normal de comprobarlo. El **Asistente de
+etiquetas** (Tag Assistant) abre el sitio y espera a que `gtm.js` se anuncie; con
+el diferido llegaba unos 3 segundos tarde y el Asistente ya había desistido con
+un "no conectado". El contenedor medía, pero no había manera cómoda de verlo.
+
+Desde **1.16** el cargador detecta la vista previa y carga **inmediato**:
+
+| Señal | De dónde sale |
+|---|---|
+| `gtm_debug`, `gtm_preview`, `gtm_auth` en la URL | vista previa de GTM |
+| cookie `__TAG_ASSISTANT` o `TA_ID` | Asistente de etiquetas |
+
+Medido con el cargador real: **3 ms** en modo depuración contra **3008 ms** en
+una visita normal. Para el visitante común no cambia nada.
+
+La detección es **del lado del cliente a propósito**. Leerla en PHP la hornearía
+en el HTML que cachean WP Rocket, LiteSpeed y el CDN de Hostinger, y entonces la
+vista previa dependería de que la página no estuviera cacheada.
+
+**A mano, sin Asistente**, en la consola del navegador y esperando unos segundos:
+
+```js
+typeof window.google_tag_manager        // 'object' = el contenedor cargó
+Object.keys(window.google_tag_manager)  // incluye GTM-5M89995 y G-YZYMJZ5G9S
+window.dataLayer.map(e => e.event)      // gtm.js, gtm.dom, gtm.load
+```
+
 ### No duplica
 
 ⚠️ **En `caissa.digital` hay hoy otro inyector de GTM.** Se ve el mismo

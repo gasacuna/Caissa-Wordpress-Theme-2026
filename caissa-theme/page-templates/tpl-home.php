@@ -123,6 +123,7 @@ get_header();
         <span class="hp-label">Visto en</span>
         <img class="hp-img-infobae" src="<?php echo CAISSA_IMG; ?>/press-infobae.svg" alt="Infobae" width="249" height="59" decoding="async" />
         <img class="hp-img-rionegro" src="<?php echo CAISSA_IMG; ?>/press-rionegro.svg" alt="Diario Río Negro" width="270" height="59" decoding="async" />
+        <img class="hp-img-cronista" src="<?php echo CAISSA_IMG; ?>/press-cronista.svg" alt="El Cronista" width="300" height="42" decoding="async" />
       </div>
     </div>
   </div>
@@ -708,12 +709,13 @@ get_header();
           <span class="fp-label">Visto en</span>
           <img class="fp-infobae" src="<?php echo CAISSA_IMG; ?>/press-infobae.svg" alt="Infobae" width="249" height="59" loading="lazy" decoding="async" />
           <img class="fp-rionegro" src="<?php echo CAISSA_IMG; ?>/press-rionegro.svg" alt="Diario Río Negro" width="270" height="59" loading="lazy" decoding="async" />
+          <img class="fp-cronista" src="<?php echo CAISSA_IMG; ?>/press-cronista.svg" alt="El Cronista" width="300" height="42" loading="lazy" decoding="async" />
         </div>
       </div>
       <div class="team-text reveal">
         <p class="team-claim">Grandes para entregar resultados. Chicos para que tu negocio nos importe de verdad.</p>
         <p class="lead">Soy Manuel Ferrini, dirijo Caissa desde 2021. Cuando reservás una consultoría, la hago yo.</p>
-        <p>No trabajo solo: detrás hay account managers senior con +50 empresas y +20.000 horas de cuentas encima, y <strong>Martín Pera</strong>, cofundador y COO.</p>
+        <p>No trabajo solo. Detrás de cada cuenta hay un equipo y criterio senior, respaldado por <strong>más de 20.000 horas de experiencia</strong> gestionando campañas.</p>
         <div class="sign">Manuel Ferrini</div>
         <div class="sign-role">CEO y cofundador de Caissa</div>
         <div class="proofcap reveal">
@@ -925,6 +927,12 @@ get_header();
       <div class="pr-marquee" aria-label="Menciones de Caissa en medios">
         <div class="pr-track">
           <div class="pr-group">
+            <a class="pr-card" href="https://www.cronista.com/columnistas/google-ads-cambia-con-la-ia-el-nuevo-riesgo-de-pagar-por-clics-irrelevantes/" target="_blank" rel="noopener">
+              <img class="pr-img" src="<?php echo CAISSA_IMG; ?>/prensa/prensa-cronista.jpg" width="480" height="270" alt="" loading="lazy" decoding="async" />
+              <span class="pr-medio"><img class="pr-logo pr-logo-cronista" src="<?php echo CAISSA_IMG; ?>/press-cronista.svg" alt="El Cronista" width="300" height="42" loading="lazy" decoding="async" /></span>
+              <span class="pr-tit">Google Ads cambia con la IA: el nuevo riesgo de pagar por clics irrelevantes</span>
+              <span class="pr-ir" aria-hidden="true">&rarr;</span>
+            </a>
             <a class="pr-card" href="https://www.infobae.com/opinion/2026/07/16/la-ia-decide-que-compras-la-nueva-guerra-por-aparecer-en-las-recomendaciones/" target="_blank" rel="noopener">
               <img class="pr-img" src="<?php echo CAISSA_IMG; ?>/prensa/prensa-infobae.webp" width="480" height="270" alt="" loading="lazy" decoding="async" />
               <span class="pr-medio"><img class="pr-logo" src="<?php echo CAISSA_IMG; ?>/press-infobae.svg" alt="Infobae" width="249" height="59" loading="lazy" decoding="async" /></span>

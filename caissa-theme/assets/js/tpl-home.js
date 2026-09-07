@@ -263,7 +263,12 @@
     var lastFocus=null;
     function open(id, trigger){
       lastFocus=trigger||null;
-      frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Testimonio en video de un cliente de Caissa" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      /* El autoplay CON SONIDO esta bloqueado por politica del sistema en iOS y en
+         Android: pedirlo ahi no hace nada. Se pide solo con puntero fino (mouse),
+         donde el navegador lo honra si el click salio del usuario. En tactil queda el
+         poster de YouTube con su boton de play: un toque mas, pero nunca falla. */
+      var fino = !window.matchMedia || matchMedia('(hover:hover) and (pointer:fine)').matches;
+      frame.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?rel=0&playsinline=1'+(fino?'&autoplay=1':'')+'" title="Testimonio en video de un cliente de Caissa" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
       lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
       var c=lb.querySelector('.ytlb-close'); if(c) c.focus();
     }
