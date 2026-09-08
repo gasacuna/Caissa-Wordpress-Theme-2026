@@ -630,15 +630,6 @@ get_header();
         <p class="pc-warn"><b>Ojo con:</b> que el resultado que dispara el variable sea una venta medida, no un formulario cualquiera.</p>
       </article>
     </div>
-    <div class="price-note reveal">
-      <p><b>La regla que no falla:</b> honorario y pauta son dos números distintos y tienen que estar separados desde la primera conversación. Si una propuesta los mezcla en una sola cifra, pedí que los abran.</p>
-      <!-- MÍNIMO DE TRABAJO (confirmado por Manuel el 12/08/2026): empresas que invierten más
-           de USD 3.000 por mes en marketing digital. Reemplaza al viejo "desde USD 2.000 en
-           pauta". Va con la misma redacción en las tres landings, en la home y en el FAQPage:
-           si el número cambia, se cambian los seis lugares. NO enlazar a /precios/ ni a /planes/:
-           esas páginas no van a existir. -->
-      <p>Trabajamos con <b>empresas que invierten más de USD 3.000 por mes en marketing digital</b>. Es el mínimo, y no es un número comercial: por debajo de ahí Google no junta datos suficientes para optimizar y la cuenta nunca llega a despegar. Pedí la consultoría y hablamos sobre tu caso real. <b>Sin contratos de permanencia.</b></p>
-    </div>
   </div>
 </section>
 
