@@ -80,13 +80,22 @@ function cambiar_hasta(inicio, fin, nuevo,   p, r, e) {
   # -------------------------------------------------------------------------
   # El CTA a Axion Lift en la tarjeta "B2B e industria"
   #
-  # Pedido de Gaston: sacarlo. Apunta a caissa.digital/caso/axionlift/, una
-  # pagina que vive solo en produccion y que no se migro. El texto de la tarjeta
-  # queda igual; lo unico que se va es el enlace.
+  # Pedido de Gaston: sacarlo. El texto de la tarjeta queda igual; lo unico que
+  # se va es el enlace.
+  #
+  # OJO CON EL href: apuntaba a caissa.digital/caso/axionlift/, una URL que ya no
+  # existe, y el 08/09/2026 se corrigio a /industrias/ en las tres paginas que la
+  # tenian. Esta linea hace match del href EXACTO, asi que sin actualizarla el
+  # override dejaba de encontrar el enlace y el CTA volvia a aparecer en el tema,
+  # EN SILENCIO. El chequeo de abajo convierte ese silencio en un error de build.
   # -------------------------------------------------------------------------
   if (SLUG == "google-ads") {
-    viejo = "\n          <a href=\"https://caissa.digital/caso/axionlift/\">Ver el caso Axion Lift</a>"
-    cambiar(viejo, "")
+    viejo = "\n          <a href=\"/industrias/\">Ver el caso Axion Lift</a>"
+    if (!cambiar(viejo, "")) {
+      print "ERROR: el override de google-ads no encontro el CTA de Axion Lift." > "/dev/stderr"
+      print "       Cambio el href en el HTML del repo? Hay que actualizar markup.awk." > "/dev/stderr"
+      exit 1
+    }
   }
 
   printf "%s", s

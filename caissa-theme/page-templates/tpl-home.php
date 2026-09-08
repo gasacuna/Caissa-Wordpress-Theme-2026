@@ -320,31 +320,6 @@ get_header();
   </div>
 </section>
 
-<!-- ===================== COMPARISON ===================== -->
-<section class="compare-sec on-dark" id="diferencia">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Qué nos hace diferentes</h2>
-    </div>
-  </div>
-  <div class="compare-wrap">
-    <div class="compare reveal">
-      <div class="compare-headrow">
-        <div class="ch-spacer"></div>
-        <div class="ch-before">La mayoría de las agencias</div>
-        <div class="ch-after">Caissa</div>
-      </div>
-      <div class="crow"><div class="c-label">Contratos</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Te atan aunque no haya resultados.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Mes a mes. Cancelás cuando quieras.</div></div>
-      <div class="crow"><div class="c-label">Quién maneja tu cuenta</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Un junior que aprende con tu plata.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Especialistas senior en cada cuenta.</div></div>
-      <div class="crow"><div class="c-label">Optimización</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Mensual, si tenés suerte.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Diaria, con monitoreo 24/7.</div></div>
-      <div class="crow"><div class="c-label">Reportes</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Clicks e impresiones, no ventas.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Preguntamos: ¿ese lead cerró una venta?</div></div>
-      <div class="crow"><div class="c-label">Comunicación</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Los tenés que perseguir.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Respuesta en el día.</div></div>
-      <!-- La tabla de referencia (Yael) incluía "Exclusividad: un cliente por rubro". No la sumo porque no está confirmado que Caissa dé exclusividad por categoría; si la ofrece, se agrega acá. -->
-      <div class="crow"><div class="c-label">Compromiso</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Sos un número más.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Nuestros clientes se quedan +4 años.</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== PRUEBA SOCIAL (consolidada: casos + reseñas + video) ===================== -->
 <!--
   Fotos de dueños = placeholder con iniciales (faltan las reales). Reemplazar cada .rc-av / .rav por <img>.
@@ -664,6 +639,31 @@ get_header();
   </div>
 </section>
 
+
+<!-- ===================== COMPARISON ===================== -->
+<section class="compare-sec on-dark" id="diferencia">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Qué nos hace diferentes</h2>
+    </div>
+  </div>
+  <div class="compare-wrap">
+    <div class="compare reveal">
+      <div class="compare-headrow">
+        <div class="ch-spacer"></div>
+        <div class="ch-before">La mayoría de las agencias</div>
+        <div class="ch-after">Caissa</div>
+      </div>
+      <div class="crow"><div class="c-label">Contratos</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Te atan aunque no haya resultados.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Mes a mes. Cancelás cuando quieras.</div></div>
+      <div class="crow"><div class="c-label">Quién maneja tu cuenta</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Un junior que aprende con tu plata.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Especialistas senior en cada cuenta.</div></div>
+      <div class="crow"><div class="c-label">Optimización</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Mensual, si tenés suerte.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Diaria, con monitoreo 24/7.</div></div>
+      <div class="crow"><div class="c-label">Reportes</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Clicks e impresiones, no ventas.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Preguntamos: ¿ese lead cerró una venta?</div></div>
+      <div class="crow"><div class="c-label">Comunicación</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Los tenés que perseguir.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Respuesta en el día.</div></div>
+      <!-- La tabla de referencia (Yael) incluía "Exclusividad: un cliente por rubro". No la sumo porque no está confirmado que Caissa dé exclusividad por categoría; si la ofrece, se agrega acá. -->
+      <div class="crow"><div class="c-label">Compromiso</div><div class="c-before"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg>Sos un número más.</div><div class="c-after"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Nuestros clientes se quedan +4 años.</div></div>
+    </div>
+  </div>
+</section>
 <!-- ===================== HOW IT WORKS ===================== -->
 <section class="how">
   <div class="wrap">

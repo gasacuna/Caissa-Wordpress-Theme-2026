@@ -351,7 +351,7 @@ get_header();
      sería afirmar algo falso sobre un cliente real. Se lo avisamos a la SEO.
      Axion Lift sí: fabrica elevadores hidráulicos e hidrogrúas y atiende la región (tiene
      sucursal en Neuquén Capital, dato público de la empresa). Los números salen de la ficha
-     pública caissa.digital/caso/axionlift/. -->
+     pública el hub /industrias/ (la URL del caso ya no existe). -->
 <section class="sec-white" id="vaca-muerta">
   <div class="wrap">
     <div class="head-left reveal">
@@ -372,7 +372,7 @@ get_header();
       </ul>
     </div>
     <div class="sec-cta reveal">
-      <a href="https://caissa.digital/caso/axionlift/" class="btn btn-ghost-d">Ver el caso Axion Lift
+      <a href="/industrias/" class="btn btn-ghost-d">Ver el caso Axion Lift
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
