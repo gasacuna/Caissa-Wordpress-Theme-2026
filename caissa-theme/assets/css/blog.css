@@ -12,6 +12,45 @@
 
 :root{--bl-medida:54rem}   /* la medida del texto largo: ~68 caracteres por linea */
 
+/* ---------- El fondo de las vistas del blog: casi blanco, sin degradé ----------
+
+   Pedido de Gaston (10/09/2026): "en mobile el article de blog no tiene buena
+   legibilidad por el fondo de degrade en toda la pagina... ponlo con un fondo
+   casi blanco, sin degradé".
+
+   Y no es solo gusto: hay un problema de contraste MEDIDO. En una nota abierta van en
+   --muted (#6B6F8C) SOBRE EL CANVAS el breadcrumb (.bl-crumbs), .bl-meta (la fecha y
+   los minutos de lectura) y los pies de figura y de cita de la prosa (.bl-prose
+   figcaption, .bl-prose blockquote cite): ni .bl-post-head ni .bl-prose declaran
+   fondo, asi que lo que se ve detras es la capa de degradés. El CLAUDE.md del repo del
+   sitio (§20.b) midio que ese color da 4,29:1 sobre la zona periwinkle del canvas y
+   4,35:1 sobre la lavanda, contra el umbral AA de 4,5:1 para texto chico. Sobre el
+   casi-blanco da 4,72:1. O sea: hoy ese texto NO pasa AA y con este cambio si.
+
+   El resto del --muted del blog NO estaba en falta y este cambio no lo mueve:
+   .bl-autor-rot, .bl-card p, .bl-card-pie, .bl-vacio p y el figcaption de .bl-portada
+   se apoyan sobre cajas con background:#fff propio, y ahi #6B6F8C da 4,91:1. Si algun
+   dia se saca el blanco de una de esas cajas, ese texto pasa a depender del fondo de
+   la pagina y hay que volver a medirlo.
+
+   No hace falta inventar un color: el propio body del chasis ya trae
+   background:#FAFAFE y lo unico que lo tapa es la capa de degradés de
+   body::before. Se apaga esa capa y aparece el casi-blanco que ya existe. Se
+   deja el background escrito igual para que la regla no dependa del valor que
+   tenga el chasis manana.
+
+   ⚠️ El display:none tiene que ganarle a body::before, que esta definido en
+   base.css, en base-sin-barra.css y en tpl-home.css. Gana por dos motivos y
+   conviene que los dos sigan siendo ciertos: blog.css se encola con el chasis
+   como dependencia (inc/enqueue.php), asi que carga despues, y ademas
+   body.caissa-vista-blog::before tiene mas especificidad que body::before.
+
+   De paso saca una capa fija compuesta de las vistas del blog, que es trabajo
+   de menos para el compositor al scrollear.
+*/
+body.caissa-vista-blog{background:#FAFAFE}
+body.caissa-vista-blog::before{display:none}
+
 /* ---------- Encabezado de la vista ---------- */
 .bl-head{padding:64px 0 44px}
 .bl-head h1{font-size:var(--h2);letter-spacing:-.028em;color:var(--ink);margin:0}
@@ -99,11 +138,52 @@
 .bl-meta a{color:var(--ink-soft);font-weight:600}
 .bl-meta a:hover{color:var(--violet)}
 
-/* La imagen destacada, en el mismo marco redondeado que usan los mockups del sitio. */
-.bl-portada{margin:38px auto 0;max-width:calc(var(--maxw) - 48px);border-radius:22px;overflow:hidden;
-  box-shadow:var(--shadow);background:var(--bg-soft)}
-.bl-portada img{width:100%;height:auto;display:block}
-.bl-portada figcaption{padding:12px 20px;background:#fff;color:var(--muted);font-size:.82rem;text-align:center}
+/* La imagen destacada, en el mismo marco redondeado que usan los mockups del sitio.
+
+   EL TOPE DE 700px VIVE SOLO EN EL max-width DE LA FIGURA, y la imagen va con
+   width:auto. Es la forma canonica de "nunca amplies un raster": 700 es un techo y
+   nunca un piso.
+
+   Pedido de Gaston (10/09/2026): "en PC, en una entrada abierta, la imagen se ve MUY
+   grande". Medido en produccion: el archivo real de esa destacada es 700x417 -- su
+   propio atributo width dice 700 y el srcset solo ofrece 700w y 300w -- y se
+   renderizaba a 1092px, o sea ampliada 1,56x. No era solo grande: estaba interpolada.
+   El 700 que pidio es exactamente el ancho intrinseco del archivo.
+
+   ⚠️ NO usar un ancho DEFINIDO aca (width:calc(100% - 48px) + img{width:100%}), que
+   fue el primer intento. Con eso la figura mide 700 pase lo que pase y la imagen se
+   estira a llenarla: medido en el navegador, un archivo de 300px se dibujaba a 700,
+   ampliado 2,33x, PEOR que el defecto original. Funcionaba de casualidad porque el
+   archivo de esta nota mide justo 700. Y el caso es alcanzable hoy: single.php pide
+   the_post_thumbnail('large') y WordPress esta sirviendo el original porque el tamano
+   'large' no existe, asi que las destacadas subidas son chicas.
+
+   El width:fit-content hace que la figura se encoja con la imagen, sin dejar bandas de
+   --bg-soft al costado. Medido: archivo 700 -> 700 (1,00x), archivo 300 -> 300 (1,00x).
+
+   El calc(100% - 48px) del max-width es el inset de mobile: 48 = los 24px de padding de
+   .wrap por dos. El figure NO esta dentro de un .wrap en single.php, asi que sin esto
+   iba de borde a borde mientras la prosa, la caja de autor y "Volver al blog" quedaban
+   a 24px, con las esquinas del border-radius cortadas contra el viewport. El punto de
+   cruce esta en 748px de viewport: por encima manda el tope de 700 centrado, por debajo
+   el inset de 24px.
+
+   ⚠️ Y a DPR2 hacen falta 1400px de archivo para que 700 CSS px se vean nitidos. El
+   srcset de la destacada solo ofrece 700w y 300w, asi que en un monitor retina sigue
+   sin ser perfecta: eso se arregla subiendo originales de >=1400px para que WordPress
+   genere el candidato 'large'. Es de redaccion, no del tema.
+*/
+.bl-portada{width:fit-content;max-width:min(calc(100% - 48px),700px);margin:38px auto 0;
+  border-radius:22px;overflow:hidden;box-shadow:var(--shadow);background:var(--bg-soft)}
+.bl-portada img{width:auto;max-width:100%;height:auto;display:block}
+/* El width:0 + min-width:100% es lo que impide que un pie largo infle el fit-content de
+   la figura: sin eso, con un pie de dos renglones la figura se estiraba al tope de 700 y
+   una imagen de 300 quedaba con 400px de banda al costado. Con esto el pie no aporta
+   nada al max-content y despues se estira al ancho que la figura termino teniendo, asi
+   que envuelve en mas renglones en vez de ensanchar la caja. Medido: banda 0+0 con pie
+   corto y con pie largo, y con archivo de 300 y de 700. */
+.bl-portada figcaption{width:0;min-width:100%;padding:12px 20px;background:#fff;
+  color:var(--muted);font-size:.82rem;text-align:center}
 
 /* ---------- Prosa ----------
    El ancho es 68ch y no el --maxw del sitio: en un texto largo lo que manda es la
@@ -132,6 +212,14 @@
 .bl-prose blockquote cite{display:block;margin-top:12px;font-style:normal;font-size:.9rem;
   font-weight:600;color:var(--muted)}
 .bl-prose figure{margin-left:0;margin-right:0}
+/* Las imagenes del CUERPO se quedan al ancho de la medida (864px), sin el tope de 700.
+   El pedido de Gaston era sobre la destacada; estas son capturas de la UI de Google Ads
+   de 1028 a 1685px que hoy se REDUCEN a 864 y estan nitidas. Con un tope de 700 bajaban
+   un 19 %, o sea menos legibles, que es lo contrario del otro pedido de esa misma tanda.
+   Ademas su srcset esta vacio (no ahorra un byte), centrarlas corria las angostas de
+   lugar, y los <iframe> de embed no los toca ninguna regla del tema: en una misma nota
+   los videos quedarian a 864 y las imagenes a 700. Si algun dia se quiere el tope aca,
+   es cambiar el 100% por min(100%,700px) en esta linea. */
 .bl-prose img{max-width:100%;height:auto;display:block;border-radius:var(--radius-sm)}
 .bl-prose figcaption{margin-top:10px;color:var(--muted);font-size:.86rem;line-height:1.5;text-align:center}
 .bl-prose hr{border:0;border-top:1px solid var(--line);margin-top:2.4em}

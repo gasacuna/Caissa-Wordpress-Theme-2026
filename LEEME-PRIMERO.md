@@ -1,4 +1,4 @@
-# Tema Caissa 2026 · versión 1.21
+# Tema Caissa 2026 · versión 1.22
 
 ## 👉 Antes que nada: **`PENDIENTES.md`**
 
@@ -22,7 +22,7 @@ La documentación completa está en **`caissa-theme/LEEME.md`**, y el detalle de
 `caissa-theme/CHANGELOG.md`. Los dos viajan adentro del ZIP.
 
 ⚠️ **Las secciones de más abajo describen la 1.09**, que es cuando se escribió este
-archivo. Lo que cambió desde entonces (1.10 a 1.21: el blog, los ajustes de
+archivo. Lo que cambió desde entonces (1.10 a 1.22: el blog, los ajustes de
 mobile, las dos páginas nuevas, GTM y las imágenes del contenido) está en
 **`_generador/docs/LEEME.md`**, que es el documento que se mantiene al día.
 

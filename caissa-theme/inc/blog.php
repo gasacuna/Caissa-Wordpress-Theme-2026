@@ -625,3 +625,29 @@ add_filter(
 	},
 	20
 );
+
+/**
+ * Marca las vistas del blog en el <body>.
+ *
+ * Existe para una sola cosa: que assets/css/blog.css pueda apagar el canvas de
+ * degradés del chasis y dejar el fondo casi blanco (pedido de Gaston,
+ * 10/09/2026). El detalle de por que, con los ratios de contraste medidos, esta
+ * en el comentario de esa regla en blog.css.
+ *
+ * Se apoya en caissa_es_blog(), que es la misma condicion con la que
+ * inc/enqueue.php decide encolar blog.css: asi la clase y la hoja no pueden
+ * quedar desalineadas.
+ *
+ * Es un SEGUNDO filtro de body_class -- inc/parts.php tiene el suyo para
+ * caissa-sticky-scroll. Son independientes y el orden no importa: los dos solo
+ * agregan al array que reciben.
+ */
+add_filter(
+	'body_class',
+	function ( $clases ) {
+		if ( caissa_es_blog() ) {
+			$clases[] = 'caissa-vista-blog';
+		}
+		return $clases;
+	}
+);

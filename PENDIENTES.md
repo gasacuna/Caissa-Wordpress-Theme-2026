@@ -1,6 +1,6 @@
 # Pendientes — migración a la web 2026
 
-Estado al **10/09/2026**, tema **1.21**.
+Estado al **10/09/2026**, tema **1.22**.
 
 Lo que queda del trabajo de redirects, de las dos páginas nuevas y de GTM.
 Ordenado **por momento**, no por tema: lo que importa de cada uno es cuándo hay
@@ -11,7 +11,7 @@ Los números entre paréntesis (tarea 34, 36…) son las del checklist de la pla
 
 ---
 
-## 1 · Al subir el tema 1.21 al staging
+## 1 · Al subir el tema 1.22 al staging
 
 ### 1.1 Crear las dos páginas nuevas y asignarles la plantilla
 El tema trae las plantillas, pero las páginas no existen solas.
@@ -302,11 +302,141 @@ no estén en el repo, es una divergencia que hay que mantener a mano.
 
 ---
 
+## 6 · Mejoras del blog que aparecieron de paso (ofrecidas, NO aplicadas)
+
+Salieron de la auditoría del 10/09/2026 sobre el CSS del blog (46 agentes en seis
+lentes, con refutación adversarial de cada hallazgo). **Las cinco son
+preexistentes:** no las causó ni las arregla el cambio de 1.22, y ninguna la pidió
+Gastón, así que quedan acá en vez de aplicarse. Las cinco son **CSS puro**, sin
+tocar markup ni nada de SEO/GEO, y van en `caissa-theme/assets/css/blog.css`, que
+es archivo del esqueleto y sobrevive a una regeneración.
+
+Orden recomendado: 6.3 y 6.1 primero (son las que ve un lector), después 6.4, 6.2
+y 6.5.
+
+### 6.1 En "Seguí leyendo" el título sale gris y 18 % más chico que en el listado
+`single.php` pide la tarjeta con `array('titulo'=>'p')`, así que el título de una
+nota relacionada es `<p class="bl-card-t">`. La regla de blindaje solo declara
+`font-weight`, `line-height` y `letter-spacing`, así que `color`, `font-size` y
+`margin` siguen cayendo en `.bl-card p` → **#6B6F8C y 15,2px**, que es exactamente
+el color y el tamaño del resumen que va debajo; lo único que los distingue es el
+peso. En el listado el mismo componente sale `<h2>` y queda **#10143A y 18,56px**.
+Tampoco hereda el hover violeta del título.
+
+```css
+.bl-card p.bl-card-t{color:var(--ink);font-size:1.16rem;margin:0}
+.bl-card:hover p.bl-card-t a{color:var(--violet)}
+```
+
+⚠️ Tiene que ser `.bl-card p.bl-card-t` (0,2,1) y **no** `.bl-card .bl-card-t`
+(0,2,0): con el segundo se le gana a `.bl-card--destacada h2` y el titular de la
+destacada del listado se cae de `var(--h2-sub)` a 1.16rem.
+
+### 6.2 El número de página actual falla AA (3,26:1)
+`#fff` sobre `--coral` (#FF4F40) da **3,26:1** y el elemento computa 15,2px/600, o
+sea que le corresponde 4,5:1. Es preexistente, pero con el fondo plano es el único
+elemento saturado que queda y se nota más. `--coral-dk` tampoco alcanza (4,12:1).
+
+```css
+.bl-pag .page-numbers.current{background:var(--violet);border-color:var(--violet);color:#fff}
+```
+
+Blanco sobre `--violet` (#2034E6) da **7,79:1**, y el violeta ya es la tinta
+interactiva del blog (es el hover de la propia paginación).
+
+⚠️ **NO tocar el token `--coral`.** El par blanco/coral es `.btn-primary` y el
+acento de CTA de las 24 páginas (§3 del CLAUDE.md). El mismo 3,26:1 lo tiene el
+botón "Buscar" del estado vacío, y eso es de **todo el sitio**: es otra decisión.
+
+### 6.3 Ninguna palabra puede cortarse: una URL larga saca la nota del viewport
+`grep` de `overflow-wrap`, `word-break` y `hyphens` en las 32 hojas del tema:
+**cero coincidencias**. En un blog de Google Ads las URLs con `utm` pegadas en el
+cuerpo son moneda corriente, y una palabra sin espacios más ancha que **272px** (el
+contenido de `.wrap` a 320px) desborda; como ni `main`, ni `article`, ni `.wrap`,
+ni `.bl-prose` acotan el `overflow`, scrollea la página entera. Es fallo de WCAG
+1.4.10 (Reflow). El `<pre>` sí está cubierto; el `<code>` inline, los párrafos, el
+H1 (que en mobile pierde su `max-width:20ch`) y la bio del autor, no.
+
+```css
+.bl-prose,
+.bl-post-head h1,
+.bl-autor .bl-autor-nombre,
+.bl-autor .bl-autor-bio,
+.bl-card .bl-card-t{overflow-wrap:break-word}
+.bl-prose a,
+.bl-prose code{overflow-wrap:anywhere}
+.bl-autor-datos{min-width:0}
+```
+
+El `min-width:0` es la trampa de §16.3: `.bl-autor` es flex y `.bl-autor-datos` no
+tiene ni una regla en todo el tema, así que queda en `min-width:auto` y su ancho
+mínimo de contenido revienta la tarjeta blanca.
+
+### 6.4 "Volver al blog" cuelga 114px a la izquierda de la prosa en PC
+En `single.php` el mismo `div.wrap` contiene `.bl-prose` (864px, centrada),
+`aside.bl-autor` (864px, centrada) y `a.bl-volver`, que es un `inline-flex` sin
+ancho: arranca en el borde del contenido del wrap (1092px), o sea **(1092−864)/2 =
+114px** a la izquierda de la columna que el visitante viene de leer. En mobile no se
+nota (los tres están a 24px).
+
+```css
+.bl-prose ~ .bl-volver{margin-inline-start:max(0px,calc((100% - var(--bl-medida)) / 2))}
+```
+
+⚠️ Va acotado con `.bl-prose ~` porque `.bl-volver` **también se usa en el 404**,
+dentro de `.bl-vacio`, donde está centrado con `text-align:center`: sin acotar, ahí
+se descentra 80px. El 404 no tiene `.bl-prose`, así que no matchea. Y el
+`max(0px,…)` lo apaga por debajo de 912px de viewport.
+
+De paso: hay una regla `.bl-medida-guia` escrita en `blog.css` que es literalmente
+el envoltorio pensado para esto y que **ningún archivo usa** (grep en todo el repo).
+Quedó la regla y se perdió el markup: al aplicar esto, se reemplaza.
+
+### 6.5 El "Leer más" del autor queda visible y muerto con bios cortas
+`assets/js/blog.js` apaga el control con `btn.hidden = true`, que se apoya en el
+`[hidden]{display:none}` de la hoja del navegador. Pero `blog.css` declara
+`.bl-autor-mas{display:inline-flex}`, y una declaración de autor le gana **siempre**
+a una de user-agent, sin importar la especificidad. **No hay ninguna regla
+`[hidden]` en las 32 hojas del tema.** Hoy no se ve porque las notas las firma Manu
+y su bio no entra en dos renglones; se dispara en cuanto firme una nota alguien del
+equipo con bio corta, que es el caso que el propio código prevé.
+
+```css
+.bl-autor-mas[hidden]{display:none}
+```
+
+⚠️ **NO** poner un `[hidden]{display:none!important}` global: `blog.css` solo se
+encola en las vistas del blog, así que no blindaría las otras 22 plantillas.
+
+### 6.6 Lo que la auditoría dejó explícitamente SIN revisar
+Para que nadie lea el informe como "está todo cubierto":
+
+- **Vistas.** Todo se midió sobre la nota abierta y de refilón sobre el listado.
+  Con el fondo nuevo **no** se revisaron la tarjeta destacada de `home.php`, los
+  chips con `aria-current` de `archive.php` ni el formulario de `search.php`.
+- **Anchos.** Se midió 320, 390, 414, 640, 700, 748 y 1280. **No** se probaron 768,
+  la franja 820-860 (donde cambia el breakpoint del menú mobile) ni 1440+.
+- **Tamaño de letra del sistema.** No se repitió el barrido de §18.b con raíz en 20
+  y 24px. `--bl-medida` está en rem, así que la medida crece con la letra y los
+  `min()`/`max()` de arriba cambian de rama a anchos distintos de los medidos.
+- **Estados.** Hover y focus-visible sobre el fondo nuevo, `prefers-reduced-motion`
+  en el hover de las tarjetas, y print.
+- **Bloques de Gutenberg.** `.bl-prose` no tiene ninguna regla para bloques de
+  core. El barrido cubrió 15-25 notas de las ~105 del sitemap: un
+  `wp-block-gallery`, `wp-block-columns` o un embed de X puede renderizar sin
+  estilo el día que un redactor lo inserte.
+- **Y lo que no arregla el CSS:** los originales de las destacadas son de ≤700px,
+  así que la portada no va a ser nítida en pantallas DPR2 hasta que se suban
+  archivos de **≥1400px de ancho**, para que WordPress genere el candidato `large`.
+  Eso es de redacción.
+
+---
+
 ## Dónde está cada cosa
 
 | | |
 |---|---|
-| `caissa-theme.zip` | el tema para subir a WordPress (1.21, 194 archivos) |
+| `caissa-theme.zip` | el tema para subir a WordPress (1.22, 194 archivos) |
 | `redirects/htaccess-redirects.txt` | el bloque de 301 |
 | `redirects/verificar-redirects.sh` | el semáforo |
 | `redirects/mapeo-final.tsv` | la hoja como se leyó, para auditar |
