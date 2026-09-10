@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Caissa — Vacante: Performance Marketing (Neuquén)
+ * Template Name: Caissa — Vacante: Analista de Paid Media (Neuquén)
  *
  * Migrada desde carreras/especialista-performance-marketing-neuquen/index.html del repo Caissa-Nueva-Web-2026.
  * El head, el nav y el footer los pone el tema (header.php / footer.php).
@@ -18,11 +18,11 @@ get_header();
   "@graph": [
     {
       "@type": "JobPosting",
-      "title": "Especialista en Performance Marketing",
+      "title": "Analista de Paid Media",
       "description": "Puesto full time presencial en la oficina de Caissa en Neuquén Capital. Misión: generar resultados de negocio para los clientes ejecutando y optimizando campañas en Google Ads y Meta Ads, participando en la mejora de landing pages y proponiendo mejoras basadas en datos. Para estudiantes o graduados de marketing, administración o carreras afines; no requiere experiencia previa en agencias. Beneficios: salario competitivo en pesos con mejoras por desempeño, capacitaciones 100% pagas, plan de carrera, vacaciones flexibles y hora completa de almuerzo.",
       "datePosted": "2026-08-24",
       "employmentType": "FULL_TIME",
-      "jobBenefits": "Salario competitivo con mejoras por desempeño, capacitaciones 100% pagas, plan de carrera, vacaciones flexibles y hora completa de almuerzo. Empresa certificada Great Place to Work.",
+      "jobBenefits": "Salario competitivo con mejoras por desempeño, cobertura prepaga OSDE, capacitaciones 100% pagas, plan de carrera, vacaciones flexibles y hora completa de almuerzo. Empresa certificada Great Place to Work.",
       "hiringOrganization": {
         "@type": "Organization",
         "@id": "https://caissa.digital/#organization",
@@ -73,7 +73,7 @@ get_header();
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Especialista en Performance Marketing (Neuquén)",
+          "name": "Analista de Paid Media (Neuquén)",
           "item": "https://caissa.digital/carreras/especialista-performance-marketing-neuquen/"
         }
       ]
@@ -97,8 +97,8 @@ get_header();
       <span class="jchip">Presencial · Neuquén Capital</span>
       <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="151" height="256" loading="lazy" decoding="async" /> Great Place to Work</span>
     </div>
-    <h1>Especialista en Performance Marketing en Neuquén</h1>
-    <p>Con o sin experiencia: buscamos cabezas analíticas con ganas de aprender un oficio que se paga bien y no para de crecer. La formación corre por cuenta nuestra.</p>
+    <h1>Analista de Paid Media - Neuquén</h1>
+    <p>Buscamos personas con o sin experiencia a las que les apasione el marketing digital y ayudar a crecer negocios trabajando junto a un equipo de élite.</p>
     <div class="inst-cta">
       <a href="https://form.typeform.com/to/Q1KMO9Ll" target="_blank" rel="noopener" class="btn btn-primary">Postularme
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -165,6 +165,7 @@ get_header();
       <h2>Beneficios</h2>
       <ul class="jl">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Salario competitivo en pesos, con <b>mejoras según tu desempeño</b>.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>Cobertura prepaga OSDE.</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Capacitaciones 100% pagas: más de $2.000.000 al año en cursos para el equipo.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Plan de carrera y especialización desde el primer día.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vacaciones flexibles y hora completa de almuerzo.</span></li>

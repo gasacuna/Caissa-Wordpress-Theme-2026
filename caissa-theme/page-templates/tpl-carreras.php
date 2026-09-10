@@ -87,7 +87,7 @@ get_header();
     <div class="jobs">
       <article class="job reveal">
         <div class="jchips"><span class="jchip open">Vacante abierta</span><span class="jchip">Presencial · Neuquén Capital</span></div>
-        <h3><a href="/carreras/especialista-performance-marketing-neuquen/">Especialista en Performance Marketing</a></h3>
+        <h3><a href="/carreras/especialista-performance-marketing-neuquen/">Analista de Paid Media</a></h3>
         <p>Para estudiantes o graduados de carreras afines, con o sin experiencia. La formación corre por cuenta nuestra, en nuestra oficina de Neuquén.</p>
         <span class="go">Ver la búsqueda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </article>

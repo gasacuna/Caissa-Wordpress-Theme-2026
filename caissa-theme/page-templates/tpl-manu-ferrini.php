@@ -183,6 +183,11 @@ get_header();
       <h2>En los medios</h2>
     </div>
     <div class="prs reveal">
+      <a href="https://empre.ar/analisis/google-ads-cambia-las-reglas-la-ia-avanza-y-el-desafio-ahora-es-mantener-el-control/" target="_blank" rel="noopener">
+        <span class="prs-m">Empre Management</span>
+        <span class="prs-t">Google Ads cambia las reglas: la IA avanza y el desafío ahora es mantener el control</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
       <a href="https://www.cronista.com/columnistas/google-ads-cambia-con-la-ia-el-nuevo-riesgo-de-pagar-por-clics-irrelevantes/" target="_blank" rel="noopener">
         <span class="prs-m">El Cronista</span>
         <span class="prs-t">Google Ads cambia con la IA: el nuevo riesgo de pagar por clics irrelevantes</span>

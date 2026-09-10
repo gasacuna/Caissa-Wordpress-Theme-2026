@@ -479,7 +479,7 @@ HTML,
 		),
 		'page-templates/tpl-vac-neuquen.php' => array(
 			'slug'    => 'vac-neuquen',
-			'nombre'  => 'Caissa — Vacante: Performance Marketing (Neuquén)',
+			'nombre'  => 'Caissa — Vacante: Analista de Paid Media (Neuquén)',
 			'origen'  => 'carreras/especialista-performance-marketing-neuquen/index.html',
 			'lang'    => 'es-AR',
 			'preload' => null,
