@@ -69,7 +69,8 @@
  *   caissa_gtm_solo_interaccion  bool    no cargar hasta que el visitante toque
  *                                        algo. Es el unico modo que garantiza
  *                                        100 en PageSpeed y el unico que pierde
- *                                        sesiones. Apagado por defecto.
+ *                                        sesiones. ENCENDIDO por defecto desde
+ *                                        1.21 (Gaston pidio el 100).
  *
  * Para que NO cargue en el staging, en un plugin o en functions.php de un hijo:
  *
@@ -134,16 +135,36 @@ function caissa_gtm_activo() {
 /**
  * Modo "solo interaccion": gtm.js no se carga hasta que el visitante toca algo.
  *
- * Apagado a proposito. Es el unico modo que garantiza un 100 en PageSpeed,
- * porque Lighthouse no interactua con la pagina y entonces nunca ve el
- * JavaScript de GTM. Pero se paga con datos: quien entra, mira y se va sin
- * tocar nada NO dispara ni el pageview, y eso en un sitio de servicios es del
- * orden del 10 al 30 % de las sesiones. Tambien deja de contar el scroll y el
- * tiempo en pagina de esas visitas.
+ * ENCENDIDO desde 1.21, a pedido expreso de Gaston ("necesito que tenga los
+ * resultados en 100"), despues de que se le explicara el costo dos veces.
  *
- * Encenderlo, si algun dia el puntaje importa mas que la medicion:
+ * Es el unico modo que garantiza el 100 en PageSpeed, y el motivo es que
+ * Lighthouse no interactua con la pagina: nunca dispara el cargador, asi que
+ * los tags del contenedor no se ejecutan durante la medicion. Lo que se mide
+ * pasa a ser el sitio, no las herramientas de terceros.
  *
- *   add_filter( 'caissa_gtm_solo_interaccion', '__return_true' );
+ * MEDIDO EL 10/09/2026, en una nota del blog sin defectos de contenido: el
+ * contenedor GTM-5M89995 dispara SIETE herramientas y 15 peticiones de
+ * terceros (GA4, Google Ads, el pixel de Meta -410 KB descomprimido-, LinkedIn
+ * por duplicado, Microsoft Clarity que graba sesion, y ClickCease). Eso es un
+ * TBT de 1.160 ms sobre un presupuesto de 200, o sea 7 de los 30 puntos que
+ * vale el TBT, mas los 8 del FCP y 7 del Speed Index. El JavaScript propio del
+ * tema en esa misma pagina son 7 KB.
+ *
+ * LO QUE CUESTA, dicho sin vueltas: quien entra, lee y se va sin tocar nada NO
+ * dispara ni el pageview. El cargador escucha pointerdown, keydown, touchstart
+ * y wheel, asi que scrollear ya cuenta y la mayoria de las visitas reales
+ * quedan medidas igual; las que se pierden son del orden del 10 al 30 %. Las
+ * conversiones NO se pierden: se disparan con un clic, que es interaccion.
+ *
+ * ⚠️ La forma de recuperar los dos objetivos a la vez NO es este filtro: es
+ * sacar del contenedor lo que no se usa. Clarity y ClickCease solos son la
+ * mitad del TBT y ninguno de los dos alimenta una decision de campania.
+ *
+ * Volver al diferido de siempre (carga en el primer gesto O al terminar de
+ * cargar la pagina, lo que pase primero):
+ *
+ *   add_filter( 'caissa_gtm_solo_interaccion', '__return_false' );
  *
  * OJO: las plantillas listadas en el filtro caissa_gtm_inmediato_en ignoran
  * este modo, porque en la pagina de la conversion perder un dato cuesta mas
@@ -152,7 +173,7 @@ function caissa_gtm_activo() {
  * @return bool
  */
 function caissa_gtm_solo_interaccion() {
-	return (bool) apply_filters( 'caissa_gtm_solo_interaccion', false );
+	return (bool) apply_filters( 'caissa_gtm_solo_interaccion', true );
 }
 
 /**

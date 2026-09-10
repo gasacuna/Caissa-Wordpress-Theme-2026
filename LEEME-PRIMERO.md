@@ -1,4 +1,4 @@
-# Tema Caissa 2026 · versión 1.15
+# Tema Caissa 2026 · versión 1.21
 
 ## 👉 Antes que nada: **`PENDIENTES.md`**
 
@@ -11,7 +11,7 @@ tiene en la base de datos.
 
 | | |
 |---|---|
-| **`caissa-theme.zip`** | **Esto es lo que subís a WordPress.** 1,4 MB, 191 archivos, 24 plantillas. |
+| **`caissa-theme.zip`** | **Esto es lo que subís a WordPress.** 1,5 MB, 194 archivos, 24 plantillas. |
 | **`PENDIENTES.md`** | **Lo que falta, por momento del deploy.** Empezá por acá. |
 | `caissa-theme/` | El tema descomprimido, por si preferís subirlo por SFTP a `wp-content/themes/`. |
 | `redirects/` | El bloque de 301 de la migración, el mapeo leído de la planilla y el script que los verifica contra cualquier host. |
@@ -22,9 +22,9 @@ La documentación completa está en **`caissa-theme/LEEME.md`**, y el detalle de
 `caissa-theme/CHANGELOG.md`. Los dos viajan adentro del ZIP.
 
 ⚠️ **Las secciones de más abajo describen la 1.09**, que es cuando se escribió este
-archivo. Lo que cambió desde entonces (1.10 a 1.15: el blog, los seis ajustes de
-mobile, las dos páginas nuevas y GTM) está en **`_generador/docs/LEEME.md`**, que
-es el documento que se mantiene al día.
+archivo. Lo que cambió desde entonces (1.10 a 1.21: el blog, los ajustes de
+mobile, las dos páginas nuevas, GTM y las imágenes del contenido) está en
+**`_generador/docs/LEEME.md`**, que es el documento que se mantiene al día.
 
 ## Cómo subirlo
 

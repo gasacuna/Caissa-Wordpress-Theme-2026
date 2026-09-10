@@ -307,4 +307,31 @@ grep -q 'caissa_gtm_id()' "$OUT/inc/gtm.php" || die "el modulo de GTM no usa cai
 # produccion sigue activo el otro inyector. Que no se caiga en una edicion.
 grep -q 'google_tag_manager' "$OUT/inc/gtm.php" || die "falta la guarda antiduplicado de GTM"
 
+
+# --- 17. Imagenes del contenido: base64 fuera del HTML y dimensiones -------
+# Mismo criterio que el 16: el modulo entero vive en parche-imagenes.php y se
+# copia en cada build, asi que editar inc/imagenes.php se pierde.
+#
+# Arregla un defecto que escribe el EDITOR, no la plantilla: una nota con siete
+# PNG pegados como data URI pesaba 2.629 KB de HTML (97 % base64) y puntuaba 25
+# contra 48 de otra nota igual. Ver el docblock del archivo.
+cp "$HERE/parche-imagenes.php" "$OUT/inc/imagenes.php"
+if ! grep -q "inc/imagenes.php" "$OUT/functions.php"; then
+  sed -i "s|require_once CAISSA_DIR . '/inc/parts.php';|require_once CAISSA_DIR . '/inc/imagenes.php';  // imagenes del contenido del blog\nrequire_once CAISSA_DIR . '/inc/parts.php';|" "$OUT/functions.php"
+fi
+grep -q "inc/imagenes.php" "$OUT/functions.php" || die "no pude agregar el require de inc/imagenes.php a functions.php"
+[ "$(grep -c "inc/imagenes.php" "$OUT/functions.php")" = "1" ] || die "el require de inc/imagenes.php quedo duplicado en functions.php"
+# La guarda que impide que un fallo de PCRE se coma el contenido de la nota. Sin
+# esto, un data URI grande que agote el backtrack de PCRE deja la nota en blanco.
+grep -q 'PREG_NO_ERROR !== preg_last_error()' "$OUT/inc/imagenes.php" || die "inc/imagenes.php perdio la guarda de preg_last_error()"
+# El filtro tiene que ir en la 15: despues de wp_filter_content_tags() del
+# nucleo (10), para no pisarle el loading ni el fetchpriority, y antes del
+# envoltorio de tablas de inc/blog.php (20).
+grep -qE '^[[:space:]]+15$' "$OUT/inc/imagenes.php" || die "inc/imagenes.php no engancha the_content en prioridad 15"
+# SVG NO se escribe nunca en uploads desde un data URI: puede traer script.
+grep -q 'image/svg' "$OUT/inc/imagenes.php" && die "inc/imagenes.php acepta SVG: no debe"
+# El piso de tamanio y el nombre por hash son lo que hace idempotente el modulo.
+grep -q 'CAISSA_IMG_MIN' "$OUT/inc/imagenes.php" || die "inc/imagenes.php no define el piso de tamanio"
+grep -q 'sha1( $b64 )' "$OUT/inc/imagenes.php" || die "inc/imagenes.php no nombra los archivos por hash"
+
 :
