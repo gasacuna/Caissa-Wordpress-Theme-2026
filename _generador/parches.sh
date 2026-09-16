@@ -248,18 +248,22 @@ grep -q 'foot-feat-t' "$OUT/assets/css/blog.css" || die "no pude agregar la regl
 
 :
 
-# --- 14. La barra sticky de la home, a partir de 100px de scroll ------------
-# Pedido de Gaston. El repo la dejo siempre visible (Manuel pidio eso) con puro
-# CSS. Aca se le suma un umbral SOLO en la home, que es donde tapaba el CTA del
-# hero. El CSS del umbral vive en overrides/tpl-home.css.
-if ! grep -q 'caissa-sticky-scroll' "$OUT/assets/js/base.js"; then
-  cat "$HERE/parche-sticky-scroll.js" >> "$OUT/assets/js/base.js"
-fi
-grep -q 'caissa-sticky-scroll' "$OUT/assets/js/base.js" || die "no pude agregar el umbral de scroll a base.js"
-if ! grep -q 'caissa-sticky-scroll' "$OUT/inc/parts.php"; then
-  cat "$HERE/parche-body-class.php" >> "$OUT/inc/parts.php"
-fi
-grep -q "'body_class'" "$OUT/inc/parts.php" || die "no pude agregar la clase caissa-sticky-scroll al body"
+# --- 14. (libre) -----------------------------------------------------------
+# Aca vivia el umbral de 100px de la barra sticky de la home: la barra no se veia
+# hasta pasar los primeros 100px de scroll. Se saco el 16/09/2026 a pedido de
+# Gaston ("que se vea si o si, para tenerlo a mano").
+#
+# El umbral existia por un solo motivo: en la home la barra tapaba el CTA del
+# hero, el "doble call to action" del ATF. En 1.23 ese CTA se oculto en mobile,
+# asi que el motivo desaparecio y el mecanismo quedo sin razon de ser.
+#
+# Se fueron con el: parche-sticky-scroll.js, parche-body-class.php y
+# overrides/tpl-home.css, mas el codigo que los dos primeros habian appendeado a
+# assets/js/base.js y a inc/parts.php, que son del esqueleto y lo arrastraban.
+# Estan en el historial de git si alguna vez hace falta el umbral en otra pagina.
+#
+# El numero 14 se deja libre y no se renumeran los demas: los parches se citan por
+# numero en el CHANGELOG y en el CLAUDE.md, y renumerarlos invalidaria esas citas.
 
 # --- 15. El CTA del drawer mobile ------------------------------------------
 # Pedido de Gaston: sacar el CTA del menu SOLO en mobile. El nav tiene dos: el de

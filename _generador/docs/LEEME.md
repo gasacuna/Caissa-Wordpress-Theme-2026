@@ -127,20 +127,23 @@ ahora vive en **`_generador/overrides/`** y el generador lo aplica siempre:
 fuente de verdad y este directorio es la excepción, no el lugar por defecto. Cada override
 lleva un comentario que dice qué cambia, por qué, y si corresponde replicarlo en el repo.
 
-### 1. La barra sticky de la home, a partir de 100px de scroll
+### 1. ~~La barra sticky de la home, a partir de 100px de scroll~~ — ELIMINADO EN 1.24
 
-El repo la dejó **siempre visible** (Manuel pidió eso) y su visibilidad quedó como puro CSS,
-sin JavaScript. Ahora tiene un umbral, pero **sólo en la home**: es la única página donde
-tapaba el CTA del hero, o sea el "doble call to action" del ATF que §18.b ya tenía anotado.
+⚠️ **Este override ya no existe.** La barra sticky vuelve a verse siempre, en todas las
+páginas, como en el repo.
 
-- `base.js` pone una clase en el `<body>` pasados los 100px, con listener `passive` y
-  throttle por reloj (no por `rAF`, que no corre en una pestaña en segundo plano).
-- `inc/parts.php` marca qué plantillas llevan umbral, hoy sólo `home`. Se amplía con el
-  filtro `caissa_sticky_con_umbral`.
-- El CSS vive en `overrides/tpl-home.css` y anima `transform`, no `display`, que no es
-  animable. Respeta `prefers-reduced-motion`.
-- **Sin JavaScript la barra se ve de entrada**, que es el comportamiento del repo: vale más
-  tener el CTA que esconderlo esperando un scroll que nadie va a medir.
+Entró en 1.13 por pedido de Gastón y tenía **un solo motivo**: en la home la barra tapaba el
+CTA del hero, o sea el "doble call to action" del ATF que §18.b ya tenía anotado. En **1.23
+ese CTA se ocultó en mobile**, así que el motivo desapareció y el mecanismo quedó sin razón
+de ser. Gastón pidió sacarlo el 16/09/2026: *"haz que se vea si o sí, para tenerlo a mano"*.
+
+Se fueron con él `parche-sticky-scroll.js`, `parche-body-class.php` y
+`overrides/tpl-home.css`, **más el código que los dos primeros habían agregado a
+`assets/js/base.js` y a `inc/parts.php`** — que son del esqueleto y lo arrastraban de build
+en build, así que sacar el parche no alcanzaba. El número 14 quedó libre en `parches.sh` y
+los demás **no** se renumeraron, porque se citan por número en el CHANGELOG.
+
+Está todo en el historial de git si algún día hace falta un umbral en alguna página.
 
 ### 2. ⚠️ El logo de la comparativa: era un bug del generador, no del CSS de Manu
 

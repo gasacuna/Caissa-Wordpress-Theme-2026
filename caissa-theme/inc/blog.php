@@ -638,9 +638,11 @@ add_filter(
  * inc/enqueue.php decide encolar blog.css: asi la clase y la hoja no pueden
  * quedar desalineadas.
  *
- * Es un SEGUNDO filtro de body_class -- inc/parts.php tiene el suyo para
- * caissa-sticky-scroll. Son independientes y el orden no importa: los dos solo
- * agregan al array que reciben.
+ * Desde 1.24 es el UNICO filtro de body_class del tema. Hasta 1.23 inc/parts.php
+ * tenia otro, para la clase caissa-sticky-scroll del umbral de la barra sticky de
+ * la home, que se saco junto con el umbral. Si alguien agrega otro, que sea igual
+ * de acotado: un filtro de body_class solo tiene que AGREGAR al array que recibe,
+ * nunca reemplazarlo, o se pisan entre si.
  */
 add_filter(
 	'body_class',
