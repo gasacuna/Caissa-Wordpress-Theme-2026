@@ -817,13 +817,12 @@ get_header();
   <div class="wrap live-grid">
     <div class="live-text reveal">
       <span class="eyebrow">Tecnología propia + IA</span>
-      <h2>Mientras leés esto, nuestra IA está revisando campañas</h2>
-      <!-- CONFIRMAR descripción técnica real de AEGIS antes de publicar. -->
-      <p class="intro">AEGIS es nuestro software con inteligencia artificial: revisa las cuentas las 24 horas y marca dónde mover presupuesto.</p>
+      <h2>Equipo senior apoyado en IA para maximizar los resultados.</h2>
+      <p class="intro">Nuestro software potenciado con IA monitorea landing pages y campañas de Google Ads y Meta Ads 24/7.</p>
       <ul class="live-list">
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Corta el gasto sin retorno.</b> Si una campaña gasta y no vende, se frena ese mismo día.</span></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>IA + criterio senior.</b> Las decisiones importantes las firma una persona.</span></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Todo queda registrado.</b> Qué se cambió, cuándo y por qué.</span></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Optimizamos campañas 10X más rápido</b></span></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Más tiempo para involucrarnos en tu negocio</b></span></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>Cuidamos cada $ con monitoreo 24/7</b></span></li>
       </ul>
     </div>
     <div class="live-visual reveal">
