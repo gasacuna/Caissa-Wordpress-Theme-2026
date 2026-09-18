@@ -237,7 +237,7 @@ get_header();
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Nuestro método PCO™</span>
-      <h2>Una venta se construye en tres etapas: PPC, CRO y optimización de ventas</h2>
+      <h2>Mejoramos el ROI de tu empresa con performance marketing</h2>
     </div>
 
     <div class="m4-flow reveal">
@@ -247,9 +247,13 @@ get_header();
           <li class="m4-stage m4-s1">
             <span class="m4-node" aria-hidden="true">1</span>
             <div class="m4-body">
-              <h3 class="m4-verb">Atraer <span class="m4-svc">Paid Media (PPC)</span></h3>
-              <span class="m4-chip">PPC · Pago por click</span>
-              <p class="m4-desc">Anuncios en Google Ads y Meta Ads, frente a los que ya buscan lo que vendés.</p>
+              <h3 class="m4-verb">Adquisición <span class="m4-svc">PPC · Paid Media</span></h3>
+              <ul class="m4-list">
+                <li>Google Ads</li>
+                <li>Meta Ads</li>
+                <li>Otras plataformas PPC</li>
+                <li>Remarketing</li>
+              </ul>
             </div>
             <div class="m4-cut">
               <svg class="m4-cut-arrow" viewBox="0 0 24 56" fill="none" aria-hidden="true"><path d="M20 4 C 9 11 5.5 22 7 46 M7 46 l-4.6-7.2 M7 46 l6.8-3.8" stroke="#E63E30" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -262,17 +266,25 @@ get_header();
           <li class="m4-stage m4-s2">
             <span class="m4-node" aria-hidden="true">2</span>
             <div class="m4-body">
-              <h3 class="m4-verb">Convertir <span class="m4-svc">Mejoras de conversión (CRO)</span></h3>
-              <span class="m4-chip">CRO · Optimización de la conversión</span>
-              <p class="m4-desc">Mejoramos o creamos la landing page donde cae cada clic, hasta que la visita compra o consulta.</p>
+              <h3 class="m4-verb">Conversión <span class="m4-svc">CRO · Optimización de la conversión</span></h3>
+              <ul class="m4-list">
+                <li>Análisis conversión</li>
+                <li>A/B Testing</li>
+                <li>Landing Pages</li>
+                <li>Mejoras de conversión</li>
+              </ul>
             </div>
           </li>
           <li class="m4-stage m4-s3">
             <span class="m4-node" aria-hidden="true">3</span>
             <div class="m4-body">
-              <h3 class="m4-verb">Cerrar <span class="m4-svc">Optimización de ventas (OPV)</span></h3>
-              <span class="m4-chip">OPV · Optimización de procesos de venta</span>
-              <p class="m4-desc">Analizamos tu proceso comercial y volvemos a buscar con remarketing al que no cerró.</p>
+              <h3 class="m4-verb">Consultoría <span class="m4-svc">OPV · Optimización de proceso de venta</span></h3>
+              <ul class="m4-list">
+                <li>Estrategia comercial</li>
+                <li>Optimización de venta</li>
+                <li>Recurrencia</li>
+                <li>Análisis de ROI</li>
+              </ul>
             </div>
           </li>
         </ol>
@@ -282,13 +294,8 @@ get_header();
         <div class="m4-sale">
           <span class="m4-sale-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4.6 12.5 9.5 17.6 19.4 6.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span class="m4-sale-txt">Venta</span>
-        </div>
-      </div>
-
-      <div class="m4-end">
-        <div class="m4-facts">
-          <p>Las tres etapas vienen incluidas en el mismo servicio. No solo el paid media.</p>
-          <p><span class="m4-ai">AEGIS · IA</span>Nuestra IA supervisa las tres etapas todos los días.</p>
+          <span class="m4-sale-loop" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M20.5 12a8.5 8.5 0 1 1-2.49-6.01" stroke-linecap="round"/><path d="M20.5 3.2v5.1h-5.1" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="m4-sale-again">Recompra</span>
         </div>
       </div>
     </div>
@@ -304,7 +311,7 @@ get_header();
         <span class="rlogo" aria-hidden="true"><svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></span>
         <div>
           <div class="rrow"><span class="rnum">4.9</span><span class="rstars" aria-hidden="true">★★★★★</span></div>
-          <div class="rlbl">65 reseñas en Google</div>
+          <div class="rlbl">+60 reseñas en Google</div>
         </div>
       </div>
     </div>
