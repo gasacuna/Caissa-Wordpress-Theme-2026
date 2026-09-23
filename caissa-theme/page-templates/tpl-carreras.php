@@ -26,7 +26,7 @@ get_header();
         "https://www.linkedin.com/company/caissa-digital",
         "https://www.instagram.com/caissa_digital/"
       ],
-      "award": "Great Place to Work Certificada 2025-2026 (Argentina)"
+      "award": "Great Place to Work Certificada 2026-2027 (Argentina)"
     },
     {
       "@type": "CollectionPage",
@@ -64,14 +64,16 @@ get_header();
 <section class="inst">
   <div class="inst-head">
     <h1>Trabajá con nosotros</h1>
-<!-- GPTW, OJO CON LA FECHA: el badge del repo dice "Certificada JUL 2025 - JUL 2026 ARG",
-     o sea que VENCIO en julio de 2026. Manuel pidio destacarla el 24/08/2026; se asume
-     renovada. CONFIRMAR: si se renovo, reemplazar footer/badge-gptw.webp por el badge
-     nuevo; si NO se renovo, pasar todo este copy a pasado (mismo criterio que Premier,
-     CLAUDE.md par.10.b). -->
+<!-- GPTW: la certificacion esta RENOVADA y vigente. El badge dice "Certificada
+     SEPT 2026 - SEPT 2027 ARG" desde el 23/09/2026, cuando Gaston paso el archivo nuevo.
+     Eso cierra el pendiente que este comentario arrastraba desde agosto: el badge viejo
+     decia JUL 2025 - JUL 2026, o sea que estaba vencido, y todo este copy en presente
+     quedaba sin respaldo. Ahora lo tiene.
+     ⚠️ Vuelve a vencer en SEPTIEMBRE DE 2027. Si para entonces no se renovo, este copy
+     pasa a pasado, con el mismo criterio que Premier (CLAUDE.md par.10.b). -->
     <p>Estamos construyendo el mejor equipo de performance de habla hispana. Buscamos personas curiosas, analíticas y con obsesión por los resultados.</p>
     <div class="jchips reveal" style="margin-top:24px;margin-bottom:0">
-      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="151" height="256" loading="lazy" decoding="async" /> Somos Great Place to Work</span>
+      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="181" height="256" loading="lazy" decoding="async" /> Somos Great Place to Work</span>
     </div>
   </div>
 </section>
@@ -112,7 +114,7 @@ get_header();
     </div>
     <div class="cul reveal">
       <div class="cul-c cul-badge">
-        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Certificación Great Place to Work Argentina" width="151" height="256" loading="lazy" decoding="async" />
+        <img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Certificación Great Place to Work Argentina" width="181" height="256" loading="lazy" decoding="async" />
       </div>
       <div class="cul-c">
         <div class="cul-n">100%</div>

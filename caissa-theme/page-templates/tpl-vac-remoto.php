@@ -29,7 +29,7 @@ get_header();
         "name": "Caissa",
         "url": "https://caissa.digital/",
         "logo": "https://caissa.digital/logo-caissa.webp",
-        "award": "Great Place to Work Certificada 2025-2026 (Argentina)",
+        "award": "Great Place to Work Certificada 2026-2027 (Argentina)",
         "sameAs": [
           "https://www.linkedin.com/company/caissa-digital",
           "https://www.instagram.com/caissa_digital/"
@@ -83,13 +83,15 @@ get_header();
     <div class="jchips reveal">
       <span class="jchip open">Vacante abierta</span>
       <span class="jchip">Full time</span>
-<!-- GPTW, OJO CON LA FECHA: el badge del repo dice "Certificada JUL 2025 - JUL 2026 ARG",
-     o sea que VENCIO en julio de 2026. Manuel pidio destacarla el 24/08/2026; se asume
-     renovada. CONFIRMAR: si se renovo, reemplazar footer/badge-gptw.webp por el badge
-     nuevo; si NO se renovo, pasar todo este copy a pasado (mismo criterio que Premier,
-     CLAUDE.md par.10.b). -->
+<!-- GPTW: la certificacion esta RENOVADA y vigente. El badge dice "Certificada
+     SEPT 2026 - SEPT 2027 ARG" desde el 23/09/2026, cuando Gaston paso el archivo nuevo.
+     Eso cierra el pendiente que este comentario arrastraba desde agosto: el badge viejo
+     decia JUL 2025 - JUL 2026, o sea que estaba vencido, y todo este copy en presente
+     quedaba sin respaldo. Ahora lo tiene.
+     ⚠️ Vuelve a vencer en SEPTIEMBRE DE 2027. Si para entonces no se renovo, este copy
+     pasa a pasado, con el mismo criterio que Premier (CLAUDE.md par.10.b). -->
       <span class="jchip">100% remoto · Argentina</span>
-      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="151" height="256" loading="lazy" decoding="async" /> Great Place to Work</span>
+      <span class="jchip"><img src="<?php echo CAISSA_IMG; ?>/footer/badge-gptw.webp" alt="Great Place to Work, certificación Argentina" width="181" height="256" loading="lazy" decoding="async" /> Great Place to Work</span>
     </div>
     <h1>Especialista en Performance Marketing (remoto)</h1>
     <p>Para especialistas que dominan Google Ads y Meta Ads y quieren cuentas exigentes, objetivos claros y un equipo senior alrededor. Si venís de agencia y sentís que tocaste el techo, este es el salto.</p>
