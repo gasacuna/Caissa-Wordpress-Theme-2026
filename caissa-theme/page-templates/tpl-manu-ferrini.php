@@ -11,55 +11,6 @@
 
 get_header();
 ?>
-<?php if ( CAISSA_SCHEMA_PROPIO ) : ?>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfilePage",
-      "@id": "https://caissa.digital/equipo/manu-ferrini/#webpage",
-      "url": "https://caissa.digital/equipo/manu-ferrini/",
-      "name": "Manuel Ferrini, CEO y cofundador de Caissa",
-      "inLanguage": "es-AR",
-      "mainEntity": { "@id": "https://caissa.digital/equipo/manu-ferrini/#person" }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://caissa.digital/equipo/manu-ferrini/#person",
-      "name": "Manuel Ferrini",
-      "url": "https://caissa.digital/equipo/manu-ferrini/",
-      "image": "https://caissa.digital/equipo/fotos/manuel-ferrini.webp",
-      "jobTitle": "CEO y cofundador de Caissa",
-      "worksFor": { "@type": "Organization", "name": "Caissa", "url": "https://caissa.digital" },
-      "sameAs": [
-        "https://www.linkedin.com/in/manuelferrini/",
-        "https://www.instagram.com/manuferrini/",
-        "https://www.youtube.com/@ManuFerrini",
-        "https://manuferrini.com/"
-      ],
-      "knowsAbout": ["Google Ads","Meta Ads","Performance Marketing","Inteligencia Artificial",
-        "Conversion Rate Optimization","E-commerce","Lead Generation"],
-      "alumniOf": [
-        { "@type": "Organization", "name": "Google Skillshop", "url": "https://skillshop.withgoogle.com/" },
-        { "@type": "Organization", "name": "Meta Blueprint", "url": "https://www.facebook.com/business/learn" },
-        { "@type": "Organization", "name": "CXL Institute", "url": "https://cxl.com/institute/" }
-      ],
-      "address": { "@type": "PostalAddress", "addressCountry": "AR" },
-      "description": "Manuel Ferrini, desde Neuquen, es CEO y cofundador de Caissa, agencia Google Partner y Meta Business Partner, seleccionada Google Partner Premier en 2025. Creador del metodo PCO (PPC + CRO + OPV), asesoro a mas de 100 empresas en performance marketing, con foco en Google Ads, inteligencia artificial y conversion."
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://caissa.digital/" },
-        { "@type": "ListItem", "position": 2, "name": "Equipo", "item": "https://caissa.digital/equipo/" },
-        { "@type": "ListItem", "position": 3, "name": "Manuel Ferrini" }
-      ]
-    }
-  ]
-}
-</script>
-<?php endif; ?>
 <main>
 
 <!-- ===================== HERO =====================
