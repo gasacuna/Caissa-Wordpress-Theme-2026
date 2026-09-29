@@ -29,7 +29,7 @@ get_header();
       "@id": "https://caissa.digital/equipo/martin-pera/#person",
       "name": "Martin Pera",
       "url": "https://caissa.digital/equipo/martin-pera/",
-      "image": "https://caissa.digital/equipo/fotos/martin-pera.webp",
+      "image": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/equipo/fotos/martin-pera.webp",
       "jobTitle": "COO y cofundador de Caissa",
       "worksFor": { "@type": "Organization", "name": "Caissa", "url": "https://caissa.digital" },
       "knowsAbout": ["Marketing Digital","Performance Marketing","Operaciones","Liderazgo de equipos"],

@@ -21,7 +21,7 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "sameAs": [
         "https://www.linkedin.com/company/caissa-digital",
         "https://www.instagram.com/caissa_digital/"

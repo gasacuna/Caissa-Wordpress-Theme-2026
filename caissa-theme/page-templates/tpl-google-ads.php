@@ -21,11 +21,10 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "description": "Agencia de Google Ads y Meta Ads. Google Partner certificada. Gestión diaria de la inversión publicitaria, sin contratos de permanencia.",
       "foundingDate": "2021",
       "knowsAbout": ["Google Ads", "Meta Ads", "Performance Marketing", "PPC", "SEM", "Optimización de conversión", "Google Shopping", "Performance Max"],
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "65", "bestRating": "5" },
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "certification",
@@ -248,10 +247,11 @@ get_header();
       </div>
       <div class="pp-text reveal">
         <div class="head-left" style="margin-bottom:0">
-          <h2>Agencia certificada por Google</h2>
+          <h2>Agencia Google Partner Premier</h2>
+          <p>Certificada por Google</p>
         </div>
         <div class="prose" style="margin-top:18px">
-          <p>Caissa es <b>Google Partner</b>. La certificación exige certificaciones vigentes del equipo, un volumen mínimo de inversión gestionada y rendimiento demostrable en las cuentas. Google la revisa todos los años.</p>
+          <p>Caissa es una agencia <b>Google Partner</b>. La certificación exige certificaciones vigentes del equipo, un volumen mínimo de inversión gestionada y rendimiento demostrable en las cuentas. Google la revisa todos los años.</p>
           <p>En <b>2025 fuimos seleccionados Partner Premier</b>, la distinción más alta del programa, reservada al 3% de las agencias de cada país.</p>
           <p>Es la única credencial de este mercado que no depende de lo que una agencia diga de sí misma: la verificás vos en el directorio de Google.</p>
         </div>
@@ -652,7 +652,7 @@ get_header();
       <div class="geo-item reveal"><b>Estructuras multipaís</b><span>Cuentas con varios mercados y monedas conviviendo, medidas de forma comparable.</span></div>
     </div>
     <div class="prose reveal" style="margin:30px auto 0;text-align:center;max-width:820px">
-      <p style="font-size:.98rem">Si buscás una agencia con presencia local, mirá también <a href="https://caissa.digital/agencia-marketing-digital-argentina/">agencia de marketing digital en Argentina</a> y <a href="/agencia-marketing-neuquen/">marketing en Neuquén</a>.</p>
+      <p style="font-size:.98rem">Si buscás una agencia con presencia local, mirá también <a href="/">agencia de marketing digital en Argentina</a> y <a href="/agencia-marketing-neuquen/">marketing en Neuquén</a>.</p>
     </div>
   </div>
 </section>

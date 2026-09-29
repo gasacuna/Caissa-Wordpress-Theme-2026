@@ -21,7 +21,7 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "description": "Agencia de performance marketing especializada en Google Ads y Meta Ads. Gestión diaria de la inversión publicitaria, sin contratos de permanencia.",
       "foundingDate": "2021",
       "knowsAbout": [
@@ -32,12 +32,6 @@ get_header();
         "Optimización de feeds",
         "Medición y analítica"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "65",
-        "bestRating": "5"
-      },
       "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",

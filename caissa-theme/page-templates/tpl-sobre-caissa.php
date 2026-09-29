@@ -35,7 +35,7 @@ get_header();
       "legalName": "SYNERGYMEDIA PATAGONIA S.A.S.",
       "taxID": "30-71654254-4",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "foundingDate": "2021",
       "email": "hola@caissa.digital",
       "telephone": "+54 9 299 469-5443",
@@ -102,12 +102,6 @@ get_header();
       "award": [
         "Google Partner Premier 2025"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "65",
-        "bestRating": "5"
-      },
       "sameAs": [
         "https://maps.app.goo.gl/KCAFVTBE5gHcGEDu6",
         "https://clutch.co/profile/caissa",

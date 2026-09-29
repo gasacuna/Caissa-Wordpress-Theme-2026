@@ -21,11 +21,10 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "description": "Agencia de performance marketing especializada en Google Ads y Meta Ads. Gestión diaria de la inversión publicitaria, sin contratos de permanencia.",
       "foundingDate": "2021",
       "knowsAbout": ["Marketing jurídico", "Google Ads para abogados", "Meta Ads", "Captación de clientes para estudios jurídicos", "Optimización de conversión"],
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "65", "bestRating": "5" },
       "hasCredential": [
         { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Google Partner", "recognizedBy": { "@type": "Organization", "name": "Google" } },
         { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Meta Business Partner", "recognizedBy": { "@type": "Organization", "name": "Meta" } }

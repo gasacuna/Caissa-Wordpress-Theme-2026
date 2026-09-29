@@ -21,7 +21,7 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "description": "Agencia boutique de marketing digital especializada en performance marketing (Google Ads y Meta Ads).",
       "foundingDate": "2021",
       "numberOfEmployees": { "@type": "QuantitativeValue", "value": 9 },

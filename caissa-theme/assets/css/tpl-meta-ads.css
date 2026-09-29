@@ -86,6 +86,9 @@
   @media(max-width:900px){.adv{grid-template-columns:1fr}}
 
   /* ===== Formatos de anuncio ===== */
+  /* El H3 de la grilla: sin el, los seis H4 de .fmt-c cuelgan del H3 de WhatsApp Ads,
+     que es la ultima tarjeta de .plat y no los contiene. */
+  .fmt-h{max-width:var(--maxw);margin:40px auto 0;font-size:1.3rem;color:var(--ink)}
   .fmt{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:var(--maxw);margin:26px auto 0}
   .fmt-c{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-sm)}
   .fmt-c h4{font-size:.98rem;margin-bottom:7px;letter-spacing:-.01em;color:var(--ink)}

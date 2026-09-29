@@ -21,12 +21,11 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "slogan": "Hacemos crecer tu negocio con Google Ads",
       "description": "Agencia de performance marketing especializada en Google Ads y Meta Ads. Gestión diaria de la inversión, sin contratos de permanencia.",
       "foundingDate": "2021",
       "areaServed": "AR",
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "65", "bestRating": "5" },
       "knowsAbout": ["Google Ads", "Meta Ads", "Performance Marketing", "Optimización de conversión"],
       "founder": [
         { "@type": "Person", "name": "Manuel Ferrini", "jobTitle": "CEO y cofundador", "sameAs": "https://ar.linkedin.com/in/manuelferrini" },

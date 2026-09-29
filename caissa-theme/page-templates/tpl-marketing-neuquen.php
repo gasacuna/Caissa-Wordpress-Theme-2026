@@ -22,8 +22,8 @@ get_header();
       "name": "Caissa",
       "description": "Agencia de marketing digital con oficinas en Neuquén Capital. Google Ads, Meta Ads y optimización de conversión para empresas del Alto Valle y la Patagonia.",
       "url": "https://caissa.digital/agencia-marketing-neuquen/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
-      "image": ["https://caissa.digital/oficina-neuquen.jpg", "https://caissa.digital/logo-caissa.webp"],
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
+      "image": ["https://caissa.digital/wp-content/themes/caissa-theme/assets/img/oficina-neuquen.jpg", "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp"],
       "priceRange": "$$$",
       "currenciesAccepted": "ARS, USD",
       "foundingDate": "2021",
@@ -216,7 +216,7 @@ get_header();
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3>CRO y growth marketing</h3>
         <p>Trabajamos la página donde cae el clic y revisamos qué pasa con la consulta después. Podés tener la mejor campaña y perder la venta porque nadie contestó el WhatsApp.</p>
-        <a href="https://caissa.digital/agencia-growth-marketing/">Ver growth marketing</a>
+        <a href="https://caissa.digital/blog/contratar-agencia-growth-marketing/">Ver growth marketing</a>
       </article>
       <article class="lsv-c reveal">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8h14M7 13h10M9 18h6" stroke-linecap="round"/></svg></span>
@@ -416,7 +416,7 @@ get_header();
       </article>
     </div>
     <div class="sec-cta reveal">
-      <a href="https://caissa.digital/caso/" class="btn btn-ghost-d">Ver todos los casos de éxito
+      <a href="/industrias/" class="btn btn-ghost-d">Ver todos los casos de éxito
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="/reviews/" class="btn btn-ghost-d">Ver testimonios de clientes
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -554,7 +554,7 @@ get_header();
       <div class="cov-c reveal"><b>Añelo y Vaca Muerta</b><span>Empresas de servicios petroleros y su cadena.</span></div>
       <div class="cov-c reveal"><b>Resto de la Patagonia</b><span>Bariloche, Ushuaia, El Calafate y Comodoro.</span></div>
     </div>
-    <p class="cov-note reveal">¿Estás fuera de la región? También gestionamos cuentas en <b>España, México, Colombia, Chile y Perú</b>. Mirá <a href="https://caissa.digital/agencia-marketing-digital-argentina/" style="color:var(--violet);font-weight:700;text-decoration:underline;text-underline-offset:3px">marketing digital en Argentina</a>.</p>
+    <p class="cov-note reveal">¿Estás fuera de la región? También gestionamos cuentas en <b>España, México, Colombia, Chile y Perú</b>. Mirá <a href="/" style="color:var(--violet);font-weight:700;text-decoration:underline;text-underline-offset:3px">marketing digital en Argentina</a>.</p>
   </div>
 </section>
 

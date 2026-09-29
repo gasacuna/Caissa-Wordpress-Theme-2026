@@ -21,11 +21,10 @@ get_header();
       "@id": "https://caissa.digital/#organization",
       "name": "Caissa",
       "url": "https://caissa.digital/",
-      "logo": "https://caissa.digital/logo-caissa.webp",
+      "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
       "description": "Agencia de performance marketing especializada en Meta Ads y Google Ads. Gestión diaria de la inversión publicitaria, sin contratos de permanencia.",
       "foundingDate": "2021",
       "knowsAbout": ["Meta Ads", "Facebook Ads", "Instagram Ads", "WhatsApp Ads", "Campañas Advantage+", "Meta Pixel y API de Conversiones", "Google Ads", "Performance Marketing", "Social Ads", "Optimización de conversión"],
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "65", "bestRating": "5" },
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "certification",
@@ -391,6 +390,7 @@ get_header();
         </ul>
       </article>
     </div>
+    <h3 class="fmt-h reveal">Formatos de anuncios en Facebook e Instagram</h3>
     <div class="fmt">
       <div class="fmt-c reveal"><h4>Anuncios de imagen</h4><p>Lo más directo. Sirve para probar mensajes rápido antes de invertir en producción.</p></div>
       <div class="fmt-c reveal"><h4>Anuncios de video, Reels y Stories</h4><p>El formato que más entrega hoy. Los primeros tres segundos deciden si alguien se queda.</p></div>
@@ -553,7 +553,7 @@ get_header();
       </article>
     </div>
     <div class="sec-cta reveal">
-      <a href="https://caissa.digital/caso/" class="btn btn-ghost-d">Ver casos de éxito
+      <a href="/industrias/" class="btn btn-ghost-d">Ver casos de éxito
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="/reviews/" class="btn btn-ghost-d">Ver todos los testimonios
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>

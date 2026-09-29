@@ -28,7 +28,7 @@ get_header();
         "@id": "https://caissa.digital/#organization",
         "name": "Caissa",
         "url": "https://caissa.digital/",
-        "logo": "https://caissa.digital/logo-caissa.webp",
+        "logo": "https://caissa.digital/wp-content/themes/caissa-theme/assets/img/logo-caissa.webp",
         "award": "Great Place to Work Certificada 2026-2027 (Argentina)",
         "sameAs": [
           "https://www.linkedin.com/company/caissa-digital",
