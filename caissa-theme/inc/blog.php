@@ -653,3 +653,217 @@ add_filter(
 		return $clases;
 	}
 );
+
+/**
+ * INDICE DE CONTENIDOS de la nota abierta (29/09/2026, pedido de Gaston).
+ *
+ * POR QUE EXISTE. Las notas tenian un indice de Elementor y al migrar se perdio.
+ * En Search Console eso se ve clarisimo: en la nota de "mejores agencias de
+ * marketing digital" los anclajes (#elementor-toc__heading-anchor-N) sumaban
+ * unas 5.500 impresiones en la ventana del 11 al 25/8 y quedaron en CERO en la
+ * del 11 al 25/9. No eran clics propios -los anclajes marcaban 0- sino los
+ * enlaces de salto que Google arma debajo del resultado cuando la pagina tiene
+ * un indice con anclas. Sin indice no hay anclas, y sin anclas no hay saltos.
+ *
+ * COMO FUNCIONA. Filtro de the_content con prioridad 25, o sea DESPUES de
+ * wpautop (10), de las imagenes (15) y de las tablas (20). La prioridad no es
+ * un detalle: por debajo de 10 wpautop envolveria el markup del indice en <p>
+ * y lo romperia.
+ *
+ * Una sola pasada de preg_replace_callback hace las dos cosas: le pone id a
+ * cada h2/h3 que no lo tenga y va juntando la lista. Despues el indice se
+ * inserta ANTES del primer encabezado, asi la entradilla de la nota queda
+ * arriba de todo -que es lo que conviene leer primero y lo que Google suele
+ * usar para el snippet.
+ *
+ * DECISIONES QUE CONVIENE NO DESHACER SIN PENSARLAS
+ *
+ *   - Los id salen del TEXTO del encabezado (sanitize_title), no de su posicion.
+ *     Elementor numeraba: heading-anchor-0, -1, -2... Si el editor reordenaba
+ *     una seccion, los anclajes indexados pasaban a apuntar a otra cosa. Con el
+ *     texto, el ancla viaja con su seccion. Ademas un ancla legible es mejor
+ *     enlace de salto: Google muestra el fragmento en el resultado.
+ *   - Si un encabezado YA trae id (se lo puso el editor, o un plugin), se
+ *     respeta. Nunca se pisa: puede haber enlaces apuntando ahi.
+ *   - Los repetidos se desambiguan con -2, -3... Dos "Conclusion" en la misma
+ *     nota no pueden compartir id.
+ *   - NO hay JavaScript. <details> colapsa solo, funciona con teclado, lo leen
+ *     los lectores de pantalla, y su contenido esta en el DOM aunque este
+ *     cerrado, asi que Google lo rastrea igual. El scroll suave y el offset del
+ *     header sticky ya los da base.css (scroll-behavior:smooth y
+ *     scroll-padding-top:84px), que el blog carga siempre.
+ *   - NO se cachea en un transient. Es una pasada de regex sobre un string;
+ *     imagenes.php cachea porque escribe archivos, aca no hay nada que cachear.
+ *
+ * LO QUE NO SE HIZO, por si alguien lo extraña: reponer los id viejos de
+ * Elementor (heading-anchor-N) como anclas invisibles extra. No recuperan las
+ * impresiones -eso lo hace el indice- y solo servirian para que un enlace
+ * externo viejo caiga en la seccion correcta. A cambio metian un elemento por
+ * encabezado con un nombre de clase de un page builder que este tema no usa.
+ * Si aparecen backlinks a esos fragmentos, se agrega y listo.
+ *
+ * Filtros:
+ *   caissa_indice_blog        bool   false apaga el indice en todo el blog
+ *   caissa_indice_niveles     array  que encabezados entran. Por defecto 2 y 3
+ *   caissa_indice_minimo      int    cuantos hacen falta para mostrarlo (3)
+ *   caissa_indice_titulo      string el rotulo del desplegable
+ *   caissa_indice_abierto     bool   si arranca desplegado (true)
+ */
+
+/**
+ * Los niveles de encabezado que entran al indice, saneados.
+ *
+ * @return array<int,int> Lista de 2..4, ordenada y sin repetidos.
+ */
+function caissa_indice_niveles() {
+	$pedidos = (array) apply_filters( 'caissa_indice_niveles', array( 2, 3 ) );
+	$limpios = array();
+	foreach ( $pedidos as $n ) {
+		$n = (int) $n;
+		if ( $n >= 2 && $n <= 4 && ! in_array( $n, $limpios, true ) ) {
+			$limpios[] = $n;
+		}
+	}
+	sort( $limpios );
+	return $limpios;
+}
+
+/**
+ * El markup del indice.
+ *
+ * @param array $items Cada uno con nivel, id y txt (texto plano ya decodificado).
+ * @return string
+ */
+function caissa_indice_markup( $items ) {
+	$titulo  = (string) apply_filters( 'caissa_indice_titulo', __( 'Índice de contenidos', 'caissa' ) );
+	$abierto = (bool) apply_filters( 'caissa_indice_abierto', true );
+
+	$out  = '<nav class="bl-toc" aria-labelledby="bl-toc-rot">';
+	$out .= '<details class="bl-toc-caja"' . ( $abierto ? ' open' : '' ) . '>';
+	$out .= '<summary class="bl-toc-cab">';
+	$out .= '<svg class="bl-toc-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01" stroke-linecap="round"/></svg>';
+	$out .= '<span class="bl-toc-rot" id="bl-toc-rot">' . esc_html( $titulo ) . '</span>';
+	$out .= '<svg class="bl-toc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+	$out .= '</summary>';
+	$out .= '<ol class="bl-toc-lista">';
+	foreach ( $items as $it ) {
+		$out .= '<li class="bl-toc-n' . (int) $it['nivel'] . '">';
+		$out .= '<a href="#' . esc_attr( $it['id'] ) . '">' . esc_html( $it['txt'] ) . '</a>';
+		$out .= '</li>';
+	}
+	$out .= '</ol></details></nav>';
+
+	return $out;
+}
+
+add_filter( 'the_content', 'caissa_indice_contenido', 25 );
+/**
+ * Pone id a los encabezados de la nota y le antepone el indice.
+ *
+ * @param string $html Contenido ya procesado por los filtros anteriores.
+ * @return string
+ */
+function caissa_indice_contenido( $html ) {
+	if ( ! is_singular( 'post' ) || ! in_the_loop() || ! is_main_query() ) {
+		return $html;
+	}
+	if ( ! is_string( $html ) || '' === $html ) {
+		return $html;
+	}
+	if ( ! apply_filters( 'caissa_indice_blog', true ) ) {
+		return $html;
+	}
+	/*
+	 * Si ya hay un indice, no se pone otro. Pasa cuando algo vuelve a aplicar
+	 * the_content sobre contenido ya filtrado (lo hacen varios plugins de cache
+	 * y de extractos), y tambien si alguna vez alguien pega uno a mano.
+	 */
+	if ( false !== strpos( $html, 'class="bl-toc"' ) ) {
+		return $html;
+	}
+
+	$niveles = caissa_indice_niveles();
+	if ( ! $niveles ) {
+		return $html;
+	}
+
+	$clase  = '[' . implode( '', $niveles ) . ']';
+	$items  = array();
+	$usados = array();
+
+	$nuevo = preg_replace_callback(
+		'/<h(' . $clase . ')\b([^>]*)>(.*?)<\/h\1\s*>/is',
+		function ( $m ) use ( &$items, &$usados ) {
+			$nivel = (int) $m[1];
+			$attr  = $m[2];
+			$crudo = $m[3];
+
+			// El texto visible del encabezado, sin etiquetas y sin entidades.
+			$txt = trim( html_entity_decode( wp_strip_all_tags( $crudo ), ENT_QUOTES, 'UTF-8' ) );
+			$txt = trim( preg_replace( '/\s+/u', ' ', $txt ) );
+			if ( '' === $txt ) {
+				return $m[0]; // Un encabezado sin texto no va al indice ni lleva id.
+			}
+
+			// Si ya tiene id, manda el que esta: puede haber enlaces apuntando ahi.
+			$id = '';
+			if ( preg_match( '/\sid=("|\')(.*?)\1/i', $attr, $mid ) ) {
+				$id = trim( $mid[2] );
+			}
+
+			if ( '' === $id ) {
+				$base = sanitize_title( $txt );
+				if ( '' === $base ) {
+					$base = 'seccion';
+				}
+				/*
+				 * Un id no puede EMPEZAR con un numero. En HTML5 es valido y el salto
+				 * del navegador funciona igual (resuelve por getElementById), pero
+				 * '#7-buho-media' NO es un selector CSS valido: document.querySelector
+				 * tira SyntaxError y una regla #7-... no aplica nunca. En estas notas
+				 * pasa seguido, porque los h2 de los rankings empiezan con "1.", "2."...
+				 * Se le antepone "seccion-" SOLO en ese caso, para no ensuciar los
+				 * anclajes que ya arrancan con letra.
+				 */
+				if ( preg_match( '/^[0-9]/', $base ) ) {
+					$base = 'seccion-' . $base;
+				}
+				$id = $base;
+				$n  = 2;
+				while ( isset( $usados[ $id ] ) ) {
+					$id = $base . '-' . $n;
+					++$n;
+				}
+				$attr = rtrim( $attr ) . ' id="' . esc_attr( $id ) . '"';
+			}
+
+			$usados[ $id ] = true;
+			$items[]       = array(
+				'nivel' => $nivel,
+				'id'    => $id,
+				'txt'   => $txt,
+			);
+
+			return '<h' . $nivel . $attr . '>' . $crudo . '</h' . $nivel . '>';
+		},
+		$html
+	);
+
+	// Si la regex se quedo sin pila (contenido enorme), se devuelve lo original.
+	if ( ! is_string( $nuevo ) || '' === $nuevo || PREG_NO_ERROR !== preg_last_error() ) {
+		return $html;
+	}
+
+	$minimo = max( 2, (int) apply_filters( 'caissa_indice_minimo', 3 ) );
+	if ( count( $items ) < $minimo ) {
+		return $nuevo; // Pocos encabezados para un indice, pero los id se quedan.
+	}
+
+	// El indice va justo antes del primer encabezado, o sea despues de la entradilla.
+	if ( ! preg_match( '/<h' . $clase . '\b/i', $nuevo, $m0, PREG_OFFSET_CAPTURE ) ) {
+		return $nuevo;
+	}
+	$corte = (int) $m0[0][1];
+
+	return substr( $nuevo, 0, $corte ) . caissa_indice_markup( $items ) . substr( $nuevo, $corte );
+}

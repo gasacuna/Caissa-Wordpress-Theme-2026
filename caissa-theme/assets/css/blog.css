@@ -405,3 +405,78 @@ a.eyebrow:hover{background:#DFE4FE}
    por el mismo motivo que los titulos de columna: es una etiqueta, no una seccion
    del documento. Copia lo que base.css le da a .foot-feat h3. */
 .foot-feat .foot-feat-t{color:var(--ink);font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0}
+
+/* ===== Indice de contenidos de la nota ====================================
+   Lo arma inc/blog.php con un filtro de the_content (prioridad 25) leyendo los
+   h2 y h3 del cuerpo. Es un <details>: colapsa sin una sola linea de JavaScript,
+   anda con teclado y los lectores de pantalla lo anuncian solos.
+
+   OJO: el indice vive DENTRO de .bl-prose, asi que hay que pisarle dos cosas del
+   cuerpo del articulo o se ve mal: el padding de las listas (.bl-prose ol) y el
+   estilo de los enlaces (.bl-prose a los pinta violetas y subrayados; veintiun
+   enlaces asi apilados son una pared). Por eso varios selectores van con el
+   prefijo .bl-prose: es especificidad, no decoracion.
+
+   NO lleva numeracion propia a proposito: los h2 de estas notas ya empiezan con
+   "1.", "2.", "3."... y un <ol> con marcador encima daria "1. 1. Caissa".
+
+   El salto lo resuelve base.css, que el blog carga siempre:
+   scroll-behavior:smooth y scroll-padding-top:84px, o sea que el titulo de
+   destino no queda tapado por el header sticky. */
+.bl-toc{margin:32px 0 0}
+.bl-toc-caja{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);overflow:hidden}
+
+.bl-toc-cab{display:flex;align-items:center;gap:10px;padding:15px 20px;cursor:pointer;
+  color:var(--ink);font-weight:800;font-size:.95rem;letter-spacing:-.012em;
+  list-style:none;-webkit-user-select:none;user-select:none}
+/* Sin esto Safari y Chrome dibujan su propio triangulito al lado del chevron. */
+.bl-toc-cab::-webkit-details-marker{display:none}
+.bl-toc-cab::marker{content:""}
+.bl-toc-cab:hover{background:var(--bg-soft)}
+.bl-toc-cab:focus-visible{outline:2px solid var(--violet);outline-offset:-2px}
+.bl-toc-ic{width:18px;height:18px;flex:0 0 auto;color:var(--violet)}
+.bl-toc-rot{flex:1 1 auto}
+.bl-toc-chev{width:18px;height:18px;flex:0 0 auto;color:var(--muted);transition:transform .18s ease}
+.bl-toc-caja[open] .bl-toc-chev{transform:rotate(180deg)}
+
+.bl-prose .bl-toc-lista{list-style:none;padding:9px 20px 16px;margin:0;
+  border-top:1px solid var(--line)}
+.bl-toc-lista li{margin:0;break-inside:avoid}
+.bl-prose .bl-toc-lista a{display:block;padding:5px 0;color:var(--ink-soft);
+  text-decoration:none;font-size:.92rem;line-height:1.32}
+
+/* Dos columnas cuando hay ancho. Una nota de veintiun secciones en una sola
+   columna mide casi mil pixeles: mas alto que el viewport de una notebook, o
+   sea una pared antes de la primera linea del articulo. En dos columnas entra
+   en la mitad. Nada de lo que hay adentro se despliega, asi que el reflow que
+   §24.b del CLAUDE.md le critica a columns:2 en las FAQ aca no puede pasar. */
+@media (min-width:861px) {
+  .bl-prose .bl-toc-lista{columns:2;column-gap:34px}
+}
+.bl-prose .bl-toc-lista a:hover{color:var(--violet);text-decoration:underline;
+  text-decoration-thickness:1px;text-underline-offset:3px}
+.bl-toc-n2 > a{font-weight:600}
+/* Los h3 van indentados y con un hilo a la izquierda: se lee la jerarquia sin
+   numeros y sin un segundo color (regla del sitio: una sola tinta). */
+.bl-prose .bl-toc-n3 > a{margin-left:3px;padding-left:16px;font-size:.9rem;
+  color:var(--muted);border-left:2px solid var(--line)}
+.bl-prose .bl-toc-n3 > a:hover{border-left-color:var(--violet)}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-toc-chev{transition:none}
+}
+
+@media (max-width:760px) {
+  .bl-toc{margin-top:26px}
+  .bl-toc-cab{padding:14px 16px}
+  /* En mobile una nota con veintiun secciones daria un indice de ~700px, o sea
+     una pared antes de empezar a leer. Se acota y scrollea adentro suyo, que es
+     la misma regla que el sitio usa para las tablas anchas. */
+  .bl-prose .bl-toc-lista{padding:6px 16px 12px;max-height:min(50vh,360px);overflow-y:auto}
+  /* Filas mas altas SOLO en mobile: con el mouse 29px alcanzan, con el dedo no
+     (§24.d del CLAUDE.md fija 44px de objetivo tactil). Como la lista ya esta
+     acotada y scrollea, agrandar las filas NO agranda el indice: solo entran
+     menos de una. Sale gratis. */
+  .bl-prose .bl-toc-lista a{padding:12px 0}
+}
