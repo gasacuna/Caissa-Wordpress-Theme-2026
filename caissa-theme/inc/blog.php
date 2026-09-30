@@ -672,9 +672,13 @@ add_filter(
  *
  * Una sola pasada de preg_replace_callback hace las dos cosas: le pone id a
  * cada h2/h3 que no lo tenga y va juntando la lista. Despues el indice se
- * inserta ANTES del primer encabezado, asi la entradilla de la nota queda
- * arriba de todo -que es lo que conviene leer primero y lo que Google suele
- * usar para el snippet.
+ * antepone al contenido.
+ *
+ * DONDE VA: arriba de todo, o sea justo debajo de la imagen de portada, que
+ * vive en single.php y no en el contenido. Lo pidio Gaston el 30/09/2026 con
+ * una captura. La version anterior lo metia DESPUES de la entradilla, antes del
+ * primer encabezado; con el indice arrancando colapsado -57px- ya no hay motivo
+ * para empujarlo abajo, y arriba es donde el lector lo busca.
  *
  * DECISIONES QUE CONVIENE NO DESHACER SIN PENSARLAS
  *
@@ -707,7 +711,10 @@ add_filter(
  *   caissa_indice_niveles     array  que encabezados entran. Por defecto 2 y 3
  *   caissa_indice_minimo      int    cuantos hacen falta para mostrarlo (3)
  *   caissa_indice_titulo      string el rotulo del desplegable
- *   caissa_indice_abierto     bool   si arranca desplegado (true)
+ *   caissa_indice_abierto     bool   si arranca desplegado. FALSE por defecto:
+ *                                   Gaston pidio que lo abra el lector. Ojo, el
+ *                                   contenido de un <details> cerrado igual esta
+ *                                   en el DOM, asi que Google lo rastrea.
  */
 
 /**
@@ -736,7 +743,7 @@ function caissa_indice_niveles() {
  */
 function caissa_indice_markup( $items ) {
 	$titulo  = (string) apply_filters( 'caissa_indice_titulo', __( 'Índice de contenidos', 'caissa' ) );
-	$abierto = (bool) apply_filters( 'caissa_indice_abierto', true );
+	$abierto = (bool) apply_filters( 'caissa_indice_abierto', false );
 
 	$out  = '<nav class="bl-toc" aria-labelledby="bl-toc-rot">';
 	$out .= '<details class="bl-toc-caja"' . ( $abierto ? ' open' : '' ) . '>';
@@ -859,11 +866,6 @@ function caissa_indice_contenido( $html ) {
 		return $nuevo; // Pocos encabezados para un indice, pero los id se quedan.
 	}
 
-	// El indice va justo antes del primer encabezado, o sea despues de la entradilla.
-	if ( ! preg_match( '/<h' . $clase . '\b/i', $nuevo, $m0, PREG_OFFSET_CAPTURE ) ) {
-		return $nuevo;
-	}
-	$corte = (int) $m0[0][1];
-
-	return substr( $nuevo, 0, $corte ) . caissa_indice_markup( $items ) . substr( $nuevo, $corte );
+	// Arriba de todo: el contenido empieza con el indice.
+	return caissa_indice_markup( $items ) . $nuevo;
 }
