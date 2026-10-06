@@ -871,89 +871,58 @@ function caissa_indice_contenido( $html ) {
 }
 
 /**
- * La URL del listado del blog, o cadena vacia si no hay pagina de entradas.
+ * EL SHORTCODE HUERFANO DE ELEMENTOR (06/10/2026, pedido de Gaston).
  *
- * @return string
- */
-function caissa_url_blog() {
-	$id = (int) get_option( 'page_for_posts' );
-	if ( ! $id ) {
-		return '';
-	}
-	$url = get_permalink( $id );
-	return is_string( $url ) ? $url : '';
-}
-
-/**
- * CANONICAL DE LA PAGINACION DEL BLOG -> /blog/ (06/10/2026, pedido de Gaston).
+ * QUE PASABA. Las notas viejas llevan bloques de llamada a la accion insertados
+ * con el shortcode de Elementor, [elementor-template id="15432"]. El tema nuevo no
+ * carga Elementor en ningun lado -verificado: no encola un solo archivo suyo ni en
+ * la home, ni en el blog, ni en las plantillas-, asi que el shortcode dejo de
+ * ejecutarse y quedo IMPRESO COMO TEXTO en medio del articulo.
  *
- * Hoy /blog/page/2/ se auto-canonicaliza: Rank Math emite
- * <link rel="canonical" href="https://caissa.digital/blog/page/2/">. Con esto las
- * doce paginas (verificado: la 13 da 404) pasan a apuntar a /blog/.
+ * CUANTO. Barrido de las 107 entradas del post-sitemap el 06/10/2026:
+ * 85 apariciones en 60 entradas. Por plantilla: id 15432 en 58, id 13521 en 21,
+ * id 10117 en 3. Es el unico shortcode huerfano del blog; los otros corchetes que
+ * aparecen en el cuerpo ([Actualizado...], [keyword]...) son prosa del autor.
  *
- * ⚠️ LO QUE HAY QUE SABER ANTES DE TOCAR ESTO. Google recomienda lo contrario: que
- * cada pagina de una serie paginada se canonicalice A SI MISMA, porque la pagina 2
- * no es un duplicado de la 1 -lista otras entradas-. Al apuntarlas todas a /blog/
- * se le dice que esas URLs no son la version buena, y lo habitual es que las
- * rastree menos. Si el unico camino a una entrada vieja fuera la paginacion, esa
- * entrada se quedaria sin ruta de descubrimiento.
+ * POR QUE SE VE CON LAS COMILLAS RARAS, que es la pista que lo explica todo: en
+ * produccion el texto sale como [elementor-template id=»15432″], con » (U+00BB) y
+ * ″ (U+2033). Eso lo hizo wptexturize, que corre en the_content antes que
+ * do_shortcode. wptexturize RESPETA el interior de los shortcodes REGISTRADOS y
+ * texturiza todo lo demas: que las comillas esten curvas es la prueba de que el
+ * tag no estaba registrado.
  *
- * ACA EL RIESGO ES BAJO Y ESTA MEDIDO: post-sitemap.xml lista las 107 entradas, asi
- * que Google las descubre por el sitemap y no depende de la paginacion. Por eso se
- * aplico. Si algun dia desaparece el sitemap de entradas, hay que revisar esto.
+ * POR QUE REGISTRARLO LO ARREGLA. Al registrarlo pasan las dos cosas a la vez:
+ * wptexturize vuelve a saltearlo (las comillas quedan rectas) y do_shortcode lo
+ * reconoce y llama a esta devolucion, que no imprime nada. El texto desaparece de
+ * las 60 entradas sin editar ni una. Y si alguna vez alguien quiere volver a
+ * mostrar algo ahi, es cambiar el return de un solo lugar.
  *
- * SI LO QUE SE BUSCA ES QUE SOLO /blog/ ESTE INDEXADA, la herramienta correcta no es
- * el canonical sino noindex,follow en las paginadas: saca las URLs del indice y a la
- * vez conserva el rastreo de los enlaces. Son dos cosas distintas y se pueden querer
- * por separado; esto hace lo que se pidio.
+ * SE REGISTRA EN init CON PRIORIDAD 99, o sea despues de que Elementor registraria
+ * el suyo (lo hace en init con la prioridad normal). Es a proposito: si algun dia
+ * se reactiva el plugin, este sigue ganando y el bloque sigue sin aparecer, que es
+ * lo que se pidio. Para devolverselo a Elementor:
  *
- * La pagina 1 (/blog/) NO se toca: is_paged() es false ahi, asi que conserva su
- * canonical propio.
+ *   add_filter( 'caissa_shortcodes_elementor', '__return_empty_array' );
  *
- * Las CATEGORIAS no entran: ya salen noindex,follow y sin canonical (verificado en
- * produccion el 06/10/2026), que es lo correcto para un archivo no indexable.
- *
- * Filtro para revertirlo sin tocar el tema:
- *   add_filter( 'caissa_canonical_paginacion', '__return_false' );
- */
-add_filter(
-	'rank_math/frontend/canonical',
-	function ( $canonical ) {
-		if ( ! is_home() || ! is_paged() ) {
-			return $canonical;
-		}
-		if ( ! apply_filters( 'caissa_canonical_paginacion', true ) ) {
-			return $canonical;
-		}
-		$url = caissa_url_blog();
-		return '' !== $url ? $url : $canonical;
-	}
-);
-
-/**
- * El mismo canonical, para cuando Rank Math NO esta activo.
- *
- * WordPress no emite rel=canonical en archivos -su rel_canonical() solo corre en
- * contenido singular-, asi que sin esto la paginacion quedaria sin ninguno. Va con
- * la guarda de siempre para que nunca se emitan dos: si Rank Math esta, manda el
- * filtro de arriba y esta funcion no imprime nada.
+ * ⚠️ AL INSTALAR HAY QUE PURGAR LA CACHE. WP Rocket y LiteSpeed sirven el HTML ya
+ * renderizado: hasta que no se purgue, las 60 entradas siguen mostrando el texto.
  */
 add_action(
-	'wp_head',
+	'init',
 	function () {
-		if ( defined( 'RANK_MATH_VERSION' ) || class_exists( 'RankMath' ) ) {
-			return;
-		}
-		if ( ! is_home() || ! is_paged() ) {
-			return;
-		}
-		if ( ! apply_filters( 'caissa_canonical_paginacion', true ) ) {
-			return;
-		}
-		$url = caissa_url_blog();
-		if ( '' !== $url ) {
-			echo '<link rel="canonical" href="' . esc_url( $url ) . '" />' . "\n";
+		$tags = (array) apply_filters( 'caissa_shortcodes_elementor', array( 'elementor-template' ) );
+		foreach ( $tags as $tag ) {
+			$tag = trim( (string) $tag );
+			if ( '' === $tag ) {
+				continue;
+			}
+			add_shortcode(
+				$tag,
+				function () {
+					return '';
+				}
+			);
 		}
 	},
-	1
+	99
 );
