@@ -869,3 +869,91 @@ function caissa_indice_contenido( $html ) {
 	// Arriba de todo: el contenido empieza con el indice.
 	return caissa_indice_markup( $items ) . $nuevo;
 }
+
+/**
+ * La URL del listado del blog, o cadena vacia si no hay pagina de entradas.
+ *
+ * @return string
+ */
+function caissa_url_blog() {
+	$id = (int) get_option( 'page_for_posts' );
+	if ( ! $id ) {
+		return '';
+	}
+	$url = get_permalink( $id );
+	return is_string( $url ) ? $url : '';
+}
+
+/**
+ * CANONICAL DE LA PAGINACION DEL BLOG -> /blog/ (06/10/2026, pedido de Gaston).
+ *
+ * Hoy /blog/page/2/ se auto-canonicaliza: Rank Math emite
+ * <link rel="canonical" href="https://caissa.digital/blog/page/2/">. Con esto las
+ * doce paginas (verificado: la 13 da 404) pasan a apuntar a /blog/.
+ *
+ * ⚠️ LO QUE HAY QUE SABER ANTES DE TOCAR ESTO. Google recomienda lo contrario: que
+ * cada pagina de una serie paginada se canonicalice A SI MISMA, porque la pagina 2
+ * no es un duplicado de la 1 -lista otras entradas-. Al apuntarlas todas a /blog/
+ * se le dice que esas URLs no son la version buena, y lo habitual es que las
+ * rastree menos. Si el unico camino a una entrada vieja fuera la paginacion, esa
+ * entrada se quedaria sin ruta de descubrimiento.
+ *
+ * ACA EL RIESGO ES BAJO Y ESTA MEDIDO: post-sitemap.xml lista las 107 entradas, asi
+ * que Google las descubre por el sitemap y no depende de la paginacion. Por eso se
+ * aplico. Si algun dia desaparece el sitemap de entradas, hay que revisar esto.
+ *
+ * SI LO QUE SE BUSCA ES QUE SOLO /blog/ ESTE INDEXADA, la herramienta correcta no es
+ * el canonical sino noindex,follow en las paginadas: saca las URLs del indice y a la
+ * vez conserva el rastreo de los enlaces. Son dos cosas distintas y se pueden querer
+ * por separado; esto hace lo que se pidio.
+ *
+ * La pagina 1 (/blog/) NO se toca: is_paged() es false ahi, asi que conserva su
+ * canonical propio.
+ *
+ * Las CATEGORIAS no entran: ya salen noindex,follow y sin canonical (verificado en
+ * produccion el 06/10/2026), que es lo correcto para un archivo no indexable.
+ *
+ * Filtro para revertirlo sin tocar el tema:
+ *   add_filter( 'caissa_canonical_paginacion', '__return_false' );
+ */
+add_filter(
+	'rank_math/frontend/canonical',
+	function ( $canonical ) {
+		if ( ! is_home() || ! is_paged() ) {
+			return $canonical;
+		}
+		if ( ! apply_filters( 'caissa_canonical_paginacion', true ) ) {
+			return $canonical;
+		}
+		$url = caissa_url_blog();
+		return '' !== $url ? $url : $canonical;
+	}
+);
+
+/**
+ * El mismo canonical, para cuando Rank Math NO esta activo.
+ *
+ * WordPress no emite rel=canonical en archivos -su rel_canonical() solo corre en
+ * contenido singular-, asi que sin esto la paginacion quedaria sin ninguno. Va con
+ * la guarda de siempre para que nunca se emitan dos: si Rank Math esta, manda el
+ * filtro de arriba y esta funcion no imprime nada.
+ */
+add_action(
+	'wp_head',
+	function () {
+		if ( defined( 'RANK_MATH_VERSION' ) || class_exists( 'RankMath' ) ) {
+			return;
+		}
+		if ( ! is_home() || ! is_paged() ) {
+			return;
+		}
+		if ( ! apply_filters( 'caissa_canonical_paginacion', true ) ) {
+			return;
+		}
+		$url = caissa_url_blog();
+		if ( '' !== $url ) {
+			echo '<link rel="canonical" href="' . esc_url( $url ) . '" />' . "\n";
+		}
+	},
+	1
+);
