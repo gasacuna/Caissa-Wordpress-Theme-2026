@@ -10,9 +10,9 @@ Se genera a partir de las páginas HTML autónomas del repo
 
 | | |
 |---|---|
-| **Versión** | 1.32 |
+| **Versión** | 1.33 |
 | **Generado desde** | rama `integracion` del repo del sitio |
-| **En producción** | ⚠️ https://caissa.digital/ corre el tema **1.26** (leído de su `style.css` el 29/09/2026). 1.27 a 1.32 están sin instalar |
+| **En producción** | ⚠️ https://caissa.digital/ corre el tema **1.32**, verificado el 06/10/2026. Falta instalar 1.33 |
 | **Staging** | https://demo.caissa.digital/ (sigue con `robots.txt` `Disallow: /`) |
 
 ⚠️ **La migración a producción ya se hizo.** `PENDIENTES.md` todavía está escrito
@@ -72,7 +72,7 @@ Sólo necesita `bash`, `gawk`, `sed` y `sha1sum`. **No** necesita python, node n
 
 Generá siempre a una carpeta nueva y compará (`diff -rq`) antes de instalar:
 regenerar el tema sobre sí mismo sin cambios tiene que dar **cero diferencias**
-(con el repo del sitio en `integracion`, que es de donde salió 1.32).
+(con el repo del sitio en `integracion`, que es de donde salió 1.33).
 
 El ZIP es un paso aparte, no lo arma `build.sh`:
 

@@ -96,8 +96,12 @@ grep -q "getElementById('burger')" "$OUT/assets/js/blog.js" || die "no pude agre
 if grep -q '\$q2 = new WP_Query( \$base + array' "$OUT/inc/blog.php"; then
   sed -i "s|\$q2 = new WP_Query( \$base + array( 'post__not_in'|\$q2 = new WP_Query( array_merge( \$base, array( 'post__not_in'|" "$OUT/inc/blog.php"
   sed -i "s|'posts_per_page' => 3 - \$q->post_count ) );|'posts_per_page' => 3 - \$q->post_count ) ) );|" "$OUT/inc/blog.php"
+  grep -q 'array_merge( \$base, array(' "$OUT/inc/blog.php" || die "no pude arreglar el query de notas relacionadas"
 fi
-grep -q 'array_merge( \$base, array(' "$OUT/inc/blog.php" || die "no pude arreglar el query de notas relacionadas"
+# Desde 1.33 la funcion se reescribio entera (reparto en anillo) y ya no usa dos
+# WP_Query, asi que el parche de arriba no aplica. La invariante que SI vale
+# siempre es que no quede un "+" entre arrays en ningun query: ese era el bug.
+grep -q '\$base + array' "$OUT/inc/blog.php" && die "quedo un WP_Query con \$base + array( en inc/blog.php"
 
 # --- 7. Tiempo de lectura mal contado en espanol ----------------------------
 # str_word_count() no entiende UTF-8. El reemplazo va por splice de lineas y no
