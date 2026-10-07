@@ -126,14 +126,21 @@ get_header();
 </section>
 
 <!-- ===================== PRENSA =====================
-     Los siete enlaces salen de la pagina en produccion. Los titulares son los reales de
-     cada nota, verificados uno por uno; no se escribieron aca. -->
+     Los diez enlaces salen de la pagina en produccion, salvo el de Somos Pymes, que lo paso
+     Gaston el 07/10/2026. Los titulares son los reales de cada nota, verificados uno por uno
+     con curl contra el <title>/og:title; no se escribieron aca. Si se suma una nota, igual:
+     traer el titular real y comprobar que la nota nombre a Manuel o a Caissa. -->
 <section class="bg-grad" id="medios">
   <div class="wrap">
     <div class="head-left reveal">
       <h2>En los medios</h2>
     </div>
     <div class="prs reveal">
+      <a href="https://www.somospymes.com.ar/tecnologia/que-cambia-el-comercio-electronico-cuando-la-inteligencia-artificial-ejecuta-la-compra-n5404538" target="_blank" rel="noopener">
+        <span class="prs-m">Somos Pymes</span>
+        <span class="prs-t">¿Qué cambia para el comercio electrónico cuando la Inteligencia Artificial ejecuta la compra?</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
       <a href="https://empre.ar/analisis/google-ads-cambia-las-reglas-la-ia-avanza-y-el-desafio-ahora-es-mantener-el-control/" target="_blank" rel="noopener">
         <span class="prs-m">Empre Management</span>
         <span class="prs-t">Google Ads cambia las reglas: la IA avanza y el desafío ahora es mantener el control</span>
