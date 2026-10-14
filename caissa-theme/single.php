@@ -43,7 +43,22 @@ while ( have_posts() ) :
 				<?php endif; ?>
 				<h1><?php the_title(); ?></h1>
 				<div class="bl-meta">
-					<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
+					<?php
+					/*
+					 * La fecha visible es la de la ULTIMA EDICION, no la de publicacion
+					 * (caissa_fecha_visible() en inc/blog.php explica por que y cuando
+					 * cae de vuelta a la de publicacion).
+					 */
+					$fecha = caissa_fecha_visible();
+					?>
+					<time datetime="<?php echo esc_attr( $fecha['iso'] ); ?>"><?php
+					if ( $fecha['editada'] ) {
+						/* translators: %s: fecha de la ultima edicion de la nota. */
+						printf( esc_html__( 'Actualizado el %s', 'caissa' ), esc_html( $fecha['texto'] ) );
+					} else {
+						echo esc_html( $fecha['texto'] );
+					}
+					?></time>
 					<span class="punto" aria-hidden="true"></span>
 					<span><?php echo esc_html( $min ); ?> min de lectura</span>
 					<span class="punto" aria-hidden="true"></span>

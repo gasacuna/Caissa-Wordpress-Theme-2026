@@ -64,6 +64,72 @@ function caissa_minutos_lectura( $post = null ) {
 }
 
 /**
+ * La fecha que se muestra en una nota: la de la ULTIMA EDICION, no la de publicacion.
+ *
+ * POR QUE. Lo pidio Gaston el 14/10/2026, y la auditoria de SEO lo marcaba desde el
+ * 06/10 en la fila "Fecha visible": las 104 notas mostraban la fecha de publicacion
+ * original aunque 81 se hubieran editado mas de 60 dias despues.
+ *
+ * Y habia una INCOHERENCIA con lo que el sitio le declara a Google. Rank Math ya
+ * emite dateModified en el BlogPosting: medido en /blog/google-partner-que-significa/
+ * el schema decia dateModified 2026-10-13 mientras la pagina mostraba "18 de marzo de
+ * 2025". Google pide que la fecha visible se corresponda con la declarada, asi que
+ * esto no es solo cosmetico.
+ *
+ * SE ROTULA, no se cambia el numero y listo. Un "13 de octubre de 2026" pelado en una
+ * nota de 2025 hace que el lector entienda que la nota es nueva. Por eso va
+ * "Actualizado el ...": dice que paso, no solo cuando.
+ *
+ * SI LA NOTA NUNCA SE EDITO, post_modified viene igual -o a minutos- de post_date, y
+ * rotular eso como "actualizado" seria inventar un trabajo que no se hizo. Por debajo
+ * del umbral se muestra la fecha de publicacion, sin rotulo, igual que antes.
+ *
+ * OJO con el umbral: cuenta el tiempo de WordPress, no el contenido. Una correccion de
+ * una coma y una reescritura entera se ven igual desde aca. Si alguna vez un plugin
+ * toca post_modified en masa (una migracion, un reemplazo global), todas las notas van
+ * a decir "Actualizado" el mismo dia sin que nadie las haya tocado: ahi el arreglo es
+ * revisar las fechas en la base, no subir el umbral.
+ *
+ * @param int|WP_Post|null $post
+ * @return array{iso:string,texto:string,editada:bool}
+ */
+function caissa_fecha_visible( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return array(
+			'iso'     => '',
+			'texto'   => '',
+			'editada' => false,
+		);
+	}
+
+	/*
+	 * En UTC los dos, que es lo unico que hace comparable la resta. get_post_time() y
+	 * get_post_modified_time() con $gmt = true devuelven la marca en UTC aunque el sitio
+	 * tenga otro huso.
+	 */
+	$pub = (int) get_post_time( 'U', true, $post );
+	$mod = (int) get_post_modified_time( 'U', true, $post );
+
+	/*
+	 * Cuanto las tiene que separar para considerarla editada. Un dia por defecto: los
+	 * guardados del mismo dia en que se publico son parte de publicarla, no una
+	 * actualizacion posterior.
+	 *
+	 * @param int     $umbral Segundos.
+	 * @param WP_Post $post
+	 */
+	$umbral  = (int) apply_filters( 'caissa_fecha_umbral', DAY_IN_SECONDS, $post );
+	$editada = ( $mod - $pub ) > $umbral;
+
+	return array(
+		'iso'     => $editada ? get_the_modified_date( 'c', $post ) : get_the_date( 'c', $post ),
+		'texto'   => $editada ? get_the_modified_date( '', $post ) : get_the_date( '', $post ),
+		'editada' => $editada,
+	);
+}
+
+/**
  * La categoria principal de una nota, para el rotulo visible.
  *
  * MANDA RANK MATH. Si la nota tiene categoria primaria elegida ahi, esa es la que se
